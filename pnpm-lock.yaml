@@ -10,19 +10,16 @@ dependencies:
     version: 2.1.0(eslint@8.0.0)(typescript@5.0.2)
   next:
     specifier: 14.1.0
-    version: 14.1.0(react-dom@18.0.0)(react@@rocketseat+eslint-config+react)
+    version: 14.1.0(react-dom@18.0.0)(react@18.2.0)
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
   prettier-plugin-tailwindcss:
     specifier: ^0.3.0
     version: 0.3.0(prettier@2.8.8)
-  react:
-    specifier: link:@rocketseat/eslint-config/react
-    version: link:@rocketseat/eslint-config/react
   react-dom:
     specifier: ^18
-    version: 18.0.0(react@@rocketseat+eslint-config+react)
+    version: 18.0.0(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -2068,7 +2065,7 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  /next@14.1.0(react-dom@18.0.0)(react@@rocketseat+eslint-config+react):
+  /next@14.1.0(react-dom@18.0.0)(react@18.2.0):
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -2089,9 +2086,9 @@ packages:
       caniuse-lite: 1.0.30001583
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: link:@rocketseat/eslint-config/react
-      react-dom: 18.0.0(react@@rocketseat+eslint-config+react)
-      styled-jsx: 5.1.1(react@@rocketseat+eslint-config+react)
+      react: 18.2.0
+      react-dom: 18.0.0(react@18.2.0)
+      styled-jsx: 5.1.1(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.1.0
       '@next/swc-darwin-x64': 14.1.0
@@ -2431,18 +2428,25 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /react-dom@18.0.0(react@@rocketseat+eslint-config+react):
+  /react-dom@18.0.0(react@18.2.0):
     resolution: {integrity: sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
       loose-envify: 1.4.0
-      react: link:@rocketseat/eslint-config/react
+      react: 18.2.0
       scheduler: 0.21.0
     dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react@18.2.0:
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -2689,7 +2693,7 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  /styled-jsx@5.1.1(react@@rocketseat+eslint-config+react):
+  /styled-jsx@5.1.1(react@18.2.0):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -2703,7 +2707,7 @@ packages:
         optional: true
     dependencies:
       client-only: 0.0.1
-      react: link:@rocketseat/eslint-config/react
+      react: 18.2.0
     dev: false
 
   /sucrase@3.35.0:
