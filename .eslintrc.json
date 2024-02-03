@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["@rocketseat/eslint-config/react","next/core-web-vitals"],
+  "rules": {
+    "react/no-unescaped-entities":"off",
+    "react-hooks/rules-of-hooks": "error",
+    "prettier/prettier": ["error", {
+      "printWidth": 80,
+      "tabWidth": 2,
+      "singleQuote": false,
+      "trailingComma": "all",
+      "arrowParens": "always",
+      "semi": false,
+      "react/no-unescaped-entities": false
+    }]
+  }
 }
