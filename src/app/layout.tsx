@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { Baskervville, Montserrat } from "next/font/google"
+import { Header } from "./components/header"
 
 export const metadata: Metadata = {
   title: " Create Next App",
@@ -29,7 +30,10 @@ export default function RootLayout({
       <body
         className={`${baskervville.variable} ${montserrat.variable} font-sans`}
       >
-        {children}
+        <>
+          <Header />
+          {children}
+        </>
       </body>
     </html>
   )

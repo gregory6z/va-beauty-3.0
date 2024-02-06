@@ -14,10 +14,14 @@ const config: Config = {
         sans: ["var(--font-montserrat)"],
       },
       colors: {
-        "gray-bgdark-primary": "#080A0D",
-        "gray-bgdark-secundary": "#171717",
+        "gray-dark-primary": "#080A0D",
+        "gray-dark-secundary": "#171717",
 
-        "gray-bglight-primary": "#F8F9FA",
+        "gray-text-primary": "#121214",
+
+        "gray-light-primary": "#F8F9FA",
+
+        "gray-light-secundary": "#F5F5F7",
 
         "pink-highlight": "#FF8DED",
 
