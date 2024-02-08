@@ -2,7 +2,7 @@ export function Header() {
   return (
     <div className="relative h-[4rem] w-full bg-neutral-900  lg:h-[5rem]">
       <div className="absolute flex h-full w-full items-center px-[1.5rem] lg:justify-center xl:px-0">
-        <p className=" font-serif text-3xl text-gray-light-primary lg:text-center  lg:text-4xl">
+        <p className="  text-3xl text-gray-light-primary lg:text-center  lg:text-4xl">
           VA BEAUTY
         </p>
       </div>
