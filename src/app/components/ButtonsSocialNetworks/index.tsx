@@ -25,8 +25,16 @@ export function ButtonsSocialNetworks() {
             <Youtube className="h-8 w-8"></Youtube>
           </button>
         </Link>
+        <div className="ml-4 text-gray-light-primary  lg:ml-20">
+          <p>Cree par:</p>
+          <Link
+            href="https://www.gregorypraxedes.com/"
+            className="text-sky-500 underline"
+          >
+            Gregory.dev
+          </Link>
+        </div>
       </div>
-      <div></div>
     </div>
   )
 }
