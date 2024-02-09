@@ -18,8 +18,6 @@ export default function Home() {
       <Comments comments={CommentsHome}></Comments>
       <AboutMe></AboutMe>
       <Comments comments={CommentsHome}></Comments>
-      <Footer></Footer>
-      <ButtonsSocialNetworks></ButtonsSocialNetworks>
     </>
   )
 }

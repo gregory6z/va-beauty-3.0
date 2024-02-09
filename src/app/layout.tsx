@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Baskervville, Montserrat } from "next/font/google"
 import { Header } from "./components/header"
+import { Footer } from "./components/footer"
+import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
 
 export const metadata: Metadata = {
   title: " Create Next App",
@@ -33,6 +35,8 @@ export default function RootLayout({
         <>
           <Header />
           {children}
+          <Footer></Footer>
+          <ButtonsSocialNetworks></ButtonsSocialNetworks>
         </>
       </body>
     </html>
