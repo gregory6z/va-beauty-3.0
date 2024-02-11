@@ -2,8 +2,8 @@ import Image from "next/image"
 
 export function ServiceCard() {
   return (
-    <div className="  flex w-full flex-col border  border-gray-200 bg-white sm:grid-cols-2 lg:mx-0   lg:min-h-[24rem] lg:flex-row lg:gap-16 lg:p-8">
-      <div className=" h-full w-full  sm:mx-auto sm:min-w-[400px]   sm:max-w-[400px]   lg:min-w-[300px]   lg:max-w-[300px]  ">
+    <div className="  flex w-full flex-col border  border-gray-200 bg-white sm:grid-cols-2 lg:mx-0    lg:min-h-[24rem] lg:flex-row lg:gap-16 lg:p-8">
+      <div className=" h-full w-full  sm:mx-auto sm:min-w-[400px] sm:max-w-[400px]   lg:mx-0   lg:min-w-[300px]   lg:max-w-[300px]  ">
         <Image
           src="/epilation.webp"
           alt={""}
@@ -16,8 +16,8 @@ export function ServiceCard() {
         </div>
         <div></div>
       </div>
-      <div className="flex flex-col p-4 sm:mx-auto sm:max-w-[600px] lg:mx-0 lg:px-0 ">
-        <div className="mb-2 mt-4 flex flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col p-4 sm:mx-auto sm:max-w-[600px] lg:mx-0 lg:max-w-full lg:px-0 ">
+        <div className="mb-2 mt-4  flex flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center  lg:justify-between">
           <h1 className="text-bold  text-2xl lg:text-3xl   ">
             Micropigmentacao
           </h1>
