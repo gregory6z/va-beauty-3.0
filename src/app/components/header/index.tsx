@@ -7,7 +7,7 @@ export function Header() {
         </p>
       </div>
       <div className=" hidden h-full w-full lg:block">
-        <div className=" mx-auto flex h-full w-full justify-between lg:max-w-[1216px] lg:px-8  lg:text-lg xl:max-w-[1256px]">
+        <div className=" mx-auto flex h-full w-full justify-between  lg:max-w-[1216px] lg:px-8  lg:text-lg xl:max-w-[1256px] xl:px-0">
           <nav className=" flex h-full w-full items-center gap-10 text-gray-light-primary">
             <p>Sourcils</p>
             <p>Levres</p>

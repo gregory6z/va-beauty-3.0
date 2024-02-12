@@ -31,9 +31,9 @@ export function ServiceCard() {
           avançadas para garantir resultados personalizados...
         </p>
         <div className="mt-auto flex h-full w-full flex-col  items-center justify-between lg:flex-row">
-          <p className="my-6 text-5xl">$ 350,00</p>
+          <p className="my-6 text-5xl lg:w-full">$ 350,00</p>
           <div className="flex h-full w-full  gap-2">
-            <button className=" h-full w-full bg-black py-4 text-lg text-gray-light-primary lg:px-10 lg:py-4">
+            <button className="h-full w-full  bg-black py-4 text-lg text-gray-light-primary   lg:px-10 lg:py-4">
               Reserver maintenant
             </button>
           </div>
