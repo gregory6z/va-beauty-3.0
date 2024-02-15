@@ -125,7 +125,7 @@ const services: Service[] = [
   {
     name: "Design de Barba",
     category: "Forfait",
-    price: 25,
+    price: 300,
     duration: "30min",
   },
   { name: "Barboterapia", category: "Forfait", price: 35, duration: "45min" },
@@ -138,6 +138,12 @@ const services: Service[] = [
   },
   {
     name: "Tratamento Capilar",
+    category: "Forfait",
+    price: 30,
+    duration: "45min",
+  },
+  {
+    name: "Tratamento Capilar de gregory praxedes martins",
     category: "Forfait",
     price: 30,
     duration: "45min",
@@ -167,20 +173,22 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
   const showLess = () => setShowAll(false)
 
   return (
-    <div className="">
-      <p className="mb-4 text-2xl font-semibold">{category}</p>
+    <div className="px-[1.5rem] lg:px-0">
+      <p className="mb-4  text-2xl font-semibold">{category}</p>
       {currentServices.map((service) => (
         <div
           key={service.name}
-          className="flex items-center justify-between border-b border-neutral-200 bg-white p-4"
+          className=" flex flex-col justify-between gap-1 border-b border-neutral-200 bg-white p-3 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center"
         >
           <div>
-            <p className="">{service.name}</p>
+            <p className=" max-w-[230px] sm:max-w-none">{service.name}</p>
           </div>
-          <div className="flex items-center gap-3">
-            <p>{service.duration}</p>
-            <p>{service.price} $</p>
-            <button className="bg-black px-6 py-2 text-white">Choisir</button>
+          <div className=" flex  items-center justify-between gap-2  lg:gap-3 ">
+            <p className="text-sm">{service.duration}</p>
+            <p className="text-sm">{service.price} $</p>
+            <button className=" ml-auto bg-black px-4 py-1  text-white lg:px-6 lg:py-2">
+              Choisir
+            </button>
           </div>
         </div>
       ))}
