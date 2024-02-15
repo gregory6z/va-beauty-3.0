@@ -1,4 +1,5 @@
 import { ProgressIndicator } from "../components/ProgressIndicator"
+import { Cart } from "./components/cart"
 import { ServiceChoose } from "./components/service-choose"
 
 export default function ChooseService() {
@@ -23,9 +24,8 @@ export default function ChooseService() {
             </div>
           </div>
 
-          <div className="top-[7rem] col-span-2 hidden max-h-[500px] overflow-auto bg-neutral-500 lg:sticky lg:block">
-            {" "}
-            item de carrinho
+          <div className="relative top-[7rem] col-span-2 hidden h-full max-h-[400px]  bg-black lg:sticky lg:block">
+            <Cart></Cart>
           </div>
         </div>
       </div>
