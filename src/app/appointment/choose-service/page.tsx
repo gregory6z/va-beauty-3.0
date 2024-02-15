@@ -17,7 +17,7 @@ export default function ChooseService() {
               <p className="">Chois de la prestation:</p>
               <div className=" h-4 w-full bg-neutral-200"></div>
             </header>
-            <div className="mb-20 flex flex-col gap-4">
+            <div className="mb-20 flex flex-col gap-14 lg:gap-4 ">
               <ServiceChoose category="Forfait" />
               <ServiceChoose category="Sourcils" />
               <ServiceChoose category="Lévres" />

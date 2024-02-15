@@ -173,12 +173,14 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
   const showLess = () => setShowAll(false)
 
   return (
-    <div className="px-[1.5rem] lg:px-0">
-      <p className="mb-4  text-2xl font-semibold">{category}</p>
+    <div className=" lg:px-0">
+      <p className=" mb-4  ml-6 text-2xl font-semibold lg:ml-0 lg:px-0">
+        {category}
+      </p>
       {currentServices.map((service) => (
         <div
           key={service.name}
-          className=" flex flex-col justify-between  border-b border-neutral-200 bg-white p-3 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center"
+          className=" flex flex-col justify-between  border-b border-neutral-200 bg-white px-[1.5rem] py-4 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center "
         >
           <div>
             <p className=" max-w-[230px] sm:max-w-none">{service.name}</p>
