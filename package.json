@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
     "@rocketseat/eslint-config": "^2.1.0",
     "dayjs": "^1.11.10",
     "isSameOrAfter": "link:dayjs/plugin/isSameOrAfter",

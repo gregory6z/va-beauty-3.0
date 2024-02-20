@@ -7,7 +7,7 @@ import { ServicesContainer } from "../components/services-container"
 
 export default function Sourcils() {
   return (
-    <div className="bg-neutral-100">
+    <div className="bg-neutral-200">
       <Banner image={"/sourcils-1.png"}>
         Sublimez votre beauté naturelle en sculptant vos sourcils avec
         perfection.
