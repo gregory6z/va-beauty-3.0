@@ -29,7 +29,6 @@ const MarkdownText = `
 export default function Service() {
   return (
     <div className="h-full min-h-screen w-full">
-      <ServiceHeader category="Sourcils" text="texto aleatorio"></ServiceHeader>
       <header className="mx-auto mt-20 flex h-full max-w-[900px] flex-col px-[1.5rem] lg:flex-row lg:gap-20 lg:px-0 ">
         <div className=" h-[250px] lg:h-[450px] lg:w-[450px]">
           <Image
