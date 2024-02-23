@@ -3,10 +3,26 @@ import { ReactNode } from "react"
 
 interface BannerProps {
   image: string
-  children: ReactNode
+
+  category: string
 }
 
-export function Banner({ image, children }: BannerProps) {
+export function Banner({ image, category }: BannerProps) {
+  let text = ""
+
+  if (category === "sourcils") {
+    text =
+      "Sublimez votre beauté naturelle en sculptant vos sourcils avec perfection."
+  }
+  if (category === "forfaits") {
+    text =
+      "Découvrez une expérience de beauté inoubliable avec nos forfaits sur mesure."
+  }
+  if (category === "levres") {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    text =
+      "Sublimez vos lèvres avec nos traitements personnalisés pour une beauté qui parle d'elle-même"
+  }
   return (
     <>
       <div className="relative flex h-full w-full bg-[#020202]">
@@ -22,10 +38,10 @@ export function Banner({ image, children }: BannerProps) {
           </div>
           <div className="">
             <h1 className=" relative order-1 mx-[1.5rem] py-5 text-center text-xl text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-4xl">
-              {children}
+              {text}
             </h1>
 
-            <h1 className="hidden lg:block">{children}</h1>
+            <h1 className="hidden lg:block">{text}</h1>
           </div>
         </div>
       </div>
