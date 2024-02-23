@@ -3,6 +3,7 @@ import { Offers } from "@/app/(Home)/components/Offers"
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"
 import { ServiceHeader } from "@/app/components/service-header"
+import { AllServices, Service } from "@/app/components/fetch-services"
 
 const MarkdownText = `
 ## Passo 1: Consulta inicial  
@@ -26,45 +27,70 @@ const MarkdownText = `
 - Recomenda-se uma consulta de acompanhamento para avaliar a cicatrização e fazer ajustes
 `
 
-export default function Service() {
+interface ServiceProps {
+  params: {
+    slug: string
+  }
+}
+
+export default async function Service({ params }: ServiceProps) {
+  console.log(params.slug)
+  const { services } = await AllServices()
+
+  const ServiceItem: Service[] = services.filter((service) => {
+    return service.id === String(params.slug)
+  })
+
   return (
     <div className="h-full min-h-screen w-full">
       <header className="mx-auto mt-20 flex h-full max-w-[900px] flex-col px-[1.5rem] lg:flex-row lg:gap-20 lg:px-0 ">
         <div className=" h-[250px] lg:h-[450px] lg:w-[450px]">
-          <Image
-            className=" h-full w-full object-cover"
-            src="/sourcils.png"
-            width={450}
-            height={450}
-            alt={""}
-          ></Image>
+          {ServiceItem.map((service) => {
+            return (
+              <Image
+                key={service.id}
+                className=" h-full w-full object-cover"
+                src={service.imageUrl}
+                width={450}
+                height={450}
+                alt={""}
+              ></Image>
+            )
+          })}
         </div>
         <div className=" flex h-full flex-col justify-between lg:min-h-[450px]">
-          <div className="flex h-full flex-col lg:min-h-[450px] lg:justify-evenly ">
-            <h1 className="mt-4 text-2xl lg:mt-0 lg:text-4xl">
-              Micropigmentacao{" "}
-            </h1>
-            <p className="lg:mt-2 lg:text-xl">Duration 15 minutes</p>
-            <div className=" flex h-full flex-col justify-center">
-              <p className="my-4 text-6xl lg:my-12">€ 330,00</p>
-              <button className="  bg-black px-12 py-4 text-lg text-gray-100">
-                Reserver maintenant
-              </button>
-            </div>
-          </div>
+          {ServiceItem.map((service) => {
+            return (
+              <div
+                key={service.id}
+                className="flex h-full flex-col lg:min-h-[450px] lg:justify-evenly "
+              >
+                <h1 className="mt-4 text-2xl lg:mt-0 lg:text-4xl">
+                  {service.name}
+                </h1>
+                <p className="lg:mt-2 lg:text-xl">
+                  Duration {service.duration} minutes
+                </p>
+                <div className=" flex h-full flex-col justify-center">
+                  <p className="my-4 text-6xl lg:my-12">€ {service.price},00</p>
+                  <button className="  bg-black px-12 py-4 text-lg text-gray-100">
+                    Reserver maintenant
+                  </button>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </header>
       <div className="mx-auto mt-20 flex flex-col gap-4 px-[1.5rem] lg:max-w-[900px] lg:px-0">
-        <h1 className="text-3xl ">Descricao</h1>
-        <p className="lg:text-xl">
-          "Desperte sua beleza natural com a micropigmentação, um procedimento
-          preciso e duradouro que realça suas características faciais de maneira
-          sutil e elegante. Nossa equipe especializada utiliza técnicas
-          avançadas para garantir resultados personalizados, respeitando sua
-          individualidade e estilo. Experimente a praticidade e a beleza
-          duradoura da micropigmentação e descubra uma nova confiança em sua
-          aparência, todos os dias."
-        </p>
+        <h1 className="text-3xl ">Description</h1>
+        {ServiceItem.map((service) => {
+          return (
+            <p key={service.id} className="lg:text-xl">
+              {service.description}
+            </p>
+          )
+        })}
       </div>
 
       <div className="mx-auto mb-20 mt-10 flex flex-col gap-4 px-[1.5rem] lg:max-w-[750px] lg:px-0">

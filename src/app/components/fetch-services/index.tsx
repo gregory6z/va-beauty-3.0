@@ -1,7 +1,7 @@
 import { stripe } from "@/app/lib/stripe"
 import Stripe from "stripe"
 
-type Service = {
+export type Service = {
   id: string
   name: string
   description: string
@@ -19,6 +19,7 @@ type AllServiceProps = {
   sourcils: Service[]
   levres: Service[]
   forfaits: Service[]
+  promotion: Service[]
 }
 
 export async function AllServices(): Promise<AllServiceProps> {
@@ -64,9 +65,12 @@ export async function AllServices(): Promise<AllServiceProps> {
 
   const promotion = services.filter((service) => {
     return (
-      service.name === "Hydra Lips Gloss" && service.name === "Hydra Lips Gloss"
+      service.id === ("prod_Nzlz7l3FiaBIYA" as string) ||
+      service.id === ("prod_NzlxrdfMouvqPq" as string) ||
+      service.id === ("prod_Nzm5wYROabjnIh" as string) ||
+      service.id === ("prod_O0Cd1r92KHcjQS" as string)
     )
   })
 
-  return { services, sourcils, levres, forfaits }
+  return { services, sourcils, levres, forfaits, promotion }
 }

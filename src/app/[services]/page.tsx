@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Offers } from "../(Home)/components/Offers"
 import { Banner } from "../components/banner"
 import { Comments } from "../components/comments"
@@ -18,9 +19,10 @@ export default function Services({ params }: ParamsProps) {
     <div className="bg-neutral-200">
       <Banner category={category} image={`/${params.services}-1.png`}></Banner>
       <ServiceHeader category="Sourcils" text="texto aleatorio"></ServiceHeader>
-
+      {/* @ts-ignore */}
       <ServicesContainer category={category}></ServicesContainer>
       <Comments comments={CommentsHome}></Comments>
+      {/* @ts-ignore */}
       <Offers />
     </div>
   )
