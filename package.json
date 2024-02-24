@@ -19,7 +19,8 @@
     "prettier-plugin-tailwindcss": "^0.3.0",
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
-    "stripe": "^14.18.0"
+    "stripe": "^14.18.0",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^20",

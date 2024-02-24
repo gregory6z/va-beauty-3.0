@@ -1,162 +1,17 @@
 "use client"
 
+import { useCartServiceStore } from "@/app/stores/cartServices"
 import { useState } from "react"
 
 interface ServiceChooseProps {
-  category: "Forfait" | "Sourcils" | "Lévres"
+  category: string
 }
-
-interface Service {
-  name: string
-  category: "Forfait" | "Sourcils" | "Lévres"
-  price: number
-  duration: string
-}
-
-const services: Service[] = [
-  {
-    name: "Corte de Cabelo",
-    category: "Forfait",
-    price: 25,
-    duration: "40min",
-  },
-  {
-    name: "Coloração de Cabelo",
-    category: "Forfait",
-    price: 30,
-    duration: "50min",
-  },
-  {
-    name: "Escova Progressiva",
-    category: "Forfait",
-    price: 40,
-    duration: "60min",
-  },
-  {
-    name: "Tratamento Facial",
-    category: "Forfait",
-    price: 35,
-    duration: "45min",
-  },
-  {
-    name: "Design de Sobrancelhas",
-    category: "Sourcils",
-    price: 20,
-    duration: "30min",
-  },
-  {
-    name: "Micropigmentação de Sobrancelhas",
-    category: "Sourcils",
-    price: 50,
-    duration: "60min",
-  },
-  {
-    name: "Depilação de Sobrancelhas",
-    category: "Sourcils",
-    price: 15,
-    duration: "20min",
-  },
-  {
-    name: "Preenchimento Labial",
-    category: "Lévres",
-    price: 30,
-    duration: "30min",
-  },
-  { name: "Contorno Labial", category: "Lévres", price: 25, duration: "30min" },
-  {
-    name: "Hidratação Labial",
-    category: "Lévres",
-    price: 20,
-    duration: "20min",
-  },
-  { name: "Manicure", category: "Forfait", price: 20, duration: "30min" },
-  { name: "Pedicure", category: "Forfait", price: 25, duration: "45min" },
-  { name: "Unhas de Gel", category: "Forfait", price: 40, duration: "60min" },
-  {
-    name: "Massagem Relaxante",
-    category: "Forfait",
-    price: 45,
-    duration: "60min",
-  },
-  {
-    name: "Massagem Terapêutica",
-    category: "Forfait",
-    price: 50,
-    duration: "75min",
-  },
-  {
-    name: "Drenagem Linfática",
-    category: "Forfait",
-    price: 55,
-    duration: "60min",
-  },
-  {
-    name: "Limpeza de Pele",
-    category: "Forfait",
-    price: 30,
-    duration: "45min",
-  },
-  { name: "Peeling Facial", category: "Forfait", price: 40, duration: "60min" },
-  {
-    name: "Alongamento de Cílios",
-    category: "Sourcils",
-    price: 35,
-    duration: "60min",
-  },
-  {
-    name: "Permanente de Cílios",
-    category: "Sourcils",
-    price: 30,
-    duration: "45min",
-  },
-  {
-    name: "Tintura de Cílios",
-    category: "Sourcils",
-    price: 20,
-    duration: "30min",
-  },
-  { name: "Microblading", category: "Sourcils", price: 60, duration: "90min" },
-  {
-    name: "Depilação Facial",
-    category: "Sourcils",
-    price: 15,
-    duration: "20min",
-  },
-  {
-    name: "Design de Barba",
-    category: "Forfait",
-    price: 300,
-    duration: "30min",
-  },
-  { name: "Barboterapia", category: "Forfait", price: 35, duration: "45min" },
-  { name: "Corte de Barba", category: "Forfait", price: 20, duration: "30min" },
-  {
-    name: "Coloração de Barba",
-    category: "Forfait",
-    price: 25,
-    duration: "45min",
-  },
-  {
-    name: "Tratamento Capilar",
-    category: "Forfait",
-    price: 30,
-    duration: "45min",
-  },
-  {
-    name: "Tratamento Capilar de gregory praxedes martins",
-    category: "Forfait",
-    price: 30,
-    duration: "45min",
-  },
-  {
-    name: "Maquiagem Profissional",
-    category: "Forfait",
-    price: 40,
-    duration: "60min",
-  },
-]
 
 export function ServiceChoose({ category }: ServiceChooseProps) {
+  const { allServices } = useCartServiceStore.getState()
+
+  const services = allServices
+
   const [currentPage, setCurrentPage] = useState(1)
   const [showAll, setShowAll] = useState(false)
   const servicesPerPage = 5
@@ -179,7 +34,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
       </p>
       {currentServices.map((service) => (
         <div
-          key={service.name}
+          key={service.id}
           className=" flex flex-col justify-between  border-b border-neutral-200 bg-white px-[1.5rem] py-4 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center "
         >
           <div>
