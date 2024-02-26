@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function SignUp() {
   return (
-    <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 ">
+    <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden px-[1.5rem] lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 lg:px-0 ">
       <div className=" hidden w-full bg-black lg:block">
         <div className="flex h-full w-full flex-col items-center justify-center">
           <Image
@@ -21,8 +21,8 @@ export default function SignUp() {
           <div className=" lg:mx-auto lg:px-16">
             <div className="mb-10 flex flex-col gap-2">
               <h1 className="text-3xl font-semibold">Connexion</h1>
-              <p className="text-pretty text-neutral-900/60">
-                Entrez votre adresse e-mail ci-dessous pour créer se connecter.
+              <p className="text-pretty text-zinc-900/60">
+                Entrez votre adresse e-mail ci-dessous pour se connecter.
               </p>
             </div>
             <div className="flex flex-col gap-3">
@@ -34,7 +34,7 @@ export default function SignUp() {
             </div>
             <div>
               <div></div>
-              <p className="mt-8 text-center text-xs text-neutral-900/60">
+              <p className="mt-8 text-center text-xs text-zinc-900/60">
                 OU CONTINUER AVEC
               </p>
               <div></div>
@@ -65,7 +65,7 @@ export default function SignUp() {
                 ></Image>
               </Button>
             </div>
-            <p className="text-balance mt-8 text-center text-sm text-neutral-900/80">
+            <p className="text-balance mt-8 text-center text-sm text-zinc-900/80">
               En cliquant sur Continuer, vous acceptez nos{" "}
               <span className=" underline "> Conditions d'utilisation </span>et
               notre{" "}

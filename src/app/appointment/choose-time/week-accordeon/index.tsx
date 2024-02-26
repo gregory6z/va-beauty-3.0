@@ -95,7 +95,7 @@ const WeekAccordion: React.FC = () => {
                     <button
                       key={timeIndex}
                       onClick={() => selectDay(day)}
-                      className="bg-neutral-200 py-2"
+                      className="bg-zinc-200 py-2"
                     >
                       {time.hora}
                     </button>
@@ -107,7 +107,7 @@ const WeekAccordion: React.FC = () => {
             {visibleTimes[dayIndex] < 20 && ( // Mostrar o botão apenas se ainda houver mais horários para mostrar
               <button
                 onClick={() => showMoreTimes(dayIndex)}
-                className="w-full border-t border-neutral-200 bg-white py-3 text-center"
+                className="w-full border-t border-zinc-200 bg-white py-3 text-center"
               >
                 Ver mais horários
               </button>
@@ -116,7 +116,7 @@ const WeekAccordion: React.FC = () => {
         </Accordion.Item>
       ))}
       {/* Botão para exibir mais 7 dias */}
-      <div className="mt-5 w-full border-t border-neutral-200 bg-white py-3 text-center">
+      <div className="mt-5 w-full border-t border-zinc-200 bg-white py-3 text-center">
         <button onClick={showMoreDays}>Ver mais dias</button>
       </div>
       {/* Renderizar os horários de disponibilidade para o dia selecionado */}

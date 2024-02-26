@@ -26,7 +26,7 @@ export function ServiceCard({
           height={300}
           className="mx-auto h-full max-h-[300px]  w-full object-cover  lg:max-w-[300px] "
         ></Image>
-        <div className="flex h-[32px]  w-full items-center justify-end bg-neutral-900 hover:bg-neutral-800  lg:h-[48px] ">
+        <div className="flex h-[32px]  w-full items-center justify-end bg-zinc-900 hover:bg-zinc-800  lg:h-[48px] ">
           <p className="mx-4 text-left text-white  lg:mx-4 ">Plus info</p>
         </div>
         <div></div>
@@ -37,14 +37,14 @@ export function ServiceCard({
           <p>Duration {duration} min</p>
         </div>
 
-        <p className=" 	 h-full flex-1 px-4 text-neutral-900/60 lg:my-8 lg:mt-8 lg:min-h-[150px] lg:min-w-[828px] lg:flex-1 lg:flex-grow lg:px-0 lg:text-lg">
+        <p className=" 	 h-full flex-1 px-4 text-zinc-900/60 lg:my-8 lg:mt-8 lg:min-h-[150px] lg:min-w-[828px] lg:flex-1 lg:flex-grow lg:px-0 lg:text-lg">
           {description}
         </p>
         <div className="mt-auto flex h-full w-full flex-col  items-center justify-between lg:flex-row">
           <p className="my-6 text-5xl lg:w-full">$ {price},00</p>
           <div className="flex h-full w-full  gap-2">
             <Button asChild className="text-lg">
-              <button className="h-full w-full bg-black  py-4  text-lg text-neutral-100   lg:px-8 lg:py-4">
+              <button className="h-full w-full bg-black  py-4  text-lg text-zinc-100   lg:px-8 lg:py-4">
                 Reserver maintenant
               </button>
             </Button>

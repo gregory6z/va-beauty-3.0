@@ -9,7 +9,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
     <div className="h-full w-full">
       <div className="h-full w-full px-[1.5rem] py-4 xl:px-0">
         <p className="">Étape {currentStep} sur 4</p>
-        <div className="grid w-full grid-cols-4 gap-1 bg-neutral-400 ">
+        <div className="grid w-full grid-cols-4 gap-1 bg-zinc-400 ">
           <div
             className={`h-1 w-full lg:h-2 ${currentStep >= 1 ? "bg-black" : ""}`}
           ></div>

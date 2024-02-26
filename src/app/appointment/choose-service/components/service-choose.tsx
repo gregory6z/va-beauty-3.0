@@ -35,7 +35,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
       {currentServices.map((service) => (
         <div
           key={service.id}
-          className=" flex flex-col justify-between  border-b border-neutral-200 bg-white px-[1.5rem] py-4 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center "
+          className=" flex flex-col justify-between  border-b border-zinc-200 bg-white px-[1.5rem] py-4 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center "
         >
           <div>
             <p className=" max-w-[230px] sm:max-w-none">{service.name}</p>

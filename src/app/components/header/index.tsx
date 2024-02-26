@@ -1,20 +1,21 @@
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export function Header() {
   return (
     <div className="relative h-full w-full">
-      <div className="sticky  top-0 z-[1000] h-[4rem] w-full border-b border-b-neutral-800 bg-neutral-950 lg:h-[5rem]">
+      <div className="sticky  top-0 z-[1000] h-[4rem] w-full border-b border-b-zinc-800 bg-zinc-950 lg:h-[5rem]">
         <div className="absolute inset-0 flex   items-center px-[1.5rem] lg:justify-center xl:px-0">
           <Link
             href="/"
-            className="z-[30] text-3xl text-neutral-100 lg:text-center lg:text-4xl"
+            className="z-[30] text-3xl text-zinc-100 lg:text-center lg:text-4xl"
           >
             VA BEAUTY
           </Link>
         </div>
         <div className="hidden h-full w-full lg:block">
           <div className=" mx-auto flex h-full w-full justify-between lg:max-w-[1216px] lg:px-8 lg:text-lg xl:max-w-[1256px] xl:px-0">
-            <div className="z-20 flex h-full w-full items-center gap-8 text-neutral-100">
+            <div className="z-20 flex h-full w-full items-center gap-8 text-zinc-100">
               <Link className="pointer" href="/">
                 Accueil
               </Link>
@@ -28,16 +29,21 @@ export function Header() {
                 Forfaits
               </Link>
             </div>
-            <nav className="z-20 flex h-full items-center gap-8 text-neutral-100">
+            <nav className="z-20 flex h-full items-center gap-8 text-zinc-100">
               <Link className="pointer" href="/sign-up">
                 Connecter
               </Link>
-              <Link
-                className="border-gray-light-primary border px-16 py-2"
-                href="/sign-in"
+              <Button
+                asChild
+                className="min-h-[3rem] bg-zinc-900 px-10 text-lg hover:bg-zinc-800"
               >
-                S'inscrire
-              </Link>
+                <Link
+                  className=" border  border-zinc-100 py-2"
+                  href="/appointment/choose-service"
+                >
+                  Rendez-vous
+                </Link>
+              </Button>
             </nav>
           </div>
         </div>

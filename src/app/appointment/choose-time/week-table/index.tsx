@@ -77,9 +77,9 @@ const WeekTable: React.FC = () => {
     <div className="hidden h-full min-h-[screen] bg-white lg:block">
       <div className=" flex items-center justify-between bg-black">
         <button
-          className={`btn flex gap-2 px-4 py-2 text-neutral-100 transition-all hover:text-neutral-400 disabled:pointer-events-none disabled:cursor-not-allowed ${
+          className={`btn flex gap-2 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400 disabled:pointer-events-none disabled:cursor-not-allowed ${
             isPastWeek
-              ? " bg-black/30 opacity-70 hover:text-neutral-400"
+              ? " bg-black/30 opacity-70 hover:text-zinc-400"
               : "bg-black"
           }`} // Adicionando classe condicional ao botão
           onClick={goToPreviousWeek}
@@ -90,7 +90,7 @@ const WeekTable: React.FC = () => {
         </button>
         <button
           onClick={goToNextWeek}
-          className={`flex gap-2 bg-black px-4 py-2 text-neutral-100 transition-all hover:text-neutral-400`}
+          className={`flex gap-2 bg-black px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
         >
           Semaine suivante
           <ChevronRight></ChevronRight>
