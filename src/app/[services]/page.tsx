@@ -19,10 +19,8 @@ export default function Services({ params }: ParamsProps) {
     <div className="bg-neutral-200">
       <Banner category={category} image={`/${params.services}-1.png`}></Banner>
       <ServiceHeader category="Sourcils" text="texto aleatorio"></ServiceHeader>
-      {/* @ts-ignore */}
       <ServicesContainer category={category}></ServicesContainer>
       <Comments comments={CommentsHome}></Comments>
-      {/* @ts-ignore */}
       <Offers />
     </div>
   )

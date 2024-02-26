@@ -29,14 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${baskervville.variable} ${montserrat.variable} font-sans`}
-      >
+      <body className={` ${montserrat.className} `}>
         <>
           <Header />
           {children}
-          <Footer></Footer>
-          <ButtonsSocialNetworks></ButtonsSocialNetworks>
         </>
       </body>
     </html>
