@@ -14,7 +14,7 @@
       // ...
       "tailwindcss"
     ],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",

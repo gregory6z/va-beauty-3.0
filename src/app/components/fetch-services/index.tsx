@@ -22,7 +22,7 @@ type AllServiceProps = {
   promotion: Service[]
 }
 
-export async function AllServices(): Promise<AllServiceProps> {
+export async function FetchServices(): Promise<AllServiceProps> {
   const ServicesList = await stripe.products.list({
     expand: ["data.default_price"],
     active: true,

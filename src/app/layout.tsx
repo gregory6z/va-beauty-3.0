@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Baskervville, Montserrat } from "next/font/google"
 import { Header } from "./components/header"
-import { Footer } from "./components/footer"
-import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
+import { StoreInitializer } from "./stores/store.initializer"
+import { FetchServices } from "./components/fetch-services"
 
 export const metadata: Metadata = {
   title: " Create Next App",
@@ -22,18 +22,18 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const { services } = await FetchServices()
   return (
     <html lang="en">
       <body className={` ${montserrat.className} `}>
-        <>
-          <Header />
-          {children}
-        </>
+        <StoreInitializer allServices={services} />
+        <Header />
+        {children}
       </body>
     </html>
   )

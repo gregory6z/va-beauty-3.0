@@ -1,19 +1,15 @@
 import Link from "next/link"
-import { AllServices } from "../fetch-services"
+import { FetchServices } from "../fetch-services"
 import { ServiceCard } from "./components/service-card"
-import { StoreInitializer } from "@/app/stores/store.initializer"
-import { useCartServiceStore } from "@/app/stores/cartServices"
 
 interface ServiceProps {
   category: string
 }
 
 export async function ServicesContainer({ category }: ServiceProps) {
-  const response = await AllServices()
+  const response = await FetchServices()
 
   const { services } = response
-
-  useCartServiceStore.setState({ allServices: services })
 
   const serviceByCategory = services
     .filter((service) => {
@@ -27,7 +23,6 @@ export async function ServicesContainer({ category }: ServiceProps) {
         {serviceByCategory.map((service) => {
           return (
             <Link href={`${service.category}/${service.id}`} key={service.id}>
-              <StoreInitializer allServices={services} />
               <ServiceCard
                 name={service.name}
                 description={service.description}

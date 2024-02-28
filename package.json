@@ -21,6 +21,7 @@
     "isSameOrAfter": "link:dayjs/plugin/isSameOrAfter",
     "lucide-react": "^0.323.0",
     "next": "14.1.0",
+    "nookies": "^2.5.2",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "react-dom": "^18",

@@ -2,16 +2,22 @@
 
 import { useRef } from "react"
 import { Service } from "../components/fetch-services"
-import { useCartServiceStore } from "./cartServices"
+import { useServiceStore } from "./Services"
+// import { useServicesStore } from "./services"
 
 interface InitializerProps {
+  // serviceCategory?: string
   allServices?: Service[]
 }
 
-export function StoreInitializer({ allServices }: InitializerProps) {
+export function StoreInitializer({
+  // serviceCategory,
+  allServices,
+}: InitializerProps) {
   const initialized = useRef(false)
   if (!initialized.current) {
-    useCartServiceStore.setState({ allServices })
+    // useServicesStore.setState({ serviceCategory })
+    useServiceStore.setState({ allServices })
     initialized.current = true
   }
   return null

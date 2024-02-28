@@ -2,8 +2,7 @@ import { Offers } from "@/app/(Home)/components/Offers"
 
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"
-import { ServiceHeader } from "@/app/components/service-header"
-import { AllServices, Service } from "@/app/components/fetch-services"
+import { FetchServices, Service } from "@/app/components/fetch-services"
 
 const MarkdownText = `
 ## Passo 1: Consulta inicial  
@@ -35,7 +34,7 @@ interface ServiceProps {
 
 export default async function Service({ params }: ServiceProps) {
   console.log(params.slug)
-  const { services } = await AllServices()
+  const { services } = await FetchServices()
 
   const ServiceItem: Service[] = services.filter((service) => {
     return service.id === String(params.slug)

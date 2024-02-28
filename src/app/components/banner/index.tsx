@@ -37,7 +37,7 @@ export function Banner({ image, category }: BannerProps) {
             ></Image>
           </div>
           <div className="">
-            <h1 className=" relative order-1 mx-[1.5rem] py-5 text-center text-xl text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-4xl">
+            <h1 className=" text-pretty relative order-1 mx-[1.5rem] py-5 text-center text-xl text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-4xl">
               {text}
             </h1>
 
