@@ -3,22 +3,24 @@
 import { useState, useEffect } from "react"
 import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter"
-import AvailableTimes from "../availaible-times"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import AvailableTimes from "../availaible-times"
 
 // Definindo o tipo Week
 interface Week {
   startDate: Dayjs
-  availableTimes: { hora: string; available: boolean }[][]
+  availableTimes: { time: string; available: boolean }[][]
+}
+
+export interface Appointment {
+  day: Date
+  timeSlots: { minute: number; available: boolean }[]
 }
 
 // Definindo o idioma francês para Day.js
 dayjs.locale("fr")
-// Adicionando o plugin isSameOrAfter ao Day.js
-dayjs.extend(isSameOrAfter)
 
-const WeekTable: React.FC = () => {
+const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
   const [currentWeek, setCurrentWeek] = useState<Week>({
     startDate: dayjs().startOf("week"), // Começa com o início da semana atual
     availableTimes: [],
@@ -30,16 +32,45 @@ const WeekTable: React.FC = () => {
   }, [])
 
   const loadWeekAvailability = (startDate: Dayjs) => {
-    // Aqui você faria uma chamada ao backend para buscar os horários de disponibilidade
-    // para a semana começando em `startDate`
-    // Vou deixar esta parte para você implementar de acordo com a sua lógica de backend
-    // Este é apenas um exemplo fictício
-    const availabilityData = getFakeWeekAvailability(startDate)
+    // Encontrar os dados de disponibilidade apenas para a semana atual
+    const weekData = data.find((appointments) =>
+      dayjs(appointments[0].day).isSame(startDate, "week"),
+    )
 
-    setCurrentWeek({
-      startDate,
-      availableTimes: availabilityData,
-    })
+    // Determinar a data de início da semana
+    const firstDayOfWeek = weekData
+      ? dayjs(weekData[0].day).startOf("day")
+      : dayjs().startOf("week")
+
+    if (weekData) {
+      // Converter os minutos em horas para cada intervalo de disponibilidade
+      const availableTimes = weekData.map((appointment) =>
+        appointment.timeSlots.map((slot) => ({
+          time: formatMinuteToHour(slot.minute),
+          available: slot.available,
+        })),
+      )
+
+      setCurrentWeek({
+        startDate: firstDayOfWeek,
+        availableTimes,
+      })
+    } else {
+      console.error(
+        "Dados de disponibilidade não encontrados para a semana atual.",
+      )
+      // Se os dados não forem encontrados, você pode tratar isso de acordo com sua lógica
+    }
+  }
+
+  // Função auxiliar para formatar minutos em horas no formato 24 horas
+  const formatMinuteToHour = (minute: number): string => {
+    const hour = Math.floor(minute / 60)
+    const minutePart = minute % 60
+    const hourStr = hour.toString().padStart(2, "0")
+    const minuteStr = minutePart.toString().padStart(2, "0")
+
+    return `${hourStr}:${minuteStr}`
   }
 
   const goToPreviousWeek = () => {
@@ -58,34 +89,22 @@ const WeekTable: React.FC = () => {
     loadWeekAvailability(dayjs(currentWeek.startDate).add(7, "day"))
   }
 
-  // Função fictícia para gerar dados de disponibilidade de semana
-  const getFakeWeekAvailability = (startDate: Dayjs) => {
-    // Aqui você faria uma chamada ao backend para buscar os dados reais
-    // Vou apenas retornar dados fictícios para demonstração
-    return Array.from({ length: 7 }, (_, dayIndex) =>
-      Array.from({ length: 4 }, (_, timeIndex) => ({
-        hora: `${8 + timeIndex}:00`,
-        available: Math.random() < 0.8, // 80% de chance de estar disponível
-      })),
-    )
+  const handleTimeSlotClick = (day: Dayjs, time: string) => {
+    const selectedDateTime = day
+      .set("hour", Number(time.split(":")[0]))
+      .set("minute", Number(time.split(":")[1]))
+      .toDate()
+    console.log("Data e hora selecionadas:", selectedDateTime)
   }
-
-  // Verifica se o dia atual é maior ou igual ao primeiro dia da semana
-  const isPastWeek = dayjs().isSameOrAfter(currentWeek.startDate, "day")
 
   return (
     <div className="hidden h-full min-h-[screen] bg-white lg:block">
       <div className=" flex items-center justify-between bg-black">
         <button
-          className={`btn flex gap-2 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400 disabled:pointer-events-none disabled:cursor-not-allowed ${
-            isPastWeek
-              ? " bg-black/30 opacity-70 hover:text-zinc-400"
-              : "bg-black"
-          }`} // Adicionando classe condicional ao botão
+          className={`btn flex gap-2 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
           onClick={goToPreviousWeek}
-          disabled={isPastWeek}
         >
-          <ChevronLeft></ChevronLeft>
+          <ChevronLeft />
           Semaine précédente
         </button>
         <button
@@ -93,7 +112,7 @@ const WeekTable: React.FC = () => {
           className={`flex gap-2 bg-black px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
         >
           Semaine suivante
-          <ChevronRight></ChevronRight>
+          <ChevronRight />
         </button>
       </div>
       <div className=" overflow-x-auto">
@@ -102,22 +121,18 @@ const WeekTable: React.FC = () => {
             <tr>
               {currentWeek.availableTimes.map((times, index) => (
                 <th key={index} className="border p-4 capitalize">
-                  {
-                    dayjs(currentWeek.startDate)
-                      .add(index, "day")
-                      .format("dddd, D MMMM")
-                      .split(", ") // Dividir a string na vírgula
-                      .map((part, partIndex) => (
-                        <div key={partIndex} className="flex flex-col">
-                          {partIndex === 0 ? ( // Verificar se é o primeiro elemento (dia da semana)
-                            <span className="text-lg font-normal">{part}</span> // Aplicar estilo de fonte normal para a data
-                          ) : (
-                            <span className="text-xl font-bold">{part}</span> // Aplicar estilo de fonte negrito para o dia da semana
-                          )}
-                        </div>
-                      ))
-                      .reverse() // Inverter a ordem dos elementos do array
-                  }
+                  <div className="text-center">
+                    <div>
+                      {dayjs(currentWeek.startDate)
+                        .add(index, "day")
+                        .format("dddd")}
+                    </div>
+                    <div>
+                      {dayjs(currentWeek.startDate)
+                        .add(index, "day")
+                        .format("D MMMM")}
+                    </div>
+                  </div>
                 </th>
               ))}
             </tr>
@@ -127,10 +142,13 @@ const WeekTable: React.FC = () => {
               {currentWeek.availableTimes.map((times, index) => (
                 <td key={index} className="border p-4 align-top">
                   <AvailableTimes
-                    times={times.filter((time) => time.available)}
-                    disabled={dayjs(currentWeek.startDate)
-                      .add(index, "day")
-                      .isBefore(dayjs(), "day")}
+                    times={times}
+                    onTimeSlotClick={(time) =>
+                      handleTimeSlotClick(
+                        dayjs(currentWeek.startDate).add(index, "day"),
+                        time,
+                      )
+                    }
                   />
                 </td>
               ))}
