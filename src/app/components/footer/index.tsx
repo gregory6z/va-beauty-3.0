@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="border-b  border-solid border-gray-800 bg-gray-dark-primary px-[1.125rem] py-16 text-sm text-gray-100 md:text-base">
+    <footer className="border-b  border-solid border-gray-800 bg-zinc-950 px-[1.125rem] py-16 text-sm text-gray-100 md:text-base">
       <div className="flex flex-col gap-2 lg:mx-auto lg:max-w-[1256px] lg:flex-row lg:gap-16 lg:px-[4rem] xl:px-0 ">
         <div className="flex flex-col gap-4">
           {/* <Image src="logo.svg" width="260" height="60" alt="logo"></Image> */}

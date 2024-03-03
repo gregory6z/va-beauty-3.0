@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
+import { SignInForm } from "./components/sign-in-form"
 
-export default function SignUp() {
+export default function SignIn() {
   return (
     <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden px-[1.5rem] lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 lg:px-0 ">
       <div className=" hidden w-full bg-black lg:block">
@@ -25,13 +26,7 @@ export default function SignUp() {
                 Entrez votre adresse e-mail ci-dessous pour se connecter.
               </p>
             </div>
-            <div className="flex flex-col gap-3">
-              <Input type="email" placeholder="votre-email@email.com"></Input>
-              <Button size={"lg"} className="w-full">
-                {" "}
-                Se connecter avec votre adresse e-mail
-              </Button>
-            </div>
+            <SignInForm />
             <div>
               <div></div>
               <p className="mt-8 text-center text-xs text-zinc-900/60">
@@ -65,11 +60,14 @@ export default function SignUp() {
                 ></Image>
               </Button>
             </div>
-            <p className="text-balance mt-8 text-center text-sm text-zinc-900/80">
+            <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
               En cliquant sur Continuer, vous acceptez nos{" "}
               <span className=" underline "> Conditions d'utilisation </span>et
               notre{" "}
               <span className=" underline ">Politique de confidentialité</span>
+            </p>
+            <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
+              Voce nao tem uma conta crie em creation
             </p>
           </div>
         </div>
