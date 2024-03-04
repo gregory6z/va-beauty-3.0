@@ -1,9 +1,42 @@
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import Image from "next/image"
-import { SignInForm } from "./components/sign-in-form"
+import { SignInForm, SignInSchema } from "./components/sign-in-form"
 
-export default function SignIn() {
+interface SignInResponse {
+  access_token: string
+  // Outros campos da resposta, se houver
+}
+
+interface dataProps {
+  email: string
+  password: string
+}
+
+export async function FetchAPI(data: dataProps) {
+  try {
+    const res = await fetch("http://localhost:3333/sessions", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    console.log(JSON.stringify(data))
+
+    const responseData: SignInResponse = await res.json()
+    const access_token = responseData
+    console.log(access_token)
+  } catch (error) {
+    console.error("Error fetching API:", error)
+  }
+}
+
+export default async function SignIn() {
+  const user = {
+    email: "gregoryrag@gmail.com",
+    password: "1234",
+  }
+
   return (
     <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden px-[1.5rem] lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 lg:px-0 ">
       <div className=" hidden w-full bg-black lg:block">
