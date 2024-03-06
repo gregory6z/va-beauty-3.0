@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from "zustand"
 import { parseCookies, setCookie, destroyCookie } from "nookies"
-import { persist, createJSONStorage } from "zustand/middleware"
+import { persist } from "zustand/middleware"
 
 interface Service {
   id: string

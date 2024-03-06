@@ -1,13 +1,16 @@
 "use server"
 
-import { FetchAPI } from "../page"
+import useAuthStore from "@/app/stores/Auth"
 
-export type FormData = {
-  email: string
-  password: string
-}
+export async function action(data: FormData): Promise<void> {
+  const email = data.get("email")
+  const password = data.get("password")
 
-export async function action(data: FormData) {
-  console.log(data)
-  FetchAPI(data)
+  const dataFetch = {
+    email: String(email),
+    password: String(password),
+  }
+  console.log(dataFetch)
+
+  useAuthStore.getState().signIn(dataFetch)
 }
