@@ -10,10 +10,15 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTransition } from "react"
 import { action } from "./action"
+import { ErrorAuthenticateDisplay } from "./errorAuthenticate"
 
 const signInSchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
+  email: z
+    .string()
+    .email({ message: "Por favor, insira um endereço de e-mail válido." }),
+  password: z
+    .string()
+    .min(4, { message: "A senha deve ter no mínimo 4 caracteres." }),
 })
 
 export type SignInSchema = z.infer<typeof signInSchema>
@@ -43,7 +48,9 @@ export function SignInForm() {
         required
         {...register("email")}
       />
-
+      {errors.email && (
+        <p className="text-sm text-red-500">{errors.root?.message}</p>
+      )}
       <Input
         type="password"
         placeholder="mot de passe"
@@ -59,6 +66,7 @@ export function SignInForm() {
       >
         Se connecter avec votre adresse e-mail
       </Button>
+      <ErrorAuthenticateDisplay />
     </form>
   )
 }

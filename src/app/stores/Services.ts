@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from "zustand"
 import { parseCookies, setCookie, destroyCookie } from "nookies"
-import { persist } from "zustand/middleware"
 
 interface Service {
   id: string
@@ -81,48 +80,3 @@ export const useServiceStore = create<ServiceStore>((set) => ({
       allServices: services, // Atualize allServices com os serviços recebidos
     })),
 }))
-
-export const useBearStore = create(
-  persist<ServiceStore>(
-    (set, get) => ({
-      services: getCartItemsFromCookies(), // Inicialize os serviços com os itens do carrinho dos cookies
-      allServices: [],
-      addToCart: (service) =>
-        set((state) => {
-          const isServiceInCart = state.services.some(
-            (item) => item.id === service.id,
-          )
-          if (!isServiceInCart) {
-            const newServices = [...state.services, service]
-            updateCookies(newServices) // Atualize os cookies
-            return { ...state, services: newServices }
-          } else {
-            return state
-          }
-        }),
-
-      removeFromCart: (serviceId) =>
-        set((state) => {
-          const newServices = state.services.filter(
-            (service) => service.id !== serviceId,
-          )
-          updateCookies(newServices) // Atualize os cookies
-          return { ...state, services: newServices }
-        }),
-
-      clearCart: () => {
-        destroyCookie(null, "cartItems", {
-          path: "/", // Define o caminho do cookie (raiz do site)
-        })
-        set({ services: [] })
-      },
-      updateAllServices: (services) =>
-        set((state) => ({
-          allServices: services, // Atualize allServices com os serviços recebidos
-        })),
-    }),
-    {
-      name: "cartItems", // name of the item in the storage (must be unique)
-    },
-  ),
-)

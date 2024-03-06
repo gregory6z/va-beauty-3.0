@@ -94,7 +94,6 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
       .set("hour", Number(time.split(":")[0]))
       .set("minute", Number(time.split(":")[1]))
       .toDate()
-    console.log("Data e hora selecionadas:", selectedDateTime)
   }
 
   return (

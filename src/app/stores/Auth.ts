@@ -1,78 +1,43 @@
-/* eslint-disable camelcase */
-import create from "zustand"
-import { setCookie, destroyCookie } from "nookies"
+import { create } from "zustand"
 
 interface AuthState {
-  token: string
+  token: string | null
   isAuthenticated: boolean
-  authError: string | null // Adicionando um campo para armazenar erros
-}
-
-interface SignInCredentials {
-  email: string
-  password: string
+  authError: string | null
 }
 
 interface AuthActions {
-  signIn: (credentials: SignInCredentials) => Promise<void>
-  signOut: () => void
+  saveToken: (token: string) => void // Função para salvar o token no Zustand
+  saveError: (error: string | null) => void // Função para salvar o erro no Zustand
 }
 
 type AuthStore = AuthState & AuthActions
 
 const useAuthStore = create<AuthStore>((set) => ({
-  token: "",
+  token: null,
   isAuthenticated: false,
   authError: null,
 
-  signIn: async ({ email, password }) => {
-    try {
-      const response = await fetch("http://localhost:3333/sessions", {
-        method: "POST",
-        headers: addTokenToHeaders({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify({ email, password }),
-      })
-
-      if (!response.ok) {
-        throw new Error("Erro ao fazer login")
-      }
-
-      const { access_token } = await response.json()
-
-      // Salvando o token nos cookies usando nookies
-      setCookie(null, "@VaBeauty:token", access_token, {
-        maxAge: 30 * 24 * 60 * 60, // 30 dias de validade
-        path: "/", // Define o caminho do cookie (raiz do site)
-      })
-
-      set({ token: access_token, isAuthenticated: true, authError: null })
-    } catch (error) {
-      console.error("Erro ao fazer login:", error)
-      set({
-        authError:
-          "Erro ao fazer login. Por favor, verifique suas credenciais e tente novamente.",
-      })
-      throw error
-    }
+  // Função para salvar o token no Zustand
+  saveToken: (token) => {
+    set((state) => ({ ...state, token }))
   },
 
-  signOut: () => {
-    // Removendo o token dos cookies
-    destroyCookie(null, "@VaBeauty:token")
-
-    set({ token: "", isAuthenticated: false, authError: null })
+  // Função para salvar o erro no Zustand
+  saveError: (error) => {
+    set((state) => ({ ...state, authError: error }))
   },
 }))
 
-const getToken = () => useAuthStore.getState().token
-
-// Função para adicionar o token aos headers da solicitação
-export const addTokenToHeaders = (headers: HeadersInit) => {
-  const token = getToken()
+export const addTokenToHeaders = (
+  headers: HeadersInit,
+  token: string | null,
+) => {
   if (token) {
-    return { ...headers, Authorization: `Bearer ${token}` }
+    return {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    }
   }
   return headers
 }

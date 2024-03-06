@@ -59,6 +59,7 @@ export default async function SignIn() {
                 ></Image>
               </Button>
             </div>
+
             <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
               En cliquant sur Continuer, vous acceptez nos{" "}
               <span className=" underline "> Conditions d'utilisation </span>et
