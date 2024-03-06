@@ -33,7 +33,6 @@ interface ServiceProps {
 }
 
 export default async function Service({ params }: ServiceProps) {
-  console.log(params.slug)
   const { services } = await FetchServices()
 
   const ServiceItem: Service[] = services.filter((service) => {

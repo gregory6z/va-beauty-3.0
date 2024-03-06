@@ -8,9 +8,11 @@ import { z } from "zod"
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useTransition } from "react"
+import { useEffect, useTransition } from "react"
 import { action } from "./action"
 import { ErrorAuthenticateDisplay } from "./errorAuthenticate"
+import { useRouter } from "next/navigation"
+import { parseCookies } from "nookies"
 
 const signInSchema = z.object({
   email: z
@@ -35,7 +37,17 @@ export function SignInForm() {
     resolver: zodResolver(signInSchema),
   })
 
+  const router = useRouter()
+
   const [pending, startTransaction] = useTransition()
+
+  const token = parseCookies()["@VaBeauty:token"]
+
+  useEffect(() => {
+    if (token) {
+      router.push("/")
+    }
+  }, [token, router])
 
   return (
     <form

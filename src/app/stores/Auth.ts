@@ -9,11 +9,12 @@ interface AuthState {
 interface AuthActions {
   saveToken: (token: string) => void // Função para salvar o token no Zustand
   saveError: (error: string | null) => void // Função para salvar o erro no Zustand
+  setIsAuthenticated: (isAuthenticated: boolean) => void // Função para alterar isAuthenticated no Zustand
 }
 
 type AuthStore = AuthState & AuthActions
 
-const useAuthStore = create<AuthStore>((set) => ({
+export const useAuthStore = create<AuthStore>((set) => ({
   token: null,
   isAuthenticated: false,
   authError: null,
@@ -27,19 +28,9 @@ const useAuthStore = create<AuthStore>((set) => ({
   saveError: (error) => {
     set((state) => ({ ...state, authError: error }))
   },
+
+  // Função para alterar isAuthenticated no Zustand
+  setIsAuthenticated: (isAuthenticated) => {
+    set((state) => ({ ...state, isAuthenticated }))
+  },
 }))
-
-export const addTokenToHeaders = (
-  headers: HeadersInit,
-  token: string | null,
-) => {
-  if (token) {
-    return {
-      ...headers,
-      Authorization: `Bearer ${token}`,
-    }
-  }
-  return headers
-}
-
-export default useAuthStore

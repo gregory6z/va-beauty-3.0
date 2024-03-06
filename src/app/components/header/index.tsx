@@ -30,7 +30,7 @@ export function Header() {
               </Link>
             </div>
             <nav className="z-20 flex h-full items-center gap-8 text-zinc-100">
-              <Link className="pointer" href="/sign-up">
+              <Link className="pointer" href="/sign-in">
                 Connecter
               </Link>
               <Button
