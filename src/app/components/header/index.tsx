@@ -1,7 +1,17 @@
+import { useAuthStore } from "@/app/stores/Auth"
 import { Button } from "@/components/ui/button"
+import { cookies } from "next/headers"
 import Link from "next/link"
 
 export function Header() {
+  // Recuperar o token de autenticação diretamente
+
+  const auth = useAuthStore.getState().token
+  console.log(auth)
+
+  const cookieStore = cookies()
+  const token = cookieStore.get("@VaBeauty:token")
+
   return (
     <div className="relative h-full w-full">
       <div className="sticky  top-0 z-[1000] h-[4rem] w-full border-b border-b-zinc-800 bg-zinc-950 lg:h-[5rem]">
@@ -30,9 +40,16 @@ export function Header() {
               </Link>
             </div>
             <nav className="z-20 flex h-full items-center gap-8 text-zinc-100">
-              <Link className="pointer" href="/sign-in">
-                Connecter
-              </Link>
+              {token ? (
+                <Link className="pointer" href="/sign-in">
+                  meus agendamentos
+                </Link>
+              ) : (
+                <Link className="pointer" href="/sign-in">
+                  Connecter
+                </Link>
+              )}
+
               <Button
                 asChild
                 className="min-h-[3rem] bg-zinc-900 px-10 text-lg hover:bg-zinc-800"

@@ -3,6 +3,7 @@ import { Comments } from "../components/comments"
 import { CommentsHome } from "../components/comments/comments"
 
 import { Footer } from "../components/footer"
+
 import { AboutMe } from "./components/AboutMe"
 import { HeaderHome } from "./components/HeaderHome"
 import { Offers } from "./components/Offers"

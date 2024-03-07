@@ -90,7 +90,7 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
   }
 
   const handleTimeSlotClick = (day: Dayjs, time: string) => {
-    const selectedDateTime = day
+    day
       .set("hour", Number(time.split(":")[0]))
       .set("minute", Number(time.split(":")[1]))
       .toDate()

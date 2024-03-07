@@ -4,15 +4,17 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import toast, { Toaster } from "react-hot-toast"
+
 import { z } from "zod"
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect, useTransition } from "react"
+import { useEffect } from "react"
 import { action } from "./action"
-import { ErrorAuthenticateDisplay } from "./errorAuthenticate"
 import { useRouter } from "next/navigation"
 import { parseCookies } from "nookies"
+import { useFormState, useFormStatus } from "react-dom"
 
 const signInSchema = z.object({
   email: z
@@ -24,6 +26,11 @@ const signInSchema = z.object({
 })
 
 export type SignInSchema = z.infer<typeof signInSchema>
+
+const initialState = {
+  message: "",
+  success: undefined,
+}
 
 export function SignInForm() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,21 +46,27 @@ export function SignInForm() {
 
   const router = useRouter()
 
-  const [pending, startTransaction] = useTransition()
+  const { pending } = useFormStatus()
+
+  const [state, formAction] = useFormState(action, initialState)
+
+  if (state?.message) {
+    toast.error("Erreur de connexion")
+  }
 
   const token = parseCookies()["@VaBeauty:token"]
 
   useEffect(() => {
+    if (state?.success) {
+      toast.success("Connected")
+    }
     if (token) {
       router.push("/")
     }
-  }, [token, router])
+  }, [token, router, state])
 
   return (
-    <form
-      action={(formData) => startTransaction(() => action(formData))}
-      className="flex flex-col gap-3"
-    >
+    <form action={formAction} className="flex  flex-col gap-3">
       <Input
         type="email"
         placeholder="votre-email@email.com"
@@ -72,13 +85,22 @@ export function SignInForm() {
       />
       <Button
         size="lg"
-        type="submit"
         disabled={pending}
-        className="mt-4 w-full "
+        type="submit"
+        className="mt-4 w-full  "
       >
         Se connecter avec votre adresse e-mail
       </Button>
-      <ErrorAuthenticateDisplay />
+
+      <p className=" text-red-500"> {state?.message}</p>
+
+      <Toaster
+        position="top-right"
+        containerStyle={{
+          right: 100,
+          top: 100,
+        }}
+      />
     </form>
   )
 }

@@ -1,0 +1,53 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable camelcase */
+"use server"
+
+import { cookies } from "next/headers"
+
+import { z } from "zod"
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string(),
+})
+
+export async function action(prevState: any, formData: FormData) {
+  const data = schema.parse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+  })
+
+  try {
+    const response = await fetch("http://localhost:3333/sessions", {
+      method: "POST",
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (!response.ok) {
+      return {
+        message: "Nom d'utilisateur ou mot de passe invalide.",
+      }
+    }
+
+    const { access_token } = await response.json()
+
+    // Salvar token no estado global
+
+    // Salvar token nos cookies
+    cookies().set("@VaBeauty:token", String(access_token))
+
+    return {
+      success: true,
+    }
+
+    // Redirecionar para a página inicial após o login
+  } catch (error: any) {
+    return {
+      message: "Erreur de connexion au serveur. ",
+    }
+  }
+}
