@@ -3,18 +3,16 @@
 import { useState, useEffect } from "react"
 import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter"
 import * as Accordion from "@radix-ui/react-accordion"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { Appointment } from "../week-table"
+import { setCookie } from "nookies"
 
 dayjs.locale("fr")
-dayjs.extend(isSameOrAfter)
 
 export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
   data,
 }) => {
-  const [selectedDay, setSelectedDay] = useState<Dayjs | null>(null)
   const [openItem, setOpenItem] = useState<string | null>(null)
   const [visibleTimes, setVisibleTimes] = useState<number[]>(
     Array.from({ length: 7 }, () => 12),
@@ -27,10 +25,6 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
       currentDay.add(dayIndex, "day"),
     )
     setDays(loadedDays)
-  }
-
-  const selectDay = (day: Dayjs) => {
-    setSelectedDay(day)
   }
 
   const toggleItem = (value: string) => {
@@ -52,6 +46,22 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
   useEffect(() => {
     loadDays()
   }, [])
+
+  const handleTimeSlotClick = (day: Dayjs, time: string) => {
+    const [hours, minutes] = time.split(":").map(Number)
+    const selectedDateTime = day
+      .startOf("day")
+      .add(hours, "hour")
+      .add(minutes, "minute")
+
+    console.log(selectedDateTime.toISOString())
+
+    // Salvando o objeto Date nos cookies
+    setCookie(null, "@VaBeauty:date", selectedDateTime.toISOString(), {
+      maxAge: 30 * 24 * 60 * 60, // 30 dias de validade
+      path: "/", // caminho raiz
+    })
+  }
 
   return (
     <Accordion.Root
@@ -79,7 +89,9 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
                 .map((slot, slotIndex) => (
                   <button
                     key={slotIndex}
-                    onClick={() => selectDay(day)}
+                    onClick={() =>
+                      handleTimeSlotClick(day, formatMinuteToHour(slot.minute))
+                    }
                     className="bg-zinc-200 py-2"
                   >
                     {formatMinuteToHour(slot.minute)}
@@ -102,26 +114,6 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
       <div className="mt-5 w-full border-t border-zinc-200 bg-white py-3 text-center">
         <button onClick={showMoreDays}>Ver mais dias</button>
       </div>
-      {selectedDay && (
-        <div>
-          <h3>
-            Horários disponíveis para {selectedDay.format("dddd, D MMMM")}
-          </h3>
-          {data[selectedDay.day() - 1]?.[0]?.timeSlots.map(
-            (slot, slotIndex) => (
-              <div key={slotIndex}>
-                <button
-                  className={`m-1 bg-${slot.available ? "green" : "red"}-300 p-2 hover:bg-${
-                    slot.available ? "green" : "red"
-                  }-400`}
-                >
-                  {formatMinuteToHour(slot.minute)}
-                </button>
-              </div>
-            ),
-          )}
-        </div>
-      )}
     </Accordion.Root>
   )
 }

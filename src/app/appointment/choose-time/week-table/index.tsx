@@ -9,7 +9,7 @@ import AvailableTimes from "../availaible-times"
 // Definindo o tipo Week
 interface Week {
   startDate: Dayjs
-  availableTimes: { time: string; available: boolean }[][]
+  availableTimes: { time: string; available: boolean; day: Date }[][]
 }
 
 export interface Appointment {
@@ -47,6 +47,7 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
       const availableTimes = weekData.map((appointment) =>
         appointment.timeSlots.map((slot) => ({
           time: formatMinuteToHour(slot.minute),
+          day: appointment.day,
           available: slot.available,
         })),
       )
@@ -87,13 +88,6 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
       availableTimes: [], // Limpar os horários de disponibilidade ao mudar de semana
     }))
     loadWeekAvailability(dayjs(currentWeek.startDate).add(7, "day"))
-  }
-
-  const handleTimeSlotClick = (day: Dayjs, time: string) => {
-    day
-      .set("hour", Number(time.split(":")[0]))
-      .set("minute", Number(time.split(":")[1]))
-      .toDate()
   }
 
   return (
@@ -140,15 +134,7 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
             <tr>
               {currentWeek.availableTimes.map((times, index) => (
                 <td key={index} className="border p-4 align-top">
-                  <AvailableTimes
-                    times={times}
-                    onTimeSlotClick={(time) =>
-                      handleTimeSlotClick(
-                        dayjs(currentWeek.startDate).add(index, "day"),
-                        time,
-                      )
-                    }
-                  />
+                  <AvailableTimes times={times} />
                 </td>
               ))}
             </tr>
