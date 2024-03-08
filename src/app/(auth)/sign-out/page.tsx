@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { SignOutForm } from "./components/sign-in-form"
+import { SignOutForm } from "./components/sign-out-form"
 
 export default async function SignOut() {
   return (

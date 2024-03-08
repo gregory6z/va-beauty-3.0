@@ -67,22 +67,31 @@ export function SignInForm() {
 
   return (
     <form action={formAction} className="flex  flex-col gap-3">
-      <Input
-        type="email"
-        placeholder="votre-email@email.com"
-        required
-        {...register("email")}
-      />
-      {errors.email && (
-        <p className="text-sm text-red-500">{errors.root?.message}</p>
-      )}
-      <Input
-        type="password"
-        placeholder="mot de passe"
-        minLength={4}
-        required
-        {...register("password")}
-      />
+      <div className="flex flex-col ">
+        <Input
+          type="email"
+          placeholder="exemple@email.com"
+          required
+          {...register("email")}
+        />
+        {errors.email && (
+          <p className="text-sm text-red-500">{errors.root?.message}</p>
+        )}
+      </div>
+
+      <div>
+        <Input
+          type="password"
+          placeholder="mot de passe"
+          minLength={4}
+          required
+          {...register("password")}
+        />
+      </div>
+      <p className="text-right text-sm text-zinc-900/60">
+        Mot de passe oublié ?
+      </p>
+
       <Button
         size="lg"
         disabled={pending}

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { SignInForm } from "./components/sign-in-form"
+import Link from "next/link"
 
 export default async function SignIn() {
   return (
@@ -66,9 +67,11 @@ export default async function SignIn() {
               notre{" "}
               <span className=" underline ">Politique de confidentialité</span>
             </p>
-            <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
-              Voce nao tem uma conta crie em creation
-            </p>
+            <Link href={"/sign-out"} className="">
+              <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
+                Vous n'avez pas de compte ? Cliquez ici pour en créer un.
+              </p>
+            </Link>
           </div>
         </div>
       </div>

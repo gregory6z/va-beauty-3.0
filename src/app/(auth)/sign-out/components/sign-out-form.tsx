@@ -11,9 +11,12 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { action } from "./action"
-import { useFormState, useFormStatus } from "react-dom"
+import { Label } from "@/components/ui/label"
 
-import { ErrorMessage } from "@hookform/error-message"
+import { useFormState, useFormStatus } from "react-dom"
+import { parseCookies } from "nookies"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 export const signOutSchema = z
   .object({
@@ -26,9 +29,9 @@ export const signOutSchema = z
     password: z
       .string()
       .min(4, { message: "A senha deve ter no mínimo 4 caracteres." }),
-    passwordConfirmation: z.string(),
+    confirm: z.string(),
   })
-  .refine((data) => data.password === data.passwordConfirmation, {
+  .refine((data) => data.password === data.confirm, {
     message: "As senhas não coincidem",
     path: ["passwordConfirmation"],
   })
@@ -37,46 +40,38 @@ export type SignOutSchema = z.infer<typeof signOutSchema>
 
 const initialState = {
   message: "",
-  success: undefined,
 }
 
 export function SignOutForm() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
-  // Specify type for useState
-
-  const {
-    register,
-    formState: { errors },
-  } = useForm({
+  const { register } = useForm({
     resolver: zodResolver(signOutSchema),
   })
 
-  console.log(errors)
-
-  // const router = useRouter()
+  const router = useRouter()
 
   const { pending } = useFormStatus()
 
   const [state, formAction] = useFormState(action, initialState)
 
   if (state?.message) {
-    toast.error("Erreur de connexion")
+    toast.error("Erreur lors de la création du compte")
   }
 
-  // const token = parseCookies()["@VaBeauty:token"]
+  const token = parseCookies()["@VaBeauty:token"]
 
-  // useEffect(() => {
-  //   if (state?.success) {
-  //     toast.success("Connected")
-  //   }
-  //   if (token) {
-  //     router.push("/")
-  //   }
-  // }, [token, router, state])
+  useEffect(() => {
+    if (state?.success) {
+      toast.success("Compte créé avec succès")
+      router.push("/sign-in")
+    }
+    if (token) {
+      router.push("/")
+    }
+  }, [token, state, router])
 
   return (
     <form action={formAction} className="flex  flex-col gap-3">
+      <Label>Nom</Label>
       <Input
         type="name"
         placeholder="votre name"
@@ -84,18 +79,18 @@ export function SignOutForm() {
         {...register("name")}
         minLength={3}
       />
+      <Label>E-mail</Label>
       <Input
         type="email"
         placeholder="votre-email@email.com"
         required
         {...register("email")}
       />
-      {errors.email && (
-        <p className="text-sm text-red-500">{errors.root?.message}</p>
-      )}
+
+      <Label>Mot de passe</Label>
       <Input
         type="password"
-        placeholder="Mot de passe"
+        placeholder="votre mot de passe"
         minLength={4}
         required
         {...register("password")}
@@ -105,8 +100,11 @@ export function SignOutForm() {
         placeholder="Confirmez votre mot de passe"
         minLength={4}
         required
-        {...register("password")}
+        {...register("confirm")}
       />
+
+      {}
+
       <Button
         size="lg"
         disabled={pending}
@@ -116,10 +114,9 @@ export function SignOutForm() {
         Se connecter avec votre adresse e-mail
       </Button>
 
-      <p className=" text-red-500"> {state?.message}</p>
+      {/* <p className=" text-red-500"> {state?.message}</p> */}
 
-      <ErrorMessage errors={errors} name="passwordConfirmation" />
-
+      <p className="text-red-500">{state?.message}</p>
       <Toaster
         position="top-right"
         containerStyle={{
