@@ -2,7 +2,7 @@
 import { create } from "zustand"
 import { parseCookies, setCookie, destroyCookie } from "nookies"
 
-interface Service {
+export interface Service {
   id: string
   name: string
   description?: string

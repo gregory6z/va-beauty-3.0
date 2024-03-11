@@ -62,7 +62,7 @@ export function SignOutForm() {
   useEffect(() => {
     if (state?.success) {
       toast.success("Compte créé avec succès")
-      router.push("/sign-in")
+      router.push(`/sign-in?email=${encodeURIComponent(state.email)}`)
     }
     if (token) {
       router.push("/")

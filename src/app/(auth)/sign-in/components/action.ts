@@ -35,16 +35,11 @@ export async function action(prevState: any, formData: FormData) {
 
     const { access_token } = await response.json()
 
-    // Salvar token no estado global
-
-    // Salvar token nos cookies
     cookies().set("@VaBeauty:token", String(access_token))
 
     return {
       success: true,
     }
-
-    // Redirecionar para a página inicial após o login
   } catch (error: any) {
     return {
       message: "Erreur de connexion au serveur. ",

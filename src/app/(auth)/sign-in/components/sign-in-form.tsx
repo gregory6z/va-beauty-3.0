@@ -27,16 +27,16 @@ const signInSchema = z.object({
 
 export type SignInSchema = z.infer<typeof signInSchema>
 
+// type QueryParams = {
+//   email?: string
+// }
+
 const initialState = {
   message: "",
   success: undefined,
 }
 
 export function SignInForm() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
-  // Specify type for useState
-
   const {
     register,
     formState: { errors },

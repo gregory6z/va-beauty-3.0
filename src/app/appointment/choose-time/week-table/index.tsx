@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import AvailableTimes from "../availaible-times"
-
+import { AvailableTimes } from "../availaible-times"
 // Definindo o tipo Week
 interface Week {
   startDate: Dayjs

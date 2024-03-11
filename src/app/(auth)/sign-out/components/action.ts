@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 "use server"
 
+import { parseCookies } from "nookies"
 import { ZodError, z } from "zod"
 
 const signOutSchema = z
@@ -50,8 +51,15 @@ export async function action(prevState: any, formData: FormData) {
       }
     }
 
+    // pegue dados dos cookies do carrinho
+    const cookies = parseCookies()
+    const cartItems = cookies.cartItems
+
+    console.log(cartItems)
+
     return {
       success: true,
+      email: data.email,
     }
     // Redirecionar para a página inicial após o login
   } catch (error: any) {
