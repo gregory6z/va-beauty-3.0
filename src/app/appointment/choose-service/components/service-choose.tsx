@@ -4,6 +4,7 @@ import { Service } from "@/app/components/fetch-services"
 import { addItemsToCartCookies } from "@/app/lib/nookies"
 import { useServiceStore } from "@/app/stores/Services"
 import { useState } from "react"
+import { Button } from "./ui/button"
 
 interface ServiceChooseProps {
   category: string
@@ -14,7 +15,8 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
 
   // addCart(response[0])
 
-  const { allServices, addToCart } = useServiceStore()
+  const { allServices, addToCart, checkIfCartItemAlreadyExists } =
+    useServiceStore()
 
   const services = allServices
 
@@ -49,15 +51,17 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
           <div className=" flex  items-center justify-between gap-2  lg:gap-3 ">
             <p className="text-sm">{service.duration}</p>
             <p className="text-sm">{service.price} $</p>
-            <button
+            <Button
               onClick={() => {
                 addToCart(service)
+
                 addItemsToCartCookies([service as Service])
               }}
+              disabled={checkIfCartItemAlreadyExists(service.id)}
               className=" ml-auto bg-black px-4 py-1  text-white lg:px-6 lg:py-2"
             >
               Choisir
-            </button>
+            </Button>
           </div>
         </div>
       ))}

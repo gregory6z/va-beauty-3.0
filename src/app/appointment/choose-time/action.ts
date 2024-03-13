@@ -10,6 +10,12 @@ export async function actionChecout() {
   const cookieStore = cookies()
   const cartItemsString = cookieStore.get("cartItems")?.value
 
+  const tokenAuthentication = cookieStore.get("@VaBeauty:token")?.value
+
+  if (!tokenAuthentication) {
+    redirect("/sign-in")
+  }
+
   if (cartItemsString) {
     const cartItems = JSON.parse(cartItemsString)
 

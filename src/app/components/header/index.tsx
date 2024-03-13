@@ -1,4 +1,3 @@
-import { useAuthStore } from "@/app/stores/Auth"
 import { Button } from "@/components/ui/button"
 import { cookies } from "next/headers"
 import Link from "next/link"
@@ -6,26 +5,22 @@ import Link from "next/link"
 export function Header() {
   // Recuperar o token de autenticação diretamente
 
-  const auth = useAuthStore.getState().token
-  console.log(auth)
-
-  const cookieStore = cookies()
-  const token = cookieStore.get("@VaBeauty:token")
+  const tokenAuthentication = cookies().get("@VaBeauty:token")
 
   return (
     <div className="relative h-full w-full">
       <div className="sticky  top-0 z-[1000] h-[4rem] w-full border-b border-b-zinc-800 bg-zinc-950 lg:h-[5rem]">
-        <div className="absolute inset-0 flex   items-center px-[1.5rem] lg:justify-center xl:px-0">
+        <div className="absolute inset-0 flex  items-center px-[1.5rem] lg:justify-center xl:px-0">
           <Link
             href="/"
-            className="z-[30] text-3xl text-zinc-100 lg:text-center lg:text-4xl"
+            className="z-[30]  text-3xl text-zinc-100 lg:text-center lg:text-4xl"
           >
             VA BEAUTY
           </Link>
         </div>
         <div className="hidden h-full w-full lg:block">
           <div className=" mx-auto flex h-full w-full justify-between lg:max-w-[1216px] lg:px-8 lg:text-lg xl:max-w-[1256px] xl:px-0">
-            <div className="z-20 flex h-full w-full items-center gap-8 text-zinc-100">
+            <nav className="z-20 flex h-full w-full items-center gap-8 text-zinc-100">
               <Link className="pointer" href="/">
                 Accueil
               </Link>
@@ -38,11 +33,11 @@ export function Header() {
               <Link className="pointer" href="/forfaits">
                 Forfaits
               </Link>
-            </div>
+            </nav>
             <nav className="z-20 flex h-full items-center gap-8 text-zinc-100">
-              {token ? (
-                <Link className="pointer" href="/sign-in">
-                  meus agendamentos
+              {tokenAuthentication ? (
+                <Link href="/sign-in" className="whitespace-nowrap	">
+                  Espace Client
                 </Link>
               ) : (
                 <Link className="pointer" href="/sign-in">

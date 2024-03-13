@@ -25,6 +25,7 @@ export type ServiceActions = {
   removeFromCart: (serviceId: string) => void
   clearCart: () => void
   updateAllServices: (services: Service[]) => void
+  checkIfCartItemAlreadyExists: (serviceId: string) => boolean
 }
 
 export type ServiceStore = ServiceState & ServiceActions
@@ -43,7 +44,7 @@ const getCartItemsFromCookies = (): Service[] => {
   return cookies.cartItems ? JSON.parse(cookies.cartItems) : []
 }
 
-export const useServiceStore = create<ServiceStore>((set) => ({
+export const useServiceStore = create<ServiceStore>((set, get) => ({
   services: getCartItemsFromCookies(), // Inicialize os serviços com os itens do carrinho dos cookies
   allServices: [],
   addToCart: (service) =>
@@ -75,8 +76,13 @@ export const useServiceStore = create<ServiceStore>((set) => ({
     })
     set({ services: [] })
   },
+
   updateAllServices: (services) =>
     set((state) => ({
       allServices: services, // Atualize allServices com os serviços recebidos
     })),
+
+  checkIfCartItemAlreadyExists: (serviceId) => {
+    return get().services.some((service) => service.id === serviceId)
+  },
 }))

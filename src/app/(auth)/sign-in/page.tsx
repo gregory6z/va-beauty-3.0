@@ -4,11 +4,15 @@ import { SignInForm } from "./components/sign-in-form"
 import Link from "next/link"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { actionChecout } from "@/app/appointment/choose-time/action"
 
 export default async function SignIn() {
   const AuthenticateToken = cookies().get("@VaBeauty:token")
+  const dateAppointment = cookies().get("@VaBeauty:date")
 
-  if (AuthenticateToken) {
+  if (AuthenticateToken && dateAppointment) {
+    await actionChecout()
+  } else if (AuthenticateToken) {
     redirect("/")
   }
 
