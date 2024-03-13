@@ -4,16 +4,13 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 import { z } from "zod"
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect } from "react"
 import { action } from "./action"
-import { useRouter } from "next/navigation"
-import { parseCookies } from "nookies"
 import { useFormState, useFormStatus } from "react-dom"
 
 const signInSchema = z.object({
@@ -26,10 +23,6 @@ const signInSchema = z.object({
 })
 
 export type SignInSchema = z.infer<typeof signInSchema>
-
-// type QueryParams = {
-//   email?: string
-// }
 
 const initialState = {
   message: "",
@@ -44,8 +37,6 @@ export function SignInForm() {
     resolver: zodResolver(signInSchema),
   })
 
-  const router = useRouter()
-
   const { pending } = useFormStatus()
 
   const [state, formAction] = useFormState(action, initialState)
@@ -53,17 +44,6 @@ export function SignInForm() {
   if (state?.message) {
     toast.error("Erreur de connexion")
   }
-
-  const token = parseCookies()["@VaBeauty:token"]
-
-  useEffect(() => {
-    if (state?.success) {
-      toast.success("Connected")
-    }
-    if (token) {
-      router.push("/")
-    }
-  }, [token, router, state])
 
   return (
     <form action={formAction} className="flex  flex-col gap-3">
@@ -102,14 +82,6 @@ export function SignInForm() {
       </Button>
 
       <p className=" text-red-500"> {state?.message}</p>
-
-      <Toaster
-        position="top-right"
-        containerStyle={{
-          right: 100,
-          top: 100,
-        }}
-      />
     </form>
   )
 }

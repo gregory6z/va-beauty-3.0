@@ -2,8 +2,16 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { SignInForm } from "./components/sign-in-form"
 import Link from "next/link"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 export default async function SignIn() {
+  const AuthenticateToken = cookies().get("@VaBeauty:token")
+
+  if (AuthenticateToken) {
+    redirect("/")
+  }
+
   return (
     <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden px-[1.5rem] lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 lg:px-0 ">
       <div className=" hidden w-full bg-black lg:block">
