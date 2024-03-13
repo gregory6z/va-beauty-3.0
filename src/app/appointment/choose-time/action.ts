@@ -20,8 +20,9 @@ export async function actionChecout() {
         quantity: 1,
       })),
 
-      success_url: "https://localhost:3000/",
-      cancel_url: "https://localhost:3000/",
+      success_url:
+        "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}?",
+      cancel_url: "http://localhost:3000/cancel",
     })
 
     if (session.url) {
