@@ -32,8 +32,8 @@ export type ServiceStore = ServiceState & ServiceActions
 
 // Função auxiliar para atualizar os cookies
 const updateCookies = (cartItems: Service[]) => {
-  setCookie(null, "cartItems", JSON.stringify(cartItems), {
-    maxAge: 30 * 24 * 60 * 60, // Define a expiração do cookie (30 dias)
+  setCookie(null, "@VaBeauty:cartItems", JSON.stringify(cartItems), {
+    maxAge: 30 * 24 * 60 * 7, // Define a expiração do cookie (30 dias)
     path: "/", // Define o caminho do cookie (raiz do site)
   })
 }
@@ -41,7 +41,9 @@ const updateCookies = (cartItems: Service[]) => {
 // Função auxiliar para obter itens do carrinho dos cookies
 const getCartItemsFromCookies = (): Service[] => {
   const cookies = parseCookies()
-  return cookies.cartItems ? JSON.parse(cookies.cartItems) : []
+  return cookies["@VaBeauty:cartItems"]
+    ? JSON.parse(cookies["@VaBeauty:cartItems"])
+    : []
 }
 
 export const useServiceStore = create<ServiceStore>((set, get) => ({
@@ -71,7 +73,7 @@ export const useServiceStore = create<ServiceStore>((set, get) => ({
     }),
 
   clearCart: () => {
-    destroyCookie(null, "cartItems", {
+    destroyCookie(null, "@VaBeauty:cartItems", {
       path: "/", // Define o caminho do cookie (raiz do site)
     })
     set({ services: [] })

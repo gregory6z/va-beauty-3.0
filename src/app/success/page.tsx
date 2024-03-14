@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation"
 import { stripe } from "../lib/stripe"
 import Stripe from "stripe"
+import { cookies } from "next/headers"
+import { CreateAppointment } from "../api/createAppointment"
 
 export default async function Success({
   searchParams,
@@ -13,18 +15,26 @@ export default async function Success({
 
   const sessionStripeId = searchParams.session_id.replace(/\?/g, "")
 
-  const session = await stripe.checkout.sessions.retrieve(sessionStripeId, {
-    expand: ["line_items", "line_items.data.price.product"],
-  })
+  const sessionStripe = await stripe.checkout.sessions.retrieve(
+    sessionStripeId,
+    {
+      expand: ["line_items", "line_items.data.price.product"],
+    },
+  )
 
-  const ConfirmedServicesForAppointment = session.line_items?.data.map(
+  const ConfirmedServicesForAppointment = sessionStripe.line_items?.data.map(
     (services) => {
       const service = services.price?.product as Stripe.Product
       return service.id
     },
   )
 
-  console.log(ConfirmedServicesForAppointment)
+  const dateForAppointment = new Date(String(cookies().get("@VaBeauty:date")))
+
+  await CreateAppointment({
+    servicesIds: ConfirmedServicesForAppointment,
+    date: dateForAppointment,
+  })
 
   return (
     <div>

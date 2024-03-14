@@ -1,7 +1,7 @@
 "use client"
 
-import { Service } from "@/app/components/fetch-services"
-import { addItemsToCartCookies } from "@/app/lib/nookies"
+// import { Service } from "@/app/components/fetch-services"
+// import { addItemsToCartCookies } from "@/app/lib/nookies"
 import { useServiceStore } from "@/app/stores/Services"
 import { useState } from "react"
 import { Button } from "./ui/button"
@@ -55,7 +55,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
               onClick={() => {
                 addToCart(service)
 
-                addItemsToCartCookies([service as Service])
+                // addItemsToCartCookies([service as Service])
               }}
               disabled={checkIfCartItemAlreadyExists(service.id)}
               className=" ml-auto bg-black px-4 py-1  text-white lg:px-6 lg:py-2"

@@ -8,7 +8,7 @@ import { redirect } from "next/navigation"
 
 export async function actionChecout() {
   const cookieStore = cookies()
-  const cartItemsString = cookieStore.get("cartItems")?.value
+  const cartItemsString = cookieStore.get("@VaBeauty:cartItems")?.value
 
   const tokenAuthentication = cookieStore.get("@VaBeauty:token")?.value
 
