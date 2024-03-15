@@ -25,6 +25,7 @@
     "core-js": "^3.36.0",
     "crypto": "^1.0.1",
     "dayjs": "^1.11.10",
+    "duration": "link:dayjs/plugin/duration",
     "i": "^0.3.7",
     "input": "^1.0.1",
     "isSameOrAfter": "link:dayjs/plugin/isSameOrAfter",

@@ -18,6 +18,8 @@ export interface Service {
 export type ServiceState = {
   services: Service[]
   allServices: Service[]
+  totalDuration: number
+  totalPrice: number
 }
 
 export type ServiceActions = {
@@ -26,6 +28,7 @@ export type ServiceActions = {
   clearCart: () => void
   updateAllServices: (services: Service[]) => void
   checkIfCartItemAlreadyExists: (serviceId: string) => boolean
+  updateTotals: () => void
 }
 
 export type ServiceStore = ServiceState & ServiceActions
@@ -49,6 +52,8 @@ const getCartItemsFromCookies = (): Service[] => {
 export const useServiceStore = create<ServiceStore>((set, get) => ({
   services: getCartItemsFromCookies(), // Inicialize os serviços com os itens do carrinho dos cookies
   allServices: [],
+  totalDuration: 0,
+  totalPrice: 0,
   addToCart: (service) =>
     set((state) => {
       const isServiceInCart = state.services.some(
@@ -86,5 +91,16 @@ export const useServiceStore = create<ServiceStore>((set, get) => ({
 
   checkIfCartItemAlreadyExists: (serviceId) => {
     return get().services.some((service) => service.id === serviceId)
+  },
+  updateTotals: () => {
+    let totalDuration = 0
+    let totalPrice = 0
+
+    for (const item of get().services) {
+      totalDuration += Number(item.duration) // Convert item.duration to a number
+      totalPrice += item.price
+    }
+
+    set({ totalDuration, totalPrice })
   },
 }))

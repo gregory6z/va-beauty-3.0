@@ -5,6 +5,7 @@
 import { useServiceStore } from "@/app/stores/Services"
 import { useState } from "react"
 import { Button } from "./ui/button"
+import { Clock, Euro, Plus } from "lucide-react"
 
 interface ServiceChooseProps {
   category: string
@@ -15,7 +16,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
 
   // addCart(response[0])
 
-  const { allServices, addToCart, checkIfCartItemAlreadyExists } =
+  const { allServices, addToCart, checkIfCartItemAlreadyExists, updateTotals } =
     useServiceStore()
 
   const services = allServices
@@ -36,31 +37,39 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
   const showLess = () => setShowAll(false)
 
   return (
-    <div className=" lg:px-0">
-      <p className=" mb-4  ml-6 text-2xl font-semibold lg:ml-0 lg:px-0">
+    <section className=" lg:px-0">
+      <h1 className=" mb-4   ml-6 text-2xl font-semibold capitalize lg:ml-0 lg:px-0">
         {category}
-      </p>
+      </h1>
       {currentServices.map((service) => (
         <div
           key={service.id}
-          className=" flex flex-col justify-between  border-b border-zinc-200 bg-white px-[1.5rem] py-4 shadow-sm sm:flex-row sm:p-4 lg:flex lg:items-center "
+          className=" flex flex-col justify-between  border-b border-zinc-200 bg-white px-[1.5rem] py-4 shadow-sm transition-all hover:bg-zinc-50 sm:flex-row sm:p-4 lg:flex lg:items-center "
         >
-          <div>
-            <p className=" max-w-[230px] sm:max-w-none">{service.name}</p>
+          <div className=" ">
+            <h2 className=" font-semibold sm:max-w-none">{service.name}</h2>
+            <p className="flex items-center  gap-3 text-sm text-gray-900/60 ">
+              {service.duration} minutes <Clock width={16}></Clock>
+            </p>
           </div>
+
           <div className=" flex  items-center justify-between gap-2  lg:gap-3 ">
-            <p className="text-sm">{service.duration}</p>
-            <p className="text-sm">{service.price} $</p>
+            <div className="flex w-[70px]">
+              <p className=" text-2xl ">{service.price}</p>
+              <Euro className=""></Euro>
+            </div>
+
             <Button
               onClick={() => {
                 addToCart(service)
+                updateTotals()
 
                 // addItemsToCartCookies([service as Service])
               }}
               disabled={checkIfCartItemAlreadyExists(service.id)}
-              className=" ml-auto bg-black px-4 py-1  text-white lg:px-6 lg:py-2"
+              className=" ml-auto flex gap-2  bg-black px-4 py-1  text-white lg:px-6 lg:py-2"
             >
-              Choisir
+              Sélectionner <Plus width={16}></Plus>
             </Button>
           </div>
         </div>
@@ -82,6 +91,6 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
           </button>
         </div>
       )}
-    </div>
+    </section>
   )
 }
