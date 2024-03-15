@@ -6,21 +6,40 @@ import { Service } from "@/app/stores/Services"
 import { stripe } from "@/app/lib/stripe"
 import { redirect } from "next/navigation"
 
-export async function actionChecout() {
-  const cookieStore = cookies()
-  const cartItemsString = cookieStore.get("@VaBeauty:cartItems")?.value
+import { jwtDecode } from "jwt-decode"
 
-  const tokenAuthentication = cookieStore.get("@VaBeauty:token")?.value
+interface User {
+  sub: string
+  email: string
+  name: string
+  iat: number
+}
+
+export async function actionChecout() {
+  const cartItemsString = cookies().get("@VaBeauty:cartItems")?.value
+
+  const tokenAuthentication = cookies().get("@VaBeauty:token")?.value
 
   if (!tokenAuthentication) {
     redirect("/sign-in")
+  }
+  let user: User | null = null
+
+  if (tokenAuthentication) {
+    user = jwtDecode(tokenAuthentication)
   }
 
   if (cartItemsString) {
     const cartItems = JSON.parse(cartItemsString)
 
+    const customer = await stripe.customers.create({
+      name: user?.name,
+      email: user?.email,
+    })
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      customer: customer.id,
       line_items: cartItems.map((product: Service) => ({
         price: product.defaultPriceId,
         quantity: 1,
