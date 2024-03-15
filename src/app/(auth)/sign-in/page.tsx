@@ -7,8 +7,8 @@ import { redirect } from "next/navigation"
 import { actionChecout } from "@/app/appointment/choose-time/action"
 
 export default async function SignIn() {
-  const AuthenticateToken = cookies().get("@VaBeauty:token")
-  const dateAppointment = cookies().get("@VaBeauty:date")
+  const AuthenticateToken = cookies().get("@VaBeauty:token")?.value
+  const dateAppointment = cookies().get("@VaBeauty:date")?.value
 
   if (AuthenticateToken && dateAppointment) {
     await actionChecout()

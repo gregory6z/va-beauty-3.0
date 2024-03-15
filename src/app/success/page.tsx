@@ -29,12 +29,16 @@ export default async function Success({
     },
   )
 
-  const dateForAppointment = new Date(String(cookies().get("@VaBeauty:date")))
+  const dateForAppointment = new Date(
+    String(cookies().get("@VaBeauty:date")?.value),
+  )
 
   await CreateAppointment({
     servicesIds: ConfirmedServicesForAppointment,
     date: dateForAppointment,
   })
+
+  // remover cookies de agendamento
 
   return (
     <div>
