@@ -26,7 +26,7 @@ export function CartItem({ name, price, serviceId }: CartItemProps) {
             removeFromCart(serviceId)
             updateTotals()
           }}
-          className=" ml-4 bg-zinc-300 px-3 py-1 text-zinc-100 transition-all hover:bg-zinc-400"
+          className=" ml-4 bg-zinc-400 px-3 py-1 text-zinc-100 transition-all hover:bg-zinc-500"
         >
           <Trash2></Trash2>
         </button>

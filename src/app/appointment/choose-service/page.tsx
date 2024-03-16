@@ -1,7 +1,9 @@
+"use client"
+
 import { Cart } from "./components/cart"
 import { ServiceChoose } from "./components/service-choose"
 
-export default async function ChooseService() {
+export default function ChooseService() {
   return (
     <>
       <div className="h-full min-h-screen w-full bg-zinc-200">

@@ -9,8 +9,10 @@ import { Check, Euro } from "lucide-react"
 import Image from "next/image"
 import dayjs from "dayjs"
 import duration from "dayjs/plugin/duration"
+import { useAutoAnimate } from "@formkit/auto-animate/react"
 
 export function Cart() {
+  const [parent] = useAutoAnimate()
   dayjs.extend(duration)
 
   const services = useStore(useServiceStore, (state) => state.services) || []
@@ -33,7 +35,7 @@ export function Cart() {
       <header className="mb-2">
         <p className="text-lg font-bold">Panier</p>
       </header>
-      <div className="flex h-full flex-col overflow-auto">
+      <div className="flex h-full flex-col overflow-auto " ref={parent}>
         {services.map((service) => {
           return (
             <CartItem
@@ -46,12 +48,16 @@ export function Cart() {
         })}
       </div>
       {isCartEmpty ? (
-        <div className="mb-10 flex w-full flex-col items-center justify-center gap-4 ">
+        <div
+          className="mb-10 flex w-full flex-col items-center justify-center gap-4  "
+          ref={parent}
+        >
           <Image
             src={"/cart.gif"}
-            width={150}
-            height={150}
+            width={180}
+            height={180}
             alt={"cart empty"}
+            loading="eager"
           ></Image>
 
           <p className="  text-pretty px-4 text-left text-zinc-900/60">
