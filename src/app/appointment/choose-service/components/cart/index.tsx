@@ -66,7 +66,7 @@ export function Cart() {
         </div>
       ) : (
         <>
-          <div className="relative z-10 mt-auto flex h-16 w-full items-center justify-between bg-white ">
+          <div className="relative z-10 mt-auto flex h-16 w-full animate-fadeIn items-center justify-between bg-white ">
             <p className="mt-2 flex text-lg">
               Total:{" "}
               <span className="ml-2 flex text-xl">

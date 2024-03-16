@@ -9,7 +9,6 @@ import { Clock, Euro, Plus } from "lucide-react"
 import { useEffect, useState } from "react"
 
 import LoadingService from "../loading-service"
-import { useAutoAnimate } from "@formkit/auto-animate/react"
 
 interface ServiceChooseProps {
   category: string
@@ -17,7 +16,6 @@ interface ServiceChooseProps {
 
 export function ServiceChoose({ category }: ServiceChooseProps) {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [parent] = useAutoAnimate()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -52,7 +50,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
       <h1 className=" mb-4   ml-6 text-2xl font-semibold capitalize lg:ml-0 lg:px-0">
         {category}
       </h1>
-      <div ref={parent}>
+      <div>
         {!isLoaded ? (
           <LoadingService />
         ) : (
@@ -60,7 +58,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
             {currentServices.map((service) => (
               <div
                 key={service.id}
-                className=" flex flex-col justify-between  border-b border-zinc-200 bg-white px-[1.5rem] py-4 shadow-sm transition-all hover:bg-zinc-50 sm:flex-row sm:p-4 lg:flex lg:items-center "
+                className=" flex animate-fadeIn flex-col justify-between  border-b border-zinc-200 bg-white px-[1.5rem] py-4 shadow-sm transition-all hover:bg-zinc-50 sm:flex-row sm:p-4 lg:flex lg:items-center "
               >
                 <div className="">
                   <h2 className=" font-semibold sm:max-w-none">

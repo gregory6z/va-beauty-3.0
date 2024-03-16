@@ -2,6 +2,7 @@
 
 import { setCookie } from "nookies"
 import { actionChecout } from "../action"
+import { Button } from "@/components/ui/button"
 
 interface TimeSlot {
   time: string
@@ -33,13 +34,13 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
   return (
     <div className="flex flex-wrap justify-center">
       {activeTimes.map((slot, index) => (
-        <button
+        <Button
           key={index}
           onClick={() => handleTimeSlotClickandCheckOut(slot.day, slot.time)}
-          className="m-2 w-full border border-gray-200 bg-zinc-200 py-2 text-black hover:bg-black hover:text-white"
+          className="m-2 w-full border border-gray-200 bg-zinc-200 py-2 text-base text-black hover:bg-black hover:text-white"
         >
           {slot.time}
-        </button>
+        </Button>
       ))}
     </div>
   )

@@ -5,6 +5,8 @@ import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { AvailableTimes } from "../availaible-times"
+import { Button } from "@/components/ui/button"
+
 // Definindo o tipo Week
 interface Week {
   startDate: Dayjs
@@ -88,27 +90,32 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
     }))
     loadWeekAvailability(dayjs(currentWeek.startDate).add(7, "day"))
   }
+  const isFirstWeek = dayjs(data[0][0].day).isSame(
+    currentWeek.startDate,
+    "week",
+  )
 
   return (
     <div className="hidden h-full min-h-[screen] bg-white lg:block">
       <div className=" flex items-center justify-between bg-black">
-        <button
+        <Button
           className={`btn flex gap-2 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
           onClick={goToPreviousWeek}
+          disabled={isFirstWeek}
         >
           <ChevronLeft />
           Semaine précédente
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={goToNextWeek}
           className={`flex gap-2 bg-black px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
         >
           Semaine suivante
           <ChevronRight />
-        </button>
+        </Button>
       </div>
       <div className=" overflow-x-auto">
-        <table className="w-full table-fixed border-collapse ">
+        <table className="w-full table-fixed border-collapse animate-fadeIn  ">
           <thead className="text-xl">
             <tr>
               {currentWeek.availableTimes.map((times, index) => (
