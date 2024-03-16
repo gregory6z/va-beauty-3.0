@@ -34,26 +34,52 @@ export type ServiceActions = {
 export type ServiceStore = ServiceState & ServiceActions
 
 // Função auxiliar para atualizar os cookies
-const updateCookies = (cartItems: Service[]) => {
-  setCookie(null, "@VaBeauty:cartItems", JSON.stringify(cartItems), {
-    maxAge: 30 * 24 * 60 * 7, // Define a expiração do cookie (30 dias)
-    path: "/", // Define o caminho do cookie (raiz do site)
+const updateCookies = (
+  services: Service[],
+  totalDuration: number,
+  totalPrice: number,
+) => {
+  setCookie(undefined, "@VaBeauty:cartItems", JSON.stringify(services), {
+    maxAge: 60 * 60 * 24 * 30, // 30 dias
+    path: "/",
+  })
+
+  setCookie(undefined, "@VaBeauty:totalDuration", totalDuration.toString(), {
+    maxAge: 60 * 60 * 24 * 30, // 30 dias
+    path: "/",
+  })
+
+  setCookie(undefined, "@VaBeauty:totalPrice", totalPrice.toString(), {
+    maxAge: 60 * 60 * 24 * 30, // 30 dias
+    path: "/",
   })
 }
 
 // Função auxiliar para obter itens do carrinho dos cookies
-const getCartItemsFromCookies = (): Service[] => {
+const getCartItemsAndTotalsFromCookies = (): {
+  services: Service[]
+  totalDuration: number
+  totalPrice: number
+} => {
   const cookies = parseCookies()
-  return cookies["@VaBeauty:cartItems"]
+  const services = cookies["@VaBeauty:cartItems"]
     ? JSON.parse(cookies["@VaBeauty:cartItems"])
     : []
+  const totalDuration = cookies["@VaBeauty:totalDuration"]
+    ? Number(cookies["@VaBeauty:totalDuration"])
+    : 0
+  const totalPrice = cookies["@VaBeauty:totalPrice"]
+    ? Number(cookies["@VaBeauty:totalPrice"])
+    : 0
+
+  return { services, totalDuration, totalPrice }
 }
 
 export const useServiceStore = create<ServiceStore>((set, get) => ({
-  services: getCartItemsFromCookies(), // Inicialize os serviços com os itens do carrinho dos cookies
+  services: getCartItemsAndTotalsFromCookies().services, // Inicialize os serviços com os itens do carrinho dos cookies
   allServices: [],
-  totalDuration: 0,
-  totalPrice: 0,
+  totalDuration: getCartItemsAndTotalsFromCookies().totalDuration,
+  totalPrice: getCartItemsAndTotalsFromCookies().totalPrice,
   addToCart: (service) =>
     set((state) => {
       const isServiceInCart = state.services.some(
@@ -61,7 +87,9 @@ export const useServiceStore = create<ServiceStore>((set, get) => ({
       )
       if (!isServiceInCart) {
         const newServices = [...state.services, service]
-        updateCookies(newServices) // Atualize os cookies
+        const newTotalDuration = state.totalDuration + service.duration
+        const newTotalPrice = state.totalPrice + service.price
+        updateCookies(newServices, Number(newTotalDuration), newTotalPrice) // Atualize os cookies
         return { ...state, services: newServices }
       } else {
         return state
@@ -73,8 +101,21 @@ export const useServiceStore = create<ServiceStore>((set, get) => ({
       const newServices = state.services.filter(
         (service) => service.id !== serviceId,
       )
-      updateCookies(newServices) // Atualize os cookies
-      return { ...state, services: newServices }
+      const newTotalDuration = newServices.reduce(
+        (total, service) => total + Number(service.duration),
+        0,
+      )
+      const newTotalPrice = newServices.reduce(
+        (total, service) => total + service.price,
+        0,
+      )
+      updateCookies(newServices, newTotalDuration, newTotalPrice) // Atualize os cookies
+      return {
+        ...state,
+        services: newServices,
+        totalDuration: newTotalDuration,
+        totalPrice: newTotalPrice,
+      }
     }),
 
   clearCart: () => {

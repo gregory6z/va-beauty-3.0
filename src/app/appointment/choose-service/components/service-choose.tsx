@@ -27,10 +27,6 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
     return () => clearTimeout(timeoutId) // Limpa o timeout na desmontagem
   }, [])
 
-  // const response = allServices.filter((service) => service.id === id)
-
-  // addCart(response[0])
-
   const { allServices, addToCart, checkIfCartItemAlreadyExists, updateTotals } =
     useServiceStore()
 

@@ -5,6 +5,8 @@ export function middleware(request: NextRequest) {
     const response = NextResponse.next()
 
     response.cookies.set("@VaBeauty:cartItems", "")
+    response.cookies.set("@VaBeauty:totalPrice", "")
+    response.cookies.set("@VaBeauty:totalDuration", "")
     response.cookies.set("@VaBeauty:date", "")
 
     return response
