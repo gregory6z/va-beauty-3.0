@@ -35,6 +35,7 @@ export default async function RootLayout({
             top: 100,
           }}
         />
+
         {children}
       </body>
     </html>

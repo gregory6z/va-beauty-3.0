@@ -1,4 +1,4 @@
-import { stripe } from "@/app/lib/stripe"
+import { stripe } from "@/lib/stripe"
 import Stripe from "stripe"
 
 export type Service = {

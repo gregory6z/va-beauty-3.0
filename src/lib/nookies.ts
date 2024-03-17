@@ -1,5 +1,5 @@
 import { setCookie, parseCookies } from "nookies"
-import { Service } from "../components/fetch-services"
+import { Service } from "../app/components/fetch-services"
 
 // Função para adicionar itens ao carrinho nos cookies
 export const addItemsToCartCookies = (items: Service[]) => {

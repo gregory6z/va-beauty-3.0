@@ -3,7 +3,7 @@
 import { cookies } from "next/headers"
 
 import { Service } from "@/app/stores/Services"
-import { stripe } from "@/app/lib/stripe"
+import { stripe } from "@/lib/stripe"
 import { redirect } from "next/navigation"
 
 import { jwtDecode } from "jwt-decode"

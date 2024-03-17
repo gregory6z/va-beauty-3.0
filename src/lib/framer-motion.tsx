@@ -81,7 +81,7 @@ export function TextMotion({ children, ...props }: FramerDivProps) {
         filter: "blur(20px)",
       }}
       animate={{ translateY: "0%", opacity: 1, filter: "blur(0px)" }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.5 }}
       {...props}
     >
       {children}

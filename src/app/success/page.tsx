@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
-import { stripe } from "../lib/stripe"
+import { stripe } from "../../lib/stripe"
 import Stripe from "stripe"
 import { cookies } from "next/headers"
 import { CreateAppointment } from "../api/createAppointment"
