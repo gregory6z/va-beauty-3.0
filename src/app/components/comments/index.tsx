@@ -1,3 +1,4 @@
+import { MotionCascade } from "@/lib/framer-motion"
 import Image from "next/image"
 
 interface Comment {
@@ -12,7 +13,7 @@ export interface CommentsProps {
 
 export function Comments({ comments }: CommentsProps) {
   return (
-    <div className="my-32 flex h-full w-full flex-col gap-16 lg:my-0 lg:min-h-screen lg:items-center lg:justify-center lg:gap-20 ">
+    <MotionCascade className="my-32 flex h-full w-full flex-col gap-16 lg:my-0 lg:min-h-screen lg:items-center lg:justify-center lg:gap-20 ">
       {comments.map((comment) => {
         return (
           <div
@@ -40,6 +41,6 @@ export function Comments({ comments }: CommentsProps) {
           </div>
         )
       })}
-    </div>
+    </MotionCascade>
   )
 }

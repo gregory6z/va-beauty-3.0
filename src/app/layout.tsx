@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import type { Metadata } from "next"
 import "./globals.css"
 import { Montserrat } from "next/font/google"
@@ -25,7 +26,7 @@ export default async function RootLayout({
   const { services } = await FetchServices()
   return (
     <html lang="en">
-      <body className={` ${montserrat.className} `}>
+      <body className={` ${montserrat.variable} font-sans `}>
         <StoreInitializer allServices={services} />
         <Header />
         <Toaster
