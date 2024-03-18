@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { FetchServices } from "../fetch-services"
 import { ServiceCard } from "./components/service-card"
+import { MotionElement } from "@/lib/framer-motion"
 
 interface ServiceProps {
   category: string
@@ -23,13 +24,15 @@ export async function ServicesContainer({ category }: ServiceProps) {
         {serviceByCategory.map((service) => {
           return (
             <Link href={`${service.category}/${service.id}`} key={service.id}>
-              <ServiceCard
-                name={service.name}
-                description={service.description}
-                imageUrl={service.imageUrl}
-                duration={service.duration}
-                price={service.price}
-              ></ServiceCard>
+              <MotionElement y={100}>
+                <ServiceCard
+                  name={service.name}
+                  description={service.description}
+                  imageUrl={service.imageUrl}
+                  duration={service.duration}
+                  price={service.price}
+                ></ServiceCard>
+              </MotionElement>
             </Link>
           )
         })}

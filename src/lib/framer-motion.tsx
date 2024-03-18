@@ -6,6 +6,7 @@ interface FramerDivPropsElement extends HTMLMotionProps<"div"> {
   children: ReactNode
   delay?: number
   shouldAnimate?: boolean
+  y?: number
 }
 
 interface FramerDivProps extends HTMLMotionProps<"div"> {
@@ -103,6 +104,7 @@ export function MotionSlideLeft({
 export function MotionElement({
   children,
   delay,
+  y = 200,
   ...props
 }: FramerDivPropsElement) {
   const ref = useRef(null)
@@ -113,7 +115,7 @@ export function MotionElement({
   return (
     <div ref={ref}>
       <motion.div
-        initial={{ opacity: 0, y: 200 }}
+        initial={{ opacity: 0, y }}
         animate={{
           opacity: isInView ? 1 : 0,
           y: isInView ? 0 : 40,

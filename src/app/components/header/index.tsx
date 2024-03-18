@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { ShoppingCart } from "lucide-react"
 import { cookies } from "next/headers"
 import Link from "next/link"
 
@@ -44,6 +45,11 @@ export function Header() {
                   Connecter
                 </Link>
               )}
+              <ShoppingCart
+                width={30}
+                height={30}
+                className="text-zinc-100"
+              ></ShoppingCart>
 
               <Button
                 asChild

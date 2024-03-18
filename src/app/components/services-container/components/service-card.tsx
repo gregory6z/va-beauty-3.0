@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { Euro } from "lucide-react"
 import Image from "next/image"
 
 interface ServiceProps {
@@ -36,13 +37,28 @@ export function ServiceCard({
           <h1 className="text-bold  text-2xl lg:text-3xl   ">{name}</h1>
           <p>Duration {duration} min</p>
         </div>
-
-        <p className=" 	 h-full flex-1 px-4 text-zinc-900/60 lg:my-8 lg:mt-8 lg:min-h-[150px] lg:min-w-[828px] lg:flex-1 lg:flex-grow lg:px-0 lg:text-lg">
+        <p className=" 	 h-full flex-1 px-4 text-zinc-900/60  lg:mt-8 lg:min-h-[150px] lg:min-w-[828px] lg:flex-1 lg:flex-grow lg:px-0 lg:text-lg">
           {description}
         </p>
+
         <div className="mt-auto flex h-full w-full flex-col  items-center justify-between lg:flex-row">
-          <p className="my-6 text-5xl lg:w-full">$ {price},00</p>
-          <div className="flex h-full w-full  gap-2">
+          <p className="my-6 flex text-5xl lg:w-full">
+            {price},00 <Euro width="20"></Euro>
+          </p>
+          <div className="flex h-full w-full flex-col items-center gap-4 lg:flex-row   lg:gap-10">
+            <Button
+              variant="ghost"
+              className="min-y-[100px] flex min-w-[240px] gap-2 "
+            >
+              <p className="whitespace-nowrap  text-base ">Ajouter au panier</p>
+              <Image
+                src={"/add-to-cart.svg"}
+                width={50}
+                height={50}
+                alt={""}
+              ></Image>
+            </Button>
+
             <Button asChild className="text-lg">
               <button className="h-full w-full bg-black  py-4  text-lg text-zinc-100   lg:px-8 lg:py-4">
                 Reserver maintenant

@@ -1,5 +1,5 @@
+import { TextMotion } from "@/lib/framer-motion"
 import Image from "next/image"
-import { ReactNode } from "react"
 
 interface BannerProps {
   image: string
@@ -32,14 +32,17 @@ export function Banner({ image, category }: BannerProps) {
               className=" bottom-0  lg:absolute lg:left-0 lg:h-[408px] "
               width={792}
               height={408}
-              alt={""}
+              loading="eager"
+              alt={"banner image"}
               src={image}
             ></Image>
           </div>
           <div className="">
-            <h1 className=" text-pretty relative order-1 mx-[1.5rem] py-5 text-center text-xl text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-4xl">
-              {text}
-            </h1>
+            <TextMotion>
+              <h1 className=" relative order-1 mx-[1.5rem] text-pretty py-5 text-center text-xl text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-4xl">
+                {text}
+              </h1>
+            </TextMotion>
 
             <h1 className="hidden lg:block">{text}</h1>
           </div>
