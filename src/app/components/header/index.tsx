@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { ShoppingCart } from "lucide-react"
 import { cookies } from "next/headers"
 import Link from "next/link"
 
@@ -37,19 +36,14 @@ export function Header() {
             </nav>
             <nav className="z-20 flex h-full items-center gap-8 text-zinc-100">
               {tokenAuthentication ? (
-                <Link href="/sign-in" className="whitespace-nowrap	">
-                  Espace Client
+                <Link href="/account" className="whitespace-nowrap	">
+                  Mon Espace
                 </Link>
               ) : (
                 <Link className="pointer" href="/sign-in">
                   Connecter
                 </Link>
               )}
-              <ShoppingCart
-                width={30}
-                height={30}
-                className="text-zinc-100"
-              ></ShoppingCart>
 
               <Button
                 asChild

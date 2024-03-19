@@ -13,12 +13,12 @@ export interface CommentsProps {
 
 export function Comments({ comments }: CommentsProps) {
   return (
-    <MotionCascade className="my-32 flex h-full w-full flex-col gap-16 lg:my-0 lg:min-h-screen lg:items-center lg:justify-center lg:gap-20 ">
+    <div className="my-32 flex h-full w-full flex-col gap-16 lg:my-0 lg:min-h-screen lg:items-center lg:justify-center lg:gap-20 ">
       {comments.map((comment) => {
         return (
-          <div
+          <MotionCascade
             key={comment.content}
-            className="flex h-full w-full  flex-col gap-8 px-8 lg:mx-auto lg:max-w-[1080px] lg:flex-row lg:items-center  lg:gap-10"
+            className="flex h-full w-full flex-col gap-8  px-8 lg:mx-auto lg:max-w-[1080px] lg:flex-row lg:items-center  lg:gap-10"
           >
             <div className="h-[180px]   max-w-[180px] bg-slate-500    lg:h-[280px]  lg:min-w-[280px]">
               <Image
@@ -30,7 +30,7 @@ export function Comments({ comments }: CommentsProps) {
               ></Image>
             </div>
             <div className="ml-8 flex flex-col gap-4 lg:gap-4">
-              <p className=" order-2 text-lg lg:order-1 lg:text-left lg:text-xl">
+              <p className=" order-2 text-pretty text-base lg:order-1 lg:text-left lg:text-xl">
                 &#34;
                 {comment.content}&#34;
               </p>
@@ -38,9 +38,9 @@ export function Comments({ comments }: CommentsProps) {
                 {comment.name}
               </strong>
             </div>
-          </div>
+          </MotionCascade>
         )
       })}
-    </MotionCascade>
+    </div>
   )
 }

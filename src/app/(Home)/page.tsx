@@ -1,6 +1,9 @@
 import { ButtonsSocialNetworks } from "../components/ButtonsSocialNetworks"
 import { Comments } from "../components/comments"
-import { CommentsHome } from "../components/comments/comments"
+import {
+  CommentsHomeFirstPart,
+  CommentsHomeSecondPart,
+} from "../components/comments/comments"
 
 import { Footer } from "../components/footer"
 
@@ -17,9 +20,9 @@ export default function Home() {
       <VideoContainer></VideoContainer>
       <ServicesHome></ServicesHome>
       <Offers />
-      <Comments comments={CommentsHome}></Comments>
+      <Comments comments={CommentsHomeFirstPart}></Comments>
       <AboutMe></AboutMe>
-      <Comments comments={CommentsHome}></Comments>
+      <Comments comments={CommentsHomeSecondPart}></Comments>
       <Footer></Footer>
       <ButtonsSocialNetworks></ButtonsSocialNetworks>
     </>
