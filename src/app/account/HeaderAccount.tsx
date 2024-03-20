@@ -23,7 +23,7 @@ export function HeaderAccount() {
           </Button>
         </div>
 
-        <div className="-bottom-[125px] mx-auto mt-8 grid w-full grid-cols-1 gap-4 lg:absolute lg:-bottom-[125px] lg:mt-0 lg:grid-cols-2 lg:gap-10">
+        <div className="-bottom-[125px] mx-auto mt-8 grid w-full grid-cols-1 gap-4 lg:absolute lg:-bottom-[125px] lg:mt-0 lg:grid-cols-2 lg:gap-8">
           <HeaderCard
             IconComponent={CalendarCheck}
             title="Mes rendez-vous"

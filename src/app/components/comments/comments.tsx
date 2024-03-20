@@ -25,13 +25,13 @@ export const CommentsHomeSecondPart = [
 ]
 export const CommentsHome = [
   {
-    name: "Rafaella Marinho",
-    content: `Avec la micropigmentation exceptionnelle de Valesca Vieira, ma confiance et mon estime de soi ont été totalement restaurées. Ses compétences exceptionnelles ont insufflé vie et beauté à mes traits, et je suis reconnaissante pour cette transformation remarquable. J'ai une confiance totale en le talent de Valesca pour sublimer la beauté naturelle et redonner confiance en soi. Un coup de baguette magique qui fait toute la différence`,
+    name: "Rafaela Marinho",
+    content: `Une séance de soin des sourcils avec Valesca, c'est juste top ! Elle a vraiment le sens du détail et une expertise qui font toute la différence. Elle sait comment sublimer vos sourcils tout en vous mettant super à l'aise et vous faisant sentir super bien. Après chaque rendez-vous avec Valesca, je me sens juste magnifique à l'extérieur, mais aussi super boostée à l'intérieur. Franchement, c'est un pur bonheur de profiter de ses services !`,
     image: "/rafaella.jpeg",
   },
   {
-    name: "Nome",
-    content: `Avec la micropigmentation exceptionnelle de Valesca Vieira, ma confiance et mon estime de soi ont été totalement restaurées. Ses compétences exceptionnelles ont insufflé vie et beauté à mes traits, et je suis reconnaissante pour cette transformation remarquable. J'ai une confiance totale en le talent de Valesca pour sublimer la beauté naturelle et redonner confiance en soi. Un coup de baguette magique qui fait toute la différence`,
-    image: "/comment.png",
+    name: "Caliana Camossa",
+    content: `La micropigmentation réalisée par Valesca a été géniale ! Mes sourcils sont impeccables et je me sens plus confiante que jamais. Valesca est une véritable artiste et je suis vraiment ravie du résultat.`,
+    image: "/caliana.jpeg",
   },
 ]
