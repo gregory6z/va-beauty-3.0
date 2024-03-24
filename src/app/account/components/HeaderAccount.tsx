@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { Button } from "../appointment/choose-service/components/ui/button"
 import { HeaderCard } from "./HeaderCard"
 import { CalendarCheck, UserRoundCheck } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { DeconnectionButtonAction } from "./DeconnectionButtonAction"
 
 export function HeaderAccount() {
   return (
@@ -16,12 +17,14 @@ export function HeaderAccount() {
               Bienvenue dans votre espace client
             </h3>
           </div>
-          <Button
-            variant="link"
-            className=" hidden text-lg text-rose-400 lg:block"
-          >
-            Déconnexion
-          </Button>
+          <form action={DeconnectionButtonAction}>
+            <Button
+              variant="link"
+              className=" hidden text-lg text-rose-400 lg:block"
+            >
+              Déconnexion
+            </Button>
+          </form>
         </div>
 
         <div className="-bottom-[125px] mx-auto mt-8 grid w-full grid-cols-1 gap-4 lg:absolute lg:-bottom-[125px] lg:mt-0 lg:grid-cols-2 lg:gap-8">

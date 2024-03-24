@@ -1,5 +1,5 @@
-import { ForfaitCard } from "./ForfaitCard"
-import { HeaderAccount } from "./HeaderAccount"
+import { HeaderAccount } from "./components/HeaderAccount"
+import { ForfaitCard } from "./components/ForfaitCard"
 
 export default function Account() {
   return (

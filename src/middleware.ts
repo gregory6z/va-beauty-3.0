@@ -1,6 +1,14 @@
 import { NextResponse, NextRequest } from "next/server"
 
 export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith("/account")) {
+    const token = request.cookies.get("@VaBeauty:token")
+
+    if (!token) {
+      return NextResponse.redirect(new URL("/", request.url))
+    }
+  }
+
   if (request.nextUrl.pathname.startsWith("/success")) {
     const response = NextResponse.next()
 
