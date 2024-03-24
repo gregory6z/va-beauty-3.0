@@ -7,11 +7,15 @@ export type Service = {
   description: string
   imageUrl: string
   price: number
-  numberPrice: number
+
   defaultPriceId: string
   category: string
   duration: string
   order: string
+
+  sessions?: string
+  interval?: string
+  isSubscription?: boolean
 }
 
 type AllServiceProps = {
@@ -37,11 +41,14 @@ export async function FetchServices(): Promise<AllServiceProps> {
       description: service.description as string,
       imageUrl: service.images[0] as string,
       price: (price.unit_amount as number) / 100,
-      numberPrice: (price.unit_amount as number) / 100,
       defaultPriceId: price.id as string,
       category: String(service.metadata.category),
       duration: String(service.metadata.duration),
       order: String(service.metadata.order),
+
+      sessions: String(service.metadata.sessions),
+      interval: String(service.metadata.interval),
+      isSubscription: Boolean(service.metadata.isSubscription),
     }
   })
 

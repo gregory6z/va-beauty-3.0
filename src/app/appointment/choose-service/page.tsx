@@ -11,7 +11,7 @@ export default function ChooseService() {
           <div className="gap-8 lg:grid lg:grid-cols-5 ">
             <div className="col-span-3">
               <header className="  z-10 mt-16 flex flex-col gap-1  bg-zinc-200 px-[1.5rem] lg:top-[9rem] lg:px-0">
-                <h1 className="font-semibold lg:text-xl">
+                <h1 className=" text-xl  font-semibold">
                   Prenez rendez-vous maintenant et transformez votre journée!
                 </h1>
                 <p className="text-zinc-900/60">Chois de la prestation:</p>

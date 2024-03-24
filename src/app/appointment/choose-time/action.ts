@@ -32,26 +32,49 @@ export async function actionChecout() {
   if (cartItemsString) {
     const cartItems = JSON.parse(cartItemsString)
 
+    const hasSubscriptionItem = cartItems.some(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (item: any) => item.isSubscription,
+    )
+
     const customer = await stripe.customers.create({
       name: user?.name,
       email: user?.email,
     })
 
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      customer: customer.id,
-      line_items: cartItems.map((product: Service) => ({
-        price: product.defaultPriceId,
-        quantity: 1,
-      })),
+    if (hasSubscriptionItem) {
+      const session = await stripe.checkout.sessions.create({
+        mode: "subscription",
+        customer: customer.id,
+        line_items: cartItems.map((product: Service) => ({
+          price: product.defaultPriceId,
+          quantity: 1,
+        })),
 
-      success_url:
-        "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}?",
-      cancel_url: "http://localhost:3000/cancel",
-    })
+        success_url:
+          "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}?",
+        cancel_url: "http://localhost:3000/cancel",
+      })
+      if (session.url) {
+        redirect(session.url)
+      }
+    }
+    if (!hasSubscriptionItem) {
+      const session = await stripe.checkout.sessions.create({
+        mode: "payment",
+        customer: customer.id,
+        line_items: cartItems.map((product: Service) => ({
+          price: product.defaultPriceId,
+          quantity: 1,
+        })),
 
-    if (session.url) {
-      redirect(session.url)
+        success_url:
+          "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}?",
+        cancel_url: "http://localhost:3000/cancel",
+      })
+      if (session.url) {
+        redirect(session.url)
+      }
     }
   }
 }

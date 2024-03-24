@@ -18,49 +18,56 @@ export function ServiceCard({
   imageUrl,
 }: ServiceProps) {
   return (
-    <div className="  flex w-full flex-col border border-gray-200   bg-white sm:grid-cols-2 lg:mx-0 lg:min-h-[24rem]    lg:flex-row lg:items-center lg:gap-16 lg:p-8">
-      <div className=" h-full w-full bg-black  sm:mx-auto sm:min-w-[400px] sm:max-w-[400px]   lg:mx-0   lg:min-w-[300px]   lg:max-w-[300px]  ">
+    <div className="   flex h-full w-full flex-col border border-gray-200 bg-white   sm:grid-cols-2 lg:mx-0 lg:min-h-[24rem] lg:max-w-[1080px]    lg:flex-row  lg:gap-10 lg:p-10">
+      <div className="  h-full bg-black  sm:mx-auto sm:min-w-[400px] sm:max-w-[400px] lg:mx-0   lg:min-w-[260px]     ">
         <Image
           src={imageUrl}
           alt={""}
-          width={300}
-          height={300}
-          className="mx-auto h-full max-h-[300px]  w-full object-cover  lg:max-w-[300px] "
+          width={280}
+          height={280}
+          className="mx-auto h-full max-h-[300px]  w-full object-cover  lg:h-[260px] lg:w-[260px] "
         ></Image>
-        <div className="flex h-[32px]  w-full items-center justify-end bg-zinc-900 hover:bg-zinc-800  lg:h-[48px] ">
-          <p className="mx-4 text-left text-white  lg:mx-4 ">Plus info</p>
+        <div className="flex h-[32px]  w-full items-center justify-end bg-zinc-900 hover:bg-zinc-800  ">
+          <p className="mx-4 text-left text-sm text-white  lg:mx-4 ">
+            Plus info
+          </p>
         </div>
-        <div></div>
       </div>
-      <div className="flex flex-col  sm:mx-auto  sm:max-w-[600px] lg:mx-0 lg:max-w-full  lg:px-0 ">
+      <div className="flex  flex-1  flex-col  sm:mx-auto  lg:mx-0 ">
         <div className="mb-2 mt-4 flex flex-col  px-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:justify-between  lg:px-0">
-          <h1 className="text-bold  text-2xl lg:text-3xl   ">{name}</h1>
-          <p>Duration {duration} min</p>
+          <h1 className="text-bold  text-2xl lg:text-2xl   ">{name}</h1>
+          <p className="text-sm">Duration {duration} min</p>
         </div>
-        <p className=" 	 h-full flex-1 px-4 text-zinc-900/60  lg:mt-8 lg:min-h-[150px] lg:min-w-[828px] lg:flex-1 lg:flex-grow lg:px-0 lg:text-lg">
+        <p className=" lg:text-normal	 h-full flex-1 text-pretty px-4 text-zinc-900/60 lg:mt-6 lg:min-h-[120px] lg:w-[90%] lg:flex-1 lg:flex-grow lg:px-0">
           {description}
         </p>
 
         <div className="mt-auto flex h-full w-full flex-col  items-center justify-between lg:flex-row">
-          <p className="my-6 flex text-5xl lg:w-full">
-            {price},00 <Euro width="20"></Euro>
-          </p>
-          <div className="flex h-full w-full flex-col items-center gap-4 lg:flex-row   lg:gap-10">
-            <Button
-              variant="ghost"
-              className="min-y-[100px] flex min-w-[240px] gap-2 "
-            >
-              <p className="whitespace-nowrap  text-base ">Ajouter au panier</p>
+          <div className="my-6 flex items-center gap-8 lg:my-0">
+            <p className="flex text-5xl lg:my-0 lg:w-full lg:text-5xl">
+              {price},00 <Euro width="20"></Euro>
+            </p>
+            <Image
+              className="h-[50px] w-[50px] lg:hidden lg:h-[100px] lg:w-[100px]"
+              src={"/add-to-cart.svg"}
+              width={100}
+              height={100}
+              alt={"ola"}
+            ></Image>
+          </div>
+          <div className="flex h-full w-full flex-col items-center justify-end gap-6   lg:ml-auto	 lg:flex-row">
+            <div className=" hidden flex-col items-center justify-center lg:flex  ">
               <Image
+                className=" h-[60px] w-[60px] lg:h-[60px] lg:w-[60px]"
                 src={"/add-to-cart.svg"}
-                width={50}
-                height={50}
-                alt={""}
+                width={100}
+                height={100}
+                alt={"ola"}
               ></Image>
-            </Button>
+            </div>
 
             <Button asChild className="text-lg">
-              <button className="h-full w-full bg-black  py-4  text-lg text-zinc-100   lg:px-8 lg:py-4">
+              <button className=" h-full w-full  bg-black py-4 text-lg text-zinc-100  lg:h-[56px] lg:max-w-[300px]   lg:px-8 lg:py-4">
                 Reserver maintenant
               </button>
             </Button>

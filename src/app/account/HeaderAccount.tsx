@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "../appointment/choose-service/components/ui/button"
 import { HeaderCard } from "./HeaderCard"
 import { CalendarCheck, UserRoundCheck } from "lucide-react"
@@ -24,18 +25,22 @@ export function HeaderAccount() {
         </div>
 
         <div className="-bottom-[125px] mx-auto mt-8 grid w-full grid-cols-1 gap-4 lg:absolute lg:-bottom-[125px] lg:mt-0 lg:grid-cols-2 lg:gap-8">
-          <HeaderCard
-            IconComponent={CalendarCheck}
-            title="Mes rendez-vous"
-            description="Mon historique de rendez-vous et mes rendez-vous à venir."
-            buttonUnderline="Voir mes rendez-vous"
-          ></HeaderCard>
-          <HeaderCard
-            IconComponent={UserRoundCheck}
-            title="Mes information"
-            description="Pour mettre à jour mon identité, mon mot de passe et mes moyens de contact."
-            buttonUnderline="Mettre à jour mes informations"
-          ></HeaderCard>
+          <Link href="/account/appointments-history">
+            <HeaderCard
+              IconComponent={CalendarCheck}
+              title="Mes rendez-vous"
+              description="Mon historique de rendez-vous et mes rendez-vous à venir."
+              buttonUnderline="Voir mes rendez-vous"
+            ></HeaderCard>
+          </Link>
+          <Link href={"/account/edit-profil"}>
+            <HeaderCard
+              IconComponent={UserRoundCheck}
+              title="Mes information"
+              description="Pour mettre à jour mon identité, mon mot de passe et mes moyens de contact."
+              buttonUnderline="Mettre à jour mes informations"
+            ></HeaderCard>
+          </Link>
         </div>
       </div>
     </header>
