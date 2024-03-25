@@ -13,6 +13,9 @@ import { Input } from "@/components/ui/input"
 import z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
+import { useTransition } from "react"
+import { EditProfil } from "@/app/api/editProfil"
 
 const formSchema = z
   .object({
@@ -23,18 +26,22 @@ const formSchema = z
   })
   .refine((data) => data.password === data.confirm, {
     message: "As senhas não coincidem",
-    path: ["passwordConfirmation"],
+    path: ["confirm"],
   })
 
 export function FormEditPassword() {
+  const [isPending, startTransition] = useTransition()
+
+  const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+    startTransition(() => {
+      EditProfil(values)
+    })
+    router.push("/account")
   }
 
   return (
@@ -52,7 +59,8 @@ export function FormEditPassword() {
                 <Input
                   {...field}
                   type="password"
-                  placeholder="••••••••" // Adiciona "pontinhos" ao placeholder
+                  placeholder="••••••••"
+                  min={4} // Adiciona "pontinhos" ao placeholder
                 />
               </FormControl>
 
@@ -70,6 +78,7 @@ export function FormEditPassword() {
                 <Input
                   placeholder="••••••••" // Adiciona "pontinhos" ao placeholder
                   {...field}
+                  min={4}
                   type="password"
                 />
               </FormControl>
@@ -83,6 +92,7 @@ export function FormEditPassword() {
           className=" mt-10
           text-base"
           type="submit"
+          disabled={isPending}
         >
           Changer votre mot de passe
         </Button>

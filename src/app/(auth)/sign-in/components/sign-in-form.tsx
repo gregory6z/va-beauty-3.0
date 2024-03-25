@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -10,8 +8,9 @@ import { z } from "zod"
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { action } from "./action"
+
 import { useFormState, useFormStatus } from "react-dom"
+import { action } from "./action"
 
 const signInSchema = z.object({
   email: z
@@ -46,7 +45,7 @@ export function SignInForm() {
   }
 
   return (
-    <form action={formAction} className="flex  flex-col gap-3">
+    <form action={action} className="flex  flex-col gap-3">
       <div className="flex flex-col ">
         <Input
           type="email"

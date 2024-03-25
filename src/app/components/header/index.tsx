@@ -5,7 +5,7 @@ import Link from "next/link"
 export function Header() {
   // Recuperar o token de autenticação diretamente
 
-  const tokenAuthentication = cookies().get("@VaBeauty:token")?.value
+  const tokenAuthentication = cookies().get("@VaBeauty:token")
 
   return (
     <div className="relative h-full w-full">

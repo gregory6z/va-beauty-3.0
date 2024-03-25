@@ -13,48 +13,54 @@ import { Input } from "@/components/ui/input"
 import z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+// import { editProfilAction } from "./edit-profil-action"
+import { useTransition } from "react"
+import { EditProfil } from "@/app/api/editProfil"
 
-const formSchema = z
-  .object({
-    name: z
-      .string()
-      .min(2, {
-        message: "Username must be at least 2 characters.",
-      })
-      .optional(),
-    email: z
-      .string()
-      .email({
-        message: "email must be a valid email.",
-      })
-      .optional(),
-    telephone: z.string().min(10, {}).optional(),
-    password: z
-      .string()
-      .min(4, { message: "A senha deve ter no mínimo 4 caracteres." }),
-    confirm: z.string(),
-  })
-  .refine((data) => data.password === data.confirm, {
-    message: "As senhas não coincidem",
-    path: ["passwordConfirmation"],
-  })
+import { useRouter } from "next/navigation"
 
-export function FormEditProfil() {
+export interface FormEditProps {
+  name?: string
+  email?: string
+  telephone?: string
+}
+
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(2, {
+      message: "Username must be at least 2 characters.",
+    })
+    .optional(),
+  email: z
+    .string()
+    .email({
+      message: "email must be a valid email.",
+    })
+    .optional(),
+  telephone: z.string().min(10, {}).optional(),
+})
+
+export function FormEditProfil({ name, email, telephone }: FormEditProps) {
+  const [isPending, startTransition] = useTransition()
+
+  const router = useRouter()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: { name, email, telephone },
   })
-
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
-  }
 
   const formatPhoneNumber = (value: string) => {
     value = value.replace(/\D/g, "").slice(0, 10) // Keep only the first 10 digits
     return value.split(/(?=(?:..)*$)/).join(" ") // Insert a space every 2 digits
+  }
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    startTransition(() => {
+      EditProfil(values)
+    })
+    router.push("/account")
   }
 
   return (
@@ -83,7 +89,7 @@ export function FormEditProfil() {
             <FormItem>
               <FormLabel>E-mail</FormLabel>
               <FormControl>
-                <Input placeholder="email" {...field} />
+                <Input placeholder="email" {...field} type="email" />
               </FormControl>
 
               <FormMessage />
@@ -114,6 +120,7 @@ export function FormEditProfil() {
           className=" mt-10
           text-base"
           type="submit"
+          disabled={isPending}
         >
           Mettre à jour le profil
         </Button>

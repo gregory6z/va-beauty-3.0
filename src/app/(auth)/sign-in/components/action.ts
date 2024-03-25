@@ -11,7 +11,7 @@ const schema = z.object({
   password: z.string(),
 })
 
-export async function action(prevState: any, formData: FormData) {
+export async function action(formData: FormData) {
   const data = schema.parse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -36,7 +36,7 @@ export async function action(prevState: any, formData: FormData) {
     const { access_token } = await response.json()
 
     cookies().set("@VaBeauty:token", String(access_token), {
-      secure: true,
+      httpOnly: true,
     })
 
     return {
