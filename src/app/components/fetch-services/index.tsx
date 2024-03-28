@@ -81,3 +81,7 @@ export async function FetchServices(): Promise<AllServiceProps> {
 
   return { services, sourcils, levres, forfaits, promotion }
 }
+
+export function findServiceById(services: Service[], id: string) {
+  return services.find((service) => service.id === id)
+}

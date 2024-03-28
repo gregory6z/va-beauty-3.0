@@ -2,7 +2,7 @@ import { FormEditProfil, FormEditProps } from "./form-edit-profil"
 import { FormEditPassword } from "./form-edit-password"
 import { cookies } from "next/headers"
 
-export default function EditProfil() {
+export default async function EditProfil() {
   const session = cookies().get("@VaBeauty:session")?.value
 
   const sessionObject: FormEditProps = JSON.parse(session as string)

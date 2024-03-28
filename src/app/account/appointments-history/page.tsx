@@ -1,8 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  Appointment,
+  FetchAppointmentsByClient,
+} from "@/app/api/fetch-appointments"
 import { TableAppointments } from "./table-appointments"
 
-export default function AppointmentsHistory() {
+export default async function AppointmentsHistory() {
+  const { futureAppointments, pastAppointments } =
+    await FetchAppointmentsByClient()
+
+  const validFutureAppointments = futureAppointments.filter(
+    (appointment: Appointment) => appointment.services.length > 0,
+  )
+
   return (
-    <div className="w-full bg-zinc-200">
+    <div className="min-h-[calc(100vh-[])] w-full bg-zinc-200">
       <div className="mx-auto flex  flex-col py-[6rem] lg:max-w-[1080px]">
         <div className="space-y-6 ">
           <h1 className=" font-semibold lg:text-4xl">Mes futurs rendez-vous</h1>
@@ -11,7 +23,7 @@ export default function AppointmentsHistory() {
             l'heure et la date 48 heures avant le rendez-vous
           </p>
 
-          <TableAppointments />
+          <TableAppointments appointments={validFutureAppointments} />
         </div>
 
         <div className="space-y-6 lg:mt-[4rem]">
@@ -22,7 +34,7 @@ export default function AppointmentsHistory() {
             Voici une liste de tous vos rendez-vous passés.
           </p>
 
-          <TableAppointments />
+          <TableAppointments pastAppointments appointments={pastAppointments} />
         </div>
       </div>
     </div>
