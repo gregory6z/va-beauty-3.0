@@ -13,6 +13,7 @@ export interface Appointment {
   date: string
   time: string
   services: string[]
+  duration: number
 }
 export interface TableAppointmentsProps {
   appointments: Appointment[]
@@ -23,6 +24,19 @@ export function TableAppointments({
   appointments,
   pastAppointments,
 }: TableAppointmentsProps) {
+  function formatDuration(minutes: number): string {
+    const hours = Math.floor(minutes / 60)
+    const remainingMinutes = minutes % 60
+    let result = ""
+    if (hours > 0) {
+      result += `${hours}h `
+    }
+    if (remainingMinutes > 0) {
+      result += ` ${remainingMinutes}m`
+    }
+    return result.trim()
+  }
+
   return (
     <Table
       className={`border-t-[1rem] border-zinc-900 ${pastAppointments ? "bg-zinc-100" : "bg-white"}`}
@@ -31,10 +45,13 @@ export function TableAppointments({
         <TableRow className=" lg:text-base">
           <TableHead className="w-[150px]">DATE</TableHead>
           <TableHead className="w-[100px]">HEURE</TableHead>
-          <TableHead className=" ">SERVICES</TableHead>
+          <TableHead className="w-full ">SERVICES</TableHead>
+          <TableHead className="text-right ">DURATION</TableHead>
 
           {pastAppointments ? null : (
-            <TableHead className="text-right">CHANGER LA DATE</TableHead>
+            <TableHead className="min-w-[210px] text-right">
+              CHANGER LA DATE
+            </TableHead>
           )}
         </TableRow>
       </TableHeader>
@@ -57,7 +74,10 @@ export function TableAppointments({
               </TableCell>
               <TableCell className="font-medium">{appointment.time}</TableCell>
 
-              <TableCell>{appointment.services}</TableCell>
+              <TableCell>{appointment.services.join(", ")}</TableCell>
+              <TableCell className="text-right">
+                {formatDuration(appointment.duration)}
+              </TableCell>
 
               <TableCell className="text-right">
                 {pastAppointments ? null : (

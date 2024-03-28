@@ -9,6 +9,7 @@ export interface Appointment {
   id: string
   date: Date
   services: string[]
+  duration: number
   clientId: string
   isSubscription?: string
 }
