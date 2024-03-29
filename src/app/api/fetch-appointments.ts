@@ -12,6 +12,7 @@ export interface Appointment {
   duration: number
   clientId: string
   isSubscription?: string
+  dateTime: Date
 }
 
 const token = cookies().get("@VaBeauty:token")?.value
@@ -41,7 +42,6 @@ export async function FetchAppointmentsByClient() {
   // )
 
   // const { findServiceById } = await FetchServices()
-  console.log(subscriptions)
 
   return {
     pastAppointments,

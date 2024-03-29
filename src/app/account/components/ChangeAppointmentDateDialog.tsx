@@ -1,4 +1,4 @@
-import { getData } from "@/app/appointment/choose-time/page"
+import { getData, splitArray } from "@/app/appointment/choose-time/page"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -10,26 +10,36 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Appointment } from "../appointments-history/table-appointments"
+import WeekTable, {
+  Appointment,
+} from "../../appointment/choose-time/week-table"
 
-export async function ChangeAppointmentDataDialog() {
+interface ChangeAppointmentDataDialogProps {
+  startDate?: Date
+}
+
+export async function ChangeAppointmentDataDialog({
+  startDate,
+}: ChangeAppointmentDataDialogProps) {
   const data: Appointment[] = await getData()
 
   const newArray = splitArray(data)
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button>Changer la date</Button>
+      <DialogTrigger asChild className="">
+        <Button type="submit">Changer la date</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Mudar a data</DialogTitle>
+      <DialogContent className="mt-40 h-full min-w-[1080px] overflow-scroll  p-20  pb-80">
+        <DialogHeader className="  ">
+          <DialogTitle className="">Mudar a data</DialogTitle>
           <DialogDescription>
             Selecione o dia para mudar a data{" "}
           </DialogDescription>
         </DialogHeader>
-        <div className="flex items-center space-x-2"></div>
+        <div className="flex items-center space-x-2 ">
+          <WeekTable data={newArray} startDateAppointment={startDate ?? null} />
+        </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="button" variant="secondary">

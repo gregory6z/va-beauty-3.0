@@ -9,7 +9,7 @@ dayjs.extend(isSameOrAfter)
 
 dayjs.locale("fr")
 
-function splitArray(array: Appointment[]) {
+export function splitArray(array: Appointment[]) {
   const chunks = []
   for (let i = 0; i < array.length; i += 7) {
     chunks.push(array.slice(i, i + 7))
@@ -50,7 +50,7 @@ export default async function ChooseTime() {
         </header>
 
         <div className="h-full w-full lg:min-h-screen">
-          <WeekTable data={newArray}></WeekTable>
+          <WeekTable data={newArray} startDateAppointment={null}></WeekTable>
           <WeekAccordion data={newArray}></WeekAccordion>
         </div>
         {/* <div className="mb-20 flex flex-col gap-14 lg:gap-4 "></div> */}

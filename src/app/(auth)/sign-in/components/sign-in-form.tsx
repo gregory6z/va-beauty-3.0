@@ -38,11 +38,11 @@ export function SignInForm() {
 
   const { pending } = useFormStatus()
 
-  // const [state, formAction] = useFormState(action, initialState)
+  const [state, formAction] = useFormState(action, initialState)
 
-  // if (state?.message) {
-  //   toast.error("Erreur de connexion")
-  // }
+  if (state?.message) {
+    toast.error("Erreur de connexion")
+  }
 
   return (
     <form action={action} className="flex  flex-col gap-3">

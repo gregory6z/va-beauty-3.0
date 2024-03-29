@@ -21,9 +21,15 @@ export interface Appointment {
 // Definindo o idioma francês para Day.js
 dayjs.locale("fr")
 
-const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
+const WeekTable: React.FC<{
+  data: Appointment[][]
+  startDateAppointment: Date | null
+}> = ({ data, startDateAppointment }) => {
   const [currentWeek, setCurrentWeek] = useState<Week>({
-    startDate: dayjs().startOf("week"),
+    startDate: startDateAppointment
+      ? dayjs(startDateAppointment).startOf("week")
+      : dayjs().startOf("week"),
+
     availableTimes: [],
   })
 
@@ -97,7 +103,7 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
 
   return (
     <div className="hidden h-full min-h-[screen] bg-white lg:block">
-      <div className=" flex items-center justify-between bg-black">
+      <div className=" sticky  flex items-center justify-between bg-black">
         <Button
           className={`btn flex gap-2 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
           onClick={goToPreviousWeek}
@@ -114,12 +120,15 @@ const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
           <ChevronRight />
         </Button>
       </div>
-      <div className=" overflow-x-auto">
+      <div className=" ">
         <table className="w-full table-fixed border-collapse animate-fadeIn  ">
           <thead className="text-xl">
             <tr>
               {currentWeek.availableTimes.map((times, index) => (
-                <th key={index} className="border p-4 capitalize">
+                <th
+                  key={index}
+                  className="  z-10 border  bg-white p-4 capitalize"
+                >
                   <div className="text-center">
                     <div>
                       {dayjs(currentWeek.startDate)

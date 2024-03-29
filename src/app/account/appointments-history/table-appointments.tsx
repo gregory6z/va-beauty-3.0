@@ -14,6 +14,7 @@ export interface Appointment {
   time: string
   services: string[]
   duration: number
+  dateTime: Date
 }
 export interface TableAppointmentsProps {
   appointments: Appointment[]
@@ -67,23 +68,31 @@ export function TableAppointments({
             </TableCell>
           </TableRow>
         ) : (
-          appointments.map((appointment: Appointment) => (
-            <TableRow key={appointment.appointmentId} className="">
-              <TableCell className="h-16 font-medium">
-                {appointment.date}
-              </TableCell>
-              <TableCell className="font-medium">{appointment.time}</TableCell>
+          appointments.map((appointment: Appointment) => {
+            return (
+              <TableRow className="" key={appointment.appointmentId}>
+                <TableCell className="h-16 font-medium">
+                  {appointment.date}
+                </TableCell>
+                <TableCell className="font-medium">
+                  {appointment.time}
+                </TableCell>
 
-              <TableCell>{appointment.services.join(", ")}</TableCell>
-              <TableCell className="text-right">
-                {formatDuration(appointment.duration)}
-              </TableCell>
+                <TableCell>{appointment.services.join(", ")}</TableCell>
+                <TableCell className="text-right">
+                  {formatDuration(appointment.duration)}
+                </TableCell>
 
-              <TableCell className="text-right">
-                {pastAppointments ? null : <ChangeAppointmentDataDialog />}
-              </TableCell>
-            </TableRow>
-          ))
+                <TableCell className="text-right">
+                  {pastAppointments ? null : (
+                    <ChangeAppointmentDataDialog
+                      startDate={appointment.dateTime}
+                    />
+                  )}
+                </TableCell>
+              </TableRow>
+            )
+          })
         )}
       </TableBody>
     </Table>
