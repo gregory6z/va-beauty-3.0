@@ -17,12 +17,10 @@ function splitArray(array: Appointment[]) {
   return chunks
 }
 
-async function getData() {
+export async function getData() {
   const res = await fetch("http://localhost:3333/week-availability", {
     cache: "no-store",
   })
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

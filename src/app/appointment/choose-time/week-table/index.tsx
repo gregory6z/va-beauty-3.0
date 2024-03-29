@@ -23,7 +23,7 @@ dayjs.locale("fr")
 
 const WeekTable: React.FC<{ data: Appointment[][] }> = ({ data }) => {
   const [currentWeek, setCurrentWeek] = useState<Week>({
-    startDate: dayjs().startOf("week"), // Começa com o início da semana atual
+    startDate: dayjs().startOf("week"),
     availableTimes: [],
   })
 

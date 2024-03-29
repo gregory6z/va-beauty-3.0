@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import {
   Table,
   TableBody,
@@ -7,6 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { ChangeAppointmentDataDialog } from "../components/ChangeAppointmentDateDialog"
 
 export interface Appointment {
   appointmentId: string
@@ -80,11 +80,7 @@ export function TableAppointments({
               </TableCell>
 
               <TableCell className="text-right">
-                {pastAppointments ? null : (
-                  <Button className="h-10 whitespace-nowrap">
-                    Changer la date
-                  </Button>
-                )}
+                {pastAppointments ? null : <ChangeAppointmentDataDialog />}
               </TableCell>
             </TableRow>
           ))

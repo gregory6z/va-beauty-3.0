@@ -13,8 +13,6 @@ export default async function AppointmentsHistory() {
     (appointment: Appointment) => appointment.services.length > 0,
   )
 
-  console.log(futureAppointments)
-
   return (
     <div className="min-h-[calc(100vh-[])] w-full bg-zinc-200">
       <div className="mx-auto flex  flex-col py-[6rem] lg:max-w-[1080px]">

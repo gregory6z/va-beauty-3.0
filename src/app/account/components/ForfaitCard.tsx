@@ -3,7 +3,7 @@ import { FetchAppointmentsByClient } from "@/app/api/fetch-appointments"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
-interface Subscription {
+export interface Subscription {
   appointmentId: string
   services: string[]
   date: string
@@ -12,37 +12,16 @@ interface Subscription {
 
 export async function ForfaitCard() {
   const { subscriptions } = await FetchAppointmentsByClient()
+  console.log(subscriptions)
 
-  const groupedByService = subscriptions.reduce(
-    (grouped: any, subscription: Subscription) => {
-      subscription.services.forEach((service) => {
-        if (!grouped[service]) {
-          grouped[service] = []
-        }
-        grouped[service].push(subscription)
-      })
-      return grouped
+  const uniqueSubscriptions = [
+    {
+      appointmentId: "1",
+      services: ["Manucure"],
+      date: "2022-10-10",
+      time: "10:00",
     },
-    {},
-  )
-
-  const uniqueSubscriptions = Object.values(groupedByService).reduce(
-    (unique: unknown[], subscriptions: any) => {
-      const nextSubscription = subscriptions.sort(
-        (a: any, b: any) =>
-          new Date(a.date).getTime() - new Date(b.date).getTime(),
-      )[0]
-
-      if (nextSubscription) {
-        unique.push(nextSubscription)
-      }
-
-      return unique
-    },
-    [],
-  )
-
-  console.log(uniqueSubscriptions)
+  ]
 
   return (
     <div className="mt-[20rem] flex h-full w-full flex-col border-t-[28px] border-zinc-300 border-t-zinc-900 bg-white p-6 pb-10 lg:mx-auto lg:mt-40 lg:max-w-[1080px] lg:p-10   ">

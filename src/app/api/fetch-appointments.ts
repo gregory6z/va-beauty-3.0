@@ -41,6 +41,7 @@ export async function FetchAppointmentsByClient() {
   // )
 
   // const { findServiceById } = await FetchServices()
+  console.log(subscriptions)
 
   return {
     pastAppointments,

@@ -10,6 +10,7 @@ interface ProfilProps {
   email?: string
   password?: string
   telephone?: string
+  customerId?: string
 }
 
 export async function EditProfil({
@@ -17,6 +18,7 @@ export async function EditProfil({
   email,
   password,
   telephone,
+  customerId,
 }: ProfilProps) {
   const dataToSend: ProfilProps = {}
 
@@ -34,6 +36,10 @@ export async function EditProfil({
 
   if (telephone) {
     dataToSend.telephone = telephone
+  }
+
+  if (customerId) {
+    dataToSend.customerId = customerId
   }
 
   const response = await fetch("http://localhost:3333/client", {
@@ -54,7 +60,9 @@ export async function EditProfil({
 
   const { accessToken } = await response.json()
 
-  if (!(password && !name && !email && !telephone)) {
+  console.log(accessToken)
+
+  if (!password && (name || email || telephone || customerId)) {
     cookies().set("@VaBeauty:token", String(accessToken), {
       httpOnly: true,
     })

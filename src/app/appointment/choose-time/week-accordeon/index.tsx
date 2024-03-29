@@ -54,8 +54,6 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
       .add(hours, "hour")
       .add(minutes, "minute")
 
-    console.log(selectedDateTime.toISOString())
-
     // Salvando o objeto Date nos cookies
     setCookie(null, "@VaBeauty:date", selectedDateTime.toISOString(), {
       maxAge: 30 * 24 * 60 * 60, // 30 dias de validade

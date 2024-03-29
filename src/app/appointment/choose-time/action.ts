@@ -3,6 +3,8 @@
 import { cookies } from "next/headers"
 
 import { Service } from "@/app/stores/Services"
+
+import { EditProfil } from "@/app/api/editProfil"
 import { stripe } from "@/lib/stripe"
 import { redirect } from "next/navigation"
 
@@ -12,6 +14,7 @@ interface User {
   sub: string
   email: string
   name: string
+  customerId: string
   iat: number
 }
 
@@ -37,15 +40,24 @@ export async function actionChecout() {
       (item: any) => item.isSubscription,
     )
 
-    const customer = await stripe.customers.create({
-      name: user?.name,
-      email: user?.email,
-    })
+    let customerId = user?.customerId
+
+    if (user && !user.customerId) {
+      // Crie o cliente aqui
+      const customer = await stripe.customers.create({
+        email: user.email,
+        name: user.name,
+      })
+
+      customerId = customer.id
+
+      await EditProfil({ customerId: customer.id })
+    }
 
     if (hasSubscriptionItem) {
       const session = await stripe.checkout.sessions.create({
         mode: "subscription",
-        customer: customer.id,
+        customer: customerId,
         line_items: cartItems.map((product: Service) => ({
           price: product.defaultPriceId,
           quantity: 1,
@@ -62,7 +74,7 @@ export async function actionChecout() {
     if (!hasSubscriptionItem) {
       const session = await stripe.checkout.sessions.create({
         mode: "payment",
-        customer: customer.id,
+        customer: customerId,
         line_items: cartItems.map((product: Service) => ({
           price: product.defaultPriceId,
           quantity: 1,

@@ -13,7 +13,6 @@ export function middleware(request: NextRequest) {
 
     const token = request.cookies.get("@VaBeauty:token")?.value
 
-    console.log(token)
     const decodedToken = jwt.decode(token as string)
 
     response.cookies.set("@VaBeauty:session", JSON.stringify(decodedToken))

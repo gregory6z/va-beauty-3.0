@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable camelcase */
 "use server"
@@ -55,18 +56,14 @@ export async function action(prevState: any, formData: FormData) {
     const cookies = parseCookies()
     const cartItems = cookies.cartItems
 
-    console.log(cartItems)
-
     return {
       success: true,
       email: data.email,
     }
     // Redirecionar para a página inicial após o login
   } catch (error: any) {
-    console.log(error)
     // Se ocorrer um erro durante a validação Zod, capturamos e lidamos com ele aqui
     if (error instanceof ZodError) {
-      console.log(error.errors[0]?.message)
       // Se for um erro de validação do Zod, retornamos a mensagem de erro
       return {
         message: error.errors[0]?.message || "Erro de validação do Zod.",
