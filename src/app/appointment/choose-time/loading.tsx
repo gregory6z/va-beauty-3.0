@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 export default function Loading() {
   return (
     <div className="h-full w-full  bg-zinc-200 pb-20 lg:min-h-screen lg:pb-40 ">
-      <div className="flex flex-col lg:mx-auto lg:max-w-[1216px] lg:px-[2rem] xl:max-w-[1256px] ">
+      <div className="flex flex-col lg:mx-auto lg:max-w-[1080px] lg:px-[2rem] ">
         <header className=" mt-16  flex flex-col gap-1  bg-zinc-200 px-[1.5rem] lg:top-[9rem] lg:px-0">
           <h1 className="font-semibold text-zinc-900 lg:text-xl">
             Réservez votre rendez-vous et faites le premier pas vers votre

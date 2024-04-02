@@ -6,8 +6,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { ChangeAppointmentDataDialog } from "../components/ChangeAppointmentDateDialog"
-
+import { AppointmentHistoryForm } from "./appointments-history-form"
+import { ReactNode } from "react"
 export interface Appointment {
   appointmentId: string
   date: string
@@ -19,24 +19,16 @@ export interface Appointment {
 export interface TableAppointmentsProps {
   appointments: Appointment[]
   pastAppointments?: boolean
+  children: ReactNode
 }
 
 export function TableAppointments({
   appointments,
   pastAppointments,
+  children,
 }: TableAppointmentsProps) {
-  function formatDuration(minutes: number): string {
-    const hours = Math.floor(minutes / 60)
-    const remainingMinutes = minutes % 60
-    let result = ""
-    if (hours > 0) {
-      result += `${hours}h `
-    }
-    if (remainingMinutes > 0) {
-      result += ` ${remainingMinutes}m`
-    }
-    return result.trim()
-  }
+  const futureDate = new Date()
+  futureDate.setHours(futureDate.getHours() + 24)
 
   return (
     <Table
@@ -56,6 +48,7 @@ export function TableAppointments({
           )}
         </TableRow>
       </TableHeader>
+
       <TableBody className="lg:text-base ">
         {appointments.length === 0 ? (
           <TableRow>
@@ -70,27 +63,12 @@ export function TableAppointments({
         ) : (
           appointments.map((appointment: Appointment) => {
             return (
-              <TableRow className="" key={appointment.appointmentId}>
-                <TableCell className="h-16 font-medium">
-                  {appointment.date}
-                </TableCell>
-                <TableCell className="font-medium">
-                  {appointment.time}
-                </TableCell>
-
-                <TableCell>{appointment.services.join(", ")}</TableCell>
-                <TableCell className="text-right">
-                  {formatDuration(appointment.duration)}
-                </TableCell>
-
-                <TableCell className="text-right">
-                  {pastAppointments ? null : (
-                    <ChangeAppointmentDataDialog
-                      startDate={appointment.dateTime}
-                    />
-                  )}
-                </TableCell>
-              </TableRow>
+              <AppointmentHistoryForm
+                appointment={appointment}
+                key={appointment.appointmentId}
+              >
+                {children}
+              </AppointmentHistoryForm>
             )
           })
         )}

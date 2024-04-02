@@ -58,7 +58,7 @@ export function FormEditProfil({ name, email, telephone }: FormEditProps) {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(() => {
-      actionChecout()
+      EditProfil(values)
     })
     router.push("/account")
   }

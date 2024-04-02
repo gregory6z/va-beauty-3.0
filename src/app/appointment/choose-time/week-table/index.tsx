@@ -1,11 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
+
 import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { AvailableTimes } from "../availaible-times"
 import { Button } from "@/components/ui/button"
+import { parseCookies } from "nookies"
 
 // Definindo o tipo Week
 interface Week {
@@ -23,13 +25,14 @@ dayjs.locale("fr")
 
 const WeekTable: React.FC<{
   data: Appointment[][]
-  startDateAppointment: Date | null
-}> = ({ data, startDateAppointment }) => {
-  const [currentWeek, setCurrentWeek] = useState<Week>({
-    startDate: startDateAppointment
-      ? dayjs(startDateAppointment).startOf("week")
-      : dayjs().startOf("week"),
+}> = ({ data }) => {
+  const cookies = parseCookies()
+  const changeDate = cookies["@VaBeauty:changeDate"]
 
+  const [currentWeek, setCurrentWeek] = useState<Week>({
+    startDate: changeDate
+      ? dayjs(changeDate).startOf("week")
+      : dayjs().startOf("week"),
     availableTimes: [],
   })
 

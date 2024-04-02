@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import { Service } from "../components/fetch-services"
 import { useServiceStore } from "./Services"
+import { useAppointmentStore } from "./appointments"
 // import { useServicesStore } from "./services"
 
 interface InitializerProps {
@@ -18,6 +19,7 @@ export function StoreInitializer({
   if (!initialized.current) {
     // useServicesStore.setState({ serviceCategory })
     useServiceStore.setState({ allServices })
+    useAppointmentStore.setState({ appointmentId: "", date: "" })
     initialized.current = true
   }
   return null

@@ -66,10 +66,8 @@ export function ServiceCard({
               ></Image>
             </div>
 
-            <Button asChild className="text-lg">
-              <button className=" h-full w-full  bg-black py-4 text-lg text-zinc-100  lg:h-[56px] lg:max-w-[300px]   lg:px-8 lg:py-4">
-                Reserver maintenant
-              </button>
+            <Button size="xl" className=" ">
+              Reserver maintenant
             </Button>
           </div>
         </div>
