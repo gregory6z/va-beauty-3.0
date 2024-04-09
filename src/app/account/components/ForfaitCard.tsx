@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FetchAppointmentsByClient } from "@/app/api/fetch-appointments"
+import { FetchSubscriptions } from "@/app/api/fetch-subscriptions"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -11,17 +11,9 @@ export interface Subscription {
 }
 
 export async function ForfaitCard() {
-  const { subscriptions } = await FetchAppointmentsByClient()
-  console.log(subscriptions)
+  const subscriptions = await FetchSubscriptions()
 
-  const uniqueSubscriptions = [
-    {
-      appointmentId: "1",
-      services: ["Manucure"],
-      date: "2022-10-10",
-      time: "10:00",
-    },
-  ]
+  console.log(subscriptions)
 
   return (
     <div className="mt-[20rem] flex h-full w-full flex-col border-t-[28px] border-zinc-300 border-t-zinc-900 bg-white p-6 pb-10 lg:mx-auto lg:mt-40 lg:max-w-[1080px] lg:p-10   ">
@@ -32,12 +24,13 @@ export async function ForfaitCard() {
           premier jour, mais peuvent être modifiés manuellement :
         </p>
       </header>
-      {uniqueSubscriptions.map((subscription: any) => {
+      {subscriptions.map((subscription) => {
         return (
-          <div className="" key={subscription.appointmentId}>
+          <div className="" key={subscription.product.id}>
             <div className="flex items-center justify-between  pt-8  text-sm lg:pt-10">
               <p className="">
-                Status : <span className="text-green-500">active</span>{" "}
+                Status :{" "}
+                <span className="text-green-500">{subscription.status}</span>{" "}
               </p>
               <p className="text-red-500">Annuler forfait</p>
             </div>
@@ -54,7 +47,7 @@ export async function ForfaitCard() {
               </div>
               <div className="  w-full flex-1  text-center lg:text-left">
                 <h1 className=" text-xl font-semibold  lg:text-3xl">
-                  {subscription.services[0]}
+                  {subscription.product.name}
                 </h1>
                 <div className="mb-4 mt-2 space-y-1 lg:space-y-2">
                   <p className="text:lg text-sm    ">
@@ -63,9 +56,7 @@ export async function ForfaitCard() {
 
                   <p className="text:lg text-sm   ">
                     Prochien rendez-vous:{" "}
-                    <span>
-                      {subscription.date} {subscription.time}
-                    </span>{" "}
+                    <span>{/* {subscription.date} {subscription.time} */}</span>{" "}
                   </p>
                 </div>
 

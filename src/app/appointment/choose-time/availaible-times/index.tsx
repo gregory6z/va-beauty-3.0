@@ -7,7 +7,7 @@ import { useTransition } from "react"
 
 import { usePathname, useRouter } from "next/navigation"
 import { ChangeDateAppointment } from "@/app/api/changeAppointmentDate"
-import { DialogClose } from "@/components/ui/dialog"
+// import { DialogClose } from "@/components/ui/dialog"
 
 interface TimeSlot {
   time: string
@@ -81,7 +81,7 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
 
   return (
     <div className="flex flex-wrap justify-center">
-      <DialogClose>
+      <div>
         {activeTimes.map((slot, index) => (
           <Button
             disabled={isPending}
@@ -92,7 +92,7 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
             {slot.time}
           </Button>
         ))}
-      </DialogClose>
+      </div>
     </div>
   )
 }

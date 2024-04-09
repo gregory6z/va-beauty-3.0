@@ -8,6 +8,7 @@ export async function DeconnectionButtonAction() {
   cookies().delete("@VaBeauty:date")
   cookies().delete("@VaBeauty:totalDuration")
   cookies().delete("@VaBeauty:totalPrice")
+  cookies().delete("@VaBeauty:costumerId")
 
   redirect("/")
 }
