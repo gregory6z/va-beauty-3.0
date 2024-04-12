@@ -60,8 +60,6 @@ export async function EditProfil({
 
   const { accessToken } = await response.json()
 
-  console.log(accessToken)
-
   if (!password && (name || email || telephone || customerId)) {
     cookies().set("@VaBeauty:token", String(accessToken), {
       httpOnly: true,
