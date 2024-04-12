@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FetchSubscriptions } from "@/app/api/fetch-subscriptions"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export interface Subscription {
@@ -16,8 +15,8 @@ export async function ForfaitCard() {
   return (
     <div className="mt-[20rem] flex h-full w-full flex-col border-t-[28px] border-zinc-300 border-t-zinc-900 bg-white p-6 pb-10 lg:mx-auto lg:mt-40 lg:max-w-[1080px] lg:p-10   ">
       <header className="lg:max-w-[600px] ">
-        <h1 className="text-2xl font-semibold lg:text-4xl">Mes Forfaits</h1>
-        <p className="mx-auto mt-4  text-zinc-900/60 ">
+        <h1 className="text-2xl font-semibold lg:text-3xl">Mes Forfaits</h1>
+        <p className="mx-auto mt-4  text-zinc-900/60 lg:text-lg ">
           Les forfaits sont définis automatiquement en fonction du choix du
           premier jour, mais peuvent être modifiés manuellement :
         </p>
@@ -33,39 +32,28 @@ export async function ForfaitCard() {
               <p className="text-red-500">Annuler forfait</p>
             </div>
             {/* <div className="">Problema no pagamento</div> */}
-            <div className="mx-auto flex w-full flex-col gap-4  pt-6 lg:flex-row  lg:gap-10  ">
-              <div className="mx-auto h-[200px] w-[200px] shrink bg-zinc-300 lg:mx-0">
+            <div className="mx-auto flex  w-full flex-col gap-4  pt-6 lg:flex-row  lg:gap-10  ">
+              <div className="mx-auto h-[240px] w-[240px] shrink bg-zinc-300 lg:mx-0">
                 <Image
                   src={""}
-                  width={200}
-                  height={200}
+                  width={300}
+                  height={300}
                   className="h-full w-full object-cover"
                   alt={""}
                 ></Image>
               </div>
-              <div className="  w-full flex-1  text-center lg:text-left">
-                <h1 className=" text-xl font-semibold  lg:text-3xl">
+              <div className=" h-full w-full text-center  lg:mt-4  lg:h-[200px] lg:text-left">
+                <h1 className=" text-2xl font-semibold  lg:text-2xl">
                   {subscription.product.name}
                 </h1>
-                <div className="mb-4 mt-2 space-y-1 lg:space-y-2">
-                  <p className="text:lg text-sm    ">
-                    Seances: <span>2/mois</span>{" "}
-                  </p>
+                <p className=" mt-4 text-pretty text-left text-base text-zinc-900/60 lg:mt-2">
+                  {subscription.product.description}
+                </p>
+                <p className="text:lg mt-4   ">Prochien rendez-vous: </p>
 
-                  <p className="text:lg text-sm   ">
-                    Prochien rendez-vous:{" "}
-                    <span>{/* {subscription.date} {subscription.time} */}</span>{" "}
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Button variant="ghost" className="py-5 text-base">
-                    Changer la date du prochien rendez-vous
-                  </Button>
-                  <Button className="py-5 text-base">
-                    Changer la date mensuelle
-                  </Button>
-                </div>
+                <p className="mt-4 text-xl font-semibold ">
+                  Mardi 26/04/2023 à 14:00
+                </p>
               </div>
             </div>
           </div>

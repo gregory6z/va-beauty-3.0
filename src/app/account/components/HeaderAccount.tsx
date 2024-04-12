@@ -4,6 +4,9 @@ import { CalendarCheck, UserRoundCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DeconnectionButtonAction } from "./DeconnectionButtonAction"
 import { cookies } from "next/headers"
+import { HeaderCardSkeleton } from "../skeletons/HeaderCardSkeleton"
+
+import { Suspense } from "react"
 
 export function HeaderAccount() {
   const session = cookies().get("@VaBeauty:session")?.value
@@ -36,20 +39,24 @@ export function HeaderAccount() {
 
         <div className="-bottom-[125px] mx-auto mt-8 grid w-full grid-cols-1 gap-4 lg:absolute lg:-bottom-[125px] lg:mt-0 lg:grid-cols-2 lg:gap-8">
           <Link href="/account/appointments-history">
-            <HeaderCard
-              IconComponent={CalendarCheck}
-              title="Mes rendez-vous"
-              description="Mon historique de rendez-vous et mes rendez-vous à venir."
-              buttonUnderline="Voir mes rendez-vous"
-            ></HeaderCard>
+            <Suspense fallback={<HeaderCardSkeleton />}>
+              <HeaderCard
+                IconComponent={CalendarCheck}
+                title="Mes rendez-vous"
+                description="Mon historique de rendez-vous et mes rendez-vous à venir et changements de dates."
+                buttonUnderline="Voir mes rendez-vous"
+              ></HeaderCard>
+            </Suspense>
           </Link>
           <Link href={"/account/edit-profil"}>
-            <HeaderCard
-              IconComponent={UserRoundCheck}
-              title="Mes information"
-              description="Pour mettre à jour mon identité, mon mot de passe et mes moyens de contact."
-              buttonUnderline="Mettre à jour mes informations"
-            ></HeaderCard>
+            <Suspense fallback={<HeaderCardSkeleton />}>
+              <HeaderCard
+                IconComponent={UserRoundCheck}
+                title="Mes information"
+                description="Pour mettre à jour mon identité, mon mot de passe et mes moyens de contact."
+                buttonUnderline="Mettre à jour mes informations"
+              ></HeaderCard>
+            </Suspense>
           </Link>
         </div>
       </div>

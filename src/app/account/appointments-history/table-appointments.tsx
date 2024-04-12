@@ -7,7 +7,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { AppointmentHistoryForm } from "./appointments-history-form"
-import { ReactNode } from "react"
+import { ReactNode, Suspense } from "react"
+import { AppointmentHistoryFormSkeleton } from "./appointments-history-form-skeleton"
 export interface Appointment {
   appointmentId: string
   date: string
@@ -63,12 +64,17 @@ export function TableAppointments({
         ) : (
           appointments.map((appointment: Appointment) => {
             return (
-              <AppointmentHistoryForm
-                appointment={appointment}
+              <Suspense
+                fallback={<AppointmentHistoryFormSkeleton />}
                 key={appointment.appointmentId}
               >
-                {children}
-              </AppointmentHistoryForm>
+                <AppointmentHistoryForm
+                  appointment={appointment}
+                  key={appointment.appointmentId}
+                >
+                  {children}
+                </AppointmentHistoryForm>
+              </Suspense>
             )
           })
         )}
