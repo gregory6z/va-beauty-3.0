@@ -27,7 +27,7 @@ export default function Loading() {
                   {Array(7)
                     .fill(null)
                     .map((_, index) => (
-                      <th key={index} className="border p-4 ">
+                      <th key={index} className=" p-4 ">
                         <div className="p-2 text-center">
                           <Skeleton className=" w-30 h-12"></Skeleton>
                         </div>
@@ -40,7 +40,7 @@ export default function Loading() {
                   {Array(7)
                     .fill(null)
                     .map((_, index) => (
-                      <td key={index} className="border p-6 align-top">
+                      <td key={index} className=" p-6 align-top">
                         <div className="flex flex-col gap-4">
                           {Array(10)
                             .fill(null)

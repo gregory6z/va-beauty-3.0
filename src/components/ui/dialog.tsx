@@ -1,4 +1,5 @@
 "use client"
+import { parseCookies } from "nookies"
 
 import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
@@ -37,12 +38,14 @@ const DialogContent = React.forwardRef<
   const [isOpen, setIsOpen] = React.useState(false)
   const { removeAppointmentAndDate } = useAppointmentStore()
 
+  const { dialogOpen } = parseCookies()
+
   React.useEffect(() => {
     if (!isOpen) {
-      // O código aqui será executado quando o diálogo fechar
       removeAppointmentAndDate()
+      setIsOpen(dialogOpen === "true")
     }
-  }, [isOpen, removeAppointmentAndDate])
+  }, [isOpen, removeAppointmentAndDate, dialogOpen])
 
   return (
     <DialogPortal>

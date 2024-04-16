@@ -1,5 +1,7 @@
 import { getData, splitArray } from "@/app/appointment/choose-time/page"
 import { Button } from "@/components/ui/button"
+import { parseCookies } from "nookies"
+
 import {
   Dialog,
   DialogClose,

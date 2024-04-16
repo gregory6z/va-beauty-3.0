@@ -8,6 +8,7 @@ import { Stripe } from "stripe"
 interface SubscriptionStatus {
   status: Stripe.Subscription.Status
   product: Stripe.Product
+  id: string
 }
 
 export async function FetchSubscriptions(): Promise<SubscriptionStatus[]> {
@@ -28,6 +29,7 @@ export async function FetchSubscriptions(): Promise<SubscriptionStatus[]> {
       const productId = subscription.items.data[0].price.product
       const product = await stripe.products.retrieve(productId as string)
       return {
+        id: subscription.id,
         status: subscription.status,
         product,
       }

@@ -53,6 +53,7 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
       const asyncAction = async () => {
         startTransition(() => {
           ChangeDateAppointment({ appointmentId, date: newDate })
+          setCookie(null, "dialogOpen", "false", {}) // Fechar o Dialog após a chamada de dados
         })
       }
 
@@ -87,7 +88,7 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
             disabled={isPending}
             key={index}
             onClick={() => handleTimeSlotClickandCheckOut(slot.day, slot.time)}
-            className="m-2 w-full border border-gray-200 bg-zinc-200 py-2 text-base text-black hover:bg-black hover:text-white"
+            className="m-2 w-full border border-gray-200 bg-zinc-200 py-2 text-base text-black hover:bg-black hover:text-white disabled:bg-zinc-300"
           >
             {slot.time}
           </Button>

@@ -18,9 +18,9 @@ export function HeaderAccount() {
   return (
     <header className="  h-[15rem]  w-full bg-[#020202] px-[1.5rem] lg:h-[20rem]  ">
       <div className="relative mx-auto flex h-full w-full flex-col lg:max-w-[1080px]">
-        <div className=" flex h-full  w-full   pt-12   lg:justify-between   ">
+        <div className=" flex h-full  w-full pt-12   lg:justify-between   lg:pt-20   ">
           <div className="flex flex-col gap-2   ">
-            <h1 className=" text-pretty text-xl  capitalize text-gray-100 sm:text-3xl   lg:text-4xl">
+            <h1 className=" text-pretty  text-xl capitalize text-gray-100 sm:text-3xl   lg:text-4xl">
               Bonjour {name}
             </h1>
             <h3 className=" text-pretty  text-base text-gray-100   lg:text-2xl">

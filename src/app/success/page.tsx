@@ -42,7 +42,7 @@ export default async function Success({
 
   return (
     <div>
-      <h1>Success</h1>
+      <h1>Sucess</h1>
     </div>
   )
 }
