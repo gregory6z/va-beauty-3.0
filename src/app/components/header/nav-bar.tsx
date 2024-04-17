@@ -1,31 +1,32 @@
 import { cookies } from "next/headers"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import NavLink from "./nav-link"
 
 export function NavBar() {
   const tokenAuthentication = cookies().get("@VaBeauty:token")?.value
 
   return (
-    <div className=" mt-20 flex h-full w-full flex-col justify-between  text-xl lg:mx-auto lg:mt-0 lg:max-w-[1216px] lg:flex-row lg:px-8 lg:text-lg xl:max-w-[1256px] xl:px-0">
-      <nav className="z-20 flex h-full w-full flex-col items-center gap-8  text-zinc-100 lg:flex-row">
-        <Link className="pointer" href="/">
-          Accueil
-        </Link>
-        <Link className="pointer" href="/sourcils">
-          Sourcils
-        </Link>
-        <Link className="pointer" href="/levres">
-          Levres
-        </Link>
-        <Link className="pointer" href="/forfaits">
-          Forfaits
-        </Link>
+    <div className=" mt-20 flex h-full w-full flex-col text-xl   lg:mx-auto lg:mt-0 lg:max-w-[1216px] lg:flex-row lg:justify-between lg:px-8 lg:text-lg xl:max-w-[1256px] xl:px-0">
+      <nav className="z-20 flex h-full w-full flex-1 flex-col items-center gap-6  text-zinc-100 lg:flex-row">
+        <NavLink className="  " href="/">
+          <span className="">Accueil</span>
+        </NavLink>
+        <NavLink className="pointer" href="/sourcils">
+          <span>Sourcils</span>
+        </NavLink>
+        <NavLink className="pointer" href="/levres">
+          <span>Levres</span>
+        </NavLink>
+        <NavLink className="pointer" href="/forfaits">
+          <span>Forfait</span>
+        </NavLink>
       </nav>
-      <nav className="z-20 flex h-full flex-col items-center gap-8 text-zinc-100 lg:flex-row">
+      <nav className="z-20 mt-20 flex h-full flex-col items-center gap-8 text-zinc-100 lg:mt-0 lg:flex-row">
         {tokenAuthentication ? (
-          <Link href="/account" className="whitespace-nowrap	">
-            Mon Espace
-          </Link>
+          <NavLink href="/account" className="whitespace-nowrap	">
+            <span>Mon Espace</span>
+          </NavLink>
         ) : (
           <Link className="pointer" href="/sign-in">
             Connecter

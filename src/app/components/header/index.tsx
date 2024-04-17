@@ -3,8 +3,6 @@ import { DrawerMenu } from "./drawer-menu"
 import { NavBar } from "./nav-bar"
 
 export function Header() {
-  // Recuperar o token de autenticação diretamente
-
   return (
     <div className="relative h-full w-full">
       <div className="sticky  top-0 z-[1000] h-[4rem] w-full border-b border-b-zinc-800 bg-zinc-950 lg:h-[5rem]">
