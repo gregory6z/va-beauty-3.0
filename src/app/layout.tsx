@@ -26,7 +26,7 @@ export default async function RootLayout({
   const { services } = await FetchServices()
   return (
     <html lang="en">
-      <body className={` ${montserrat.variable} font-sans `}>
+      <body className={` ${montserrat.variable} bg-[#09090B] font-sans `}>
         <StoreInitializer allServices={services} />
         <Header />
         <Toaster
