@@ -33,7 +33,7 @@ export function HeaderProvider({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={` sticky left-0 top-0 z-50 flex h-[4rem]  w-full   items-center border-b border-solid border-gray-800  duration-700 ease-in-out   lg:h-[5rem]  ${
+      className={` sticky left-0 top-0 z-[100] flex h-[4rem]  w-full   items-center border-b border-solid border-gray-800  duration-700 ease-in-out   lg:h-[5rem]  ${
         isHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
       }`}
     >

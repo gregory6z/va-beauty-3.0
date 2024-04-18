@@ -17,6 +17,7 @@ export default function Services({ params }: ParamsProps) {
   return (
     <div className="bg-zinc-200">
       <Banner category={category} image={`/${params.services}-1.png`}></Banner>
+
       <ServicesContainer category={category}></ServicesContainer>
       <Comments comments={CommentsHome}></Comments>
       <Offers />
