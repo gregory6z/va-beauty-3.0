@@ -66,7 +66,7 @@ export function ServiceCard({
               ></Image>
             </div>
 
-            <Button size="xl" className=" ">
+            <Button size="xl" className=" w-full lg:w-[300px]  ">
               Reserver maintenant
             </Button>
           </div>
