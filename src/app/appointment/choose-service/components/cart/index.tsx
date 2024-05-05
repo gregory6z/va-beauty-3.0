@@ -4,7 +4,7 @@ import { useServiceStore } from "@/app/stores/Services"
 import { CartItem } from "./CartItem"
 import useStore from "@/app/stores/use-store"
 import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Check, Euro } from "lucide-react"
 import Image from "next/image"
 import dayjs from "dayjs"
@@ -27,11 +27,16 @@ export function Cart() {
 
   const router = useRouter()
 
+  const pathname = usePathname()
+
   // Verifica se o array de serviços está vazio
   const isCartEmpty = services.length === 0
 
   return (
-    <div className="mt-4 flex  h-full w-full flex-col   bg-white  p-8">
+    <div
+      className={`mt-4 flex h-full w-full flex-col bg-white ${pathname === "/appointment/choose-service" ? "p-8" : ""}`}
+    >
+      {" "}
       <header className="mb-2">
         <p className="text-lg font-bold">Panier</p>
       </header>

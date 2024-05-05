@@ -20,6 +20,7 @@ export type ServiceState = {
   allServices: Service[]
   totalDuration: number
   totalPrice: number
+  servicesLength: number
 }
 
 export type ServiceActions = {
@@ -78,6 +79,7 @@ const getCartItemsAndTotalsFromCookies = (): {
 export const useServiceStore = create<ServiceStore>((set, get) => ({
   services: getCartItemsAndTotalsFromCookies().services, // Inicialize os serviços com os itens do carrinho dos cookies
   allServices: [],
+  servicesLength: getCartItemsAndTotalsFromCookies().services.length,
   totalDuration: getCartItemsAndTotalsFromCookies().totalDuration,
   totalPrice: getCartItemsAndTotalsFromCookies().totalPrice,
   addToCart: (service) =>

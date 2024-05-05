@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Offers } from "../(Home)/components/Offers"
 import { Banner } from "../components/banner"
+import { SheetCart } from "../components/cart-fixed"
 import { Comments } from "../components/comments"
 import { CommentsHome } from "../components/comments/comments"
 import { ServicesContainer } from "../components/services-container"
@@ -21,6 +22,7 @@ export default function Services({ params }: ParamsProps) {
       <ServicesContainer category={category}></ServicesContainer>
       <Comments comments={CommentsHome}></Comments>
       <Offers />
+      <SheetCart />
     </div>
   )
 }
