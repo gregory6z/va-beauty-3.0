@@ -19,7 +19,7 @@ export function NavBar() {
           <span>Levres</span>
         </NavLink>
         <NavLink className="pointer" href="/forfaits">
-          <span>Forfait</span>
+          <span>Forfaits</span>
         </NavLink>
       </nav>
       <nav className="z-20 mt-20 flex h-full flex-col items-center gap-8 text-zinc-100 lg:mt-0 lg:flex-row">

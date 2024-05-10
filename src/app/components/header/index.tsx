@@ -7,7 +7,7 @@ export function Header() {
   return (
     <HeaderProvider>
       <div className="relative h-full w-full">
-        <div className="sticky  top-0 z-[30] h-[4rem] w-full border-b border-b-zinc-800 bg-zinc-950 lg:h-[5rem]">
+        <div className="sticky  top-0 z-[30] h-[4rem] w-full border-b border-b-zinc-800 bg-zinc-950 lg:h-[6rem]">
           <div className="absolute inset-0 flex  items-center px-[1.5rem] lg:justify-center xl:px-0">
             <Link
               href="/"

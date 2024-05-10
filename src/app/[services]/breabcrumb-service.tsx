@@ -12,7 +12,9 @@ import { usePathname } from "next/navigation"
 export function BreadcrumbService() {
   const pathname = usePathname()
 
-  const service = usePathname().replace(/\//g, "")
+  const service = pathname.split("/")[1] || ""
+
+  const linkBreadcrumb = "/" + service
 
   return (
     <Breadcrumb>
@@ -22,7 +24,7 @@ export function BreadcrumbService() {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href={pathname} className="capitalize">
+          <BreadcrumbLink href={linkBreadcrumb} className="capitalize">
             {service}
           </BreadcrumbLink>
         </BreadcrumbItem>

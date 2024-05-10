@@ -18,9 +18,9 @@ export const CommentsHomeSecondPart = [
     image: "/natacha.png",
   },
   {
-    name: "Lanna Medeiros",
+    name: "--/--",
     content: `Après une séance d'hydratation des lèvres, ma bouche est plus hydratée que jamais ! La sensation est incroyable et les résultats sont visibles immédiatement. Valesca sait vraiment comment rendre mes lèvres douces et hydratées, tout en offrant une expérience relaxante et revigorante. C'est comme un traitement spa pour les lèvres ! Je suis absolument enchantée par le résultat et je vais certainement revenir pour plus de séances d'hydratation avec Valesca.`,
-    image: "/lanna.jpeg",
+    image: "/--/--.png",
   },
 ]
 export const CommentsHome = [

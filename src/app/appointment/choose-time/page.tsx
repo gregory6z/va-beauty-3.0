@@ -33,25 +33,25 @@ export async function getData() {
 export default async function ChooseTime() {
   const data: Appointment[] = await getData()
 
-  const newArray = splitArray(data)
+  const ArrayOfAppointments = splitArray(data)
 
   return (
     <div className="h-full w-full bg-zinc-200 pb-20 lg:min-h-screen lg:pb-40 ">
       <div className="flex flex-col lg:mx-auto lg:max-w-[1080px] lg:px-[2rem] ">
-        <header className=" mt-16  flex flex-col gap-1  bg-zinc-200 px-[1.5rem] lg:top-[9rem] lg:px-0">
-          <h1 className="font-semibold text-zinc-900 lg:text-xl">
+        <header className=" mt-10 flex flex-col  gap-1 bg-zinc-200 px-[1.5rem]  lg:top-[9rem] lg:mt-16  lg:px-0">
+          <h1 className="text-xl font-semibold text-zinc-900 lg:text-xl">
             Réservez votre rendez-vous et faites le premier pas vers votre
             bien-être !
           </h1>
-          <p className=" text-zinc-900/60">
+          <p className=" mt-3 text-zinc-900/60 lg:mt-0">
             Sélection de l'heure et de la date:
           </p>
           <div className=" h-4 w-full bg-zinc-200"></div>
         </header>
 
         <div className="h-full w-[full] lg:min-h-screen">
-          <WeekTable data={newArray}></WeekTable>
-          <WeekAccordion data={newArray}></WeekAccordion>
+          <WeekTable data={ArrayOfAppointments}></WeekTable>
+          <WeekAccordion data={ArrayOfAppointments}></WeekAccordion>
         </div>
         {/* <div className="mb-20 flex flex-col gap-14 lg:gap-4 "></div> */}
 

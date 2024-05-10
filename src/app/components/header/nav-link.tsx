@@ -23,7 +23,7 @@ const NavLink = ({ href, children, className }: navLinkProps) => {
   return (
     <Link href={href}>
       {React.cloneElement(children, {
-        className: `${className} pointer flex lg:h-[5.1rem] w-full items-center   lg:px-2`,
+        className: `${className} pointer flex lg:h-[6.1rem] w-full items-center   lg:px-2`,
       })}
     </Link>
   )

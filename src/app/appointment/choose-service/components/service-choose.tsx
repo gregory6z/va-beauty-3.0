@@ -61,7 +61,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
                 className=" flex animate-fadeIn flex-col justify-between  border-b border-zinc-200 bg-white px-[1.5rem] py-4 shadow-sm transition-all hover:bg-zinc-50 sm:flex-row sm:p-4 lg:flex lg:items-center "
               >
                 <div className="">
-                  <h2 className=" font-semibold sm:max-w-none">
+                  <h2 className=" text-lg font-semibold sm:max-w-none">
                     {service.name}
                   </h2>
                   <p className="flex items-center  gap-3 text-sm text-gray-900/60 ">

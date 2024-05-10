@@ -34,13 +34,13 @@ export function Cart() {
 
   return (
     <div
-      className={`mt-4 flex h-full w-full flex-col bg-white ${pathname === "/appointment/choose-service" ? "p-8" : ""}`}
+      className={`mt-4 flex h-full w-full flex-col bg-white ${pathname === "/appointment/choose-service" ? "lg:p-8" : ""}`}
     >
       {" "}
       <header className="mb-2">
         <p className="text-lg font-bold">Panier</p>
       </header>
-      <div className="flex h-full flex-col overflow-auto " ref={parent}>
+      <div className="flex h-full flex-col  overflow-auto  " ref={parent}>
         {services.map((service) => {
           return (
             <CartItem

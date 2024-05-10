@@ -18,7 +18,7 @@ export default async function SignOut() {
       <div className=" w-full">
         <div className="flex h-full w-full items-center   lg:max-w-[calc(1216px/2)] xl:max-w-[calc(1256px/2)]">
           <div className=" lg:mx-auto lg:px-16">
-            <div className="mb-10 flex flex-col gap-2">
+            <div className="mb-2 flex flex-col gap-2">
               <h1 className="text-3xl font-semibold">Créer un compte</h1>
               <p className="text-pretty text-zinc-900/60">
                 Remplissez tous les champs pour créer un compte.

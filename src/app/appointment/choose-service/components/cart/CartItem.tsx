@@ -15,7 +15,7 @@ export function CartItem({ name, price, serviceId }: CartItemProps) {
   const { removeFromCart, updateTotals } = useServiceStore()
 
   return (
-    <div className=" flex  h-[50px]  flex-row items-center justify-between border-b border-zinc-200 bg-white p-2 text-sm transition-all hover:bg-zinc-50">
+    <div className=" lg:-[50px] flex h-[80px] flex-row  items-center  justify-between border-b border-zinc-200 bg-white p-2 text-sm transition-all hover:bg-zinc-50">
       <p className="text-semibold">{name}</p>
       <div className="flex items-center gap-2">
         <p className="flex text-lg">

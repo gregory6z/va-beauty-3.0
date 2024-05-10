@@ -20,7 +20,9 @@ export default function Home() {
       <VideoContainer></VideoContainer>
       <ServicesHome></ServicesHome>
       <Offers />
+
       <Comments comments={CommentsHomeFirstPart}></Comments>
+
       <AboutMe></AboutMe>
       <Comments comments={CommentsHomeSecondPart}></Comments>
       <Footer></Footer>

@@ -2,7 +2,10 @@ import { Offers } from "@/app/(Home)/components/Offers"
 
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"
-import { FetchServices, Service } from "@/app/components/fetch-services"
+import { FetchServices } from "@/app/components/fetch-services"
+import { BreadcrumbService } from "../breabcrumb-service"
+import { SheetCart } from "@/app/components/cart-fixed"
+import { ButtonAddToCart } from "@/app/components/services-container/components/ButtonAddToCart"
 
 const MarkdownText = `
 ## Passo 1: Consulta inicial  
@@ -35,13 +38,17 @@ interface ServiceProps {
 export default async function Service({ params }: ServiceProps) {
   const { services } = await FetchServices()
 
-  const ServiceItem: Service[] = services.filter((service) => {
+  const ServiceItem = services.filter((service) => {
     return service.id === String(params.slug)
   })
 
   return (
-    <div className="h-full min-h-screen w-full">
-      <header className="mx-auto mt-20 flex h-full max-w-[900px] flex-col px-[1.5rem] lg:flex-row lg:gap-20 lg:px-0 ">
+    <div className="h-full min-h-screen w-full bg-white">
+      <SheetCart />
+      <div className="mx-auto px-[1.5rem] pt-8  lg:max-w-[900px] lg:px-0 lg:pt-12">
+        <BreadcrumbService />
+      </div>
+      <header className="mx-auto flex h-full max-w-[900px] flex-col px-[1.5rem] pt-10 lg:flex-row lg:gap-10 lg:px-0 ">
         <div className=" h-[250px] lg:h-[450px] lg:w-[450px]">
           {ServiceItem.map((service) => {
             return (
@@ -56,6 +63,7 @@ export default async function Service({ params }: ServiceProps) {
             )
           })}
         </div>
+
         <div className=" flex h-full flex-col justify-between lg:min-h-[450px]">
           {ServiceItem.map((service) => {
             return (
@@ -69,11 +77,12 @@ export default async function Service({ params }: ServiceProps) {
                 <p className="lg:mt-2 lg:text-xl">
                   Duration {service.duration} minutes
                 </p>
-                <div className=" flex h-full flex-col justify-center">
-                  <p className="my-4 text-6xl lg:my-12">€ {service.price},00</p>
-                  <button className="  bg-black px-12 py-4 text-lg text-gray-100">
-                    Reserver maintenant
-                  </button>
+                <div className=" 0 my-4 flex h-full flex-col justify-center lg:my-0 lg:max-w-[300px]">
+                  <p className="my-4 text-4xl lg:my-12 lg:text-6xl">
+                    € {service.price},00
+                  </p>
+
+                  <ButtonAddToCart service={service} />
                 </div>
               </div>
             )
