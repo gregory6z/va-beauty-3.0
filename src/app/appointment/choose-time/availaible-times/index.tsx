@@ -7,6 +7,7 @@ import { useTransition } from "react"
 
 import { usePathname, useRouter } from "next/navigation"
 import { ChangeDateAppointment } from "@/app/api/changeAppointmentDate"
+import { toast } from "sonner"
 // import { DialogClose } from "@/components/ui/dialog"
 
 interface TimeSlot {
@@ -24,12 +25,10 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
   const pathname = usePathname()
 
   const [isPending, startTransition] = useTransition()
-
+  const router = useRouter()
   const cookies = parseCookies()
 
   const appointmentId = cookies["@VaBeauty:appointmentId"]
-
-  const router = useRouter()
 
   const handleTimeSlotClickandCheckOut = async (day: Date, time: string) => {
     const [hours, minutes] = time.split(":").map(Number)
@@ -53,7 +52,8 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
       const asyncAction = async () => {
         startTransition(() => {
           ChangeDateAppointment({ appointmentId, date: newDate })
-          setCookie(null, "dialogOpen", "false", {}) // Fechar o Dialog após a chamada de dados
+          setCookie(null, "dialogOpen", "false", {})
+          toast.success("Date modifiée avec succès")
         })
       }
 

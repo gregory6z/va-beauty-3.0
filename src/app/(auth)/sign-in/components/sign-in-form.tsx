@@ -8,6 +8,8 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
+import { useSearchParams } from "next/navigation"
+
 import {
   Form,
   FormControl,
@@ -16,19 +18,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { useState, useTransition } from "react"
+import { useTransition } from "react"
 
-import { useSearchParams } from "next/navigation"
 import { AuthenticateAccount } from "@/app/api/authenticate"
+
+import { toast } from "sonner"
 
 const signInSchema = z.object({
   email: z
     .string()
 
-    .email({ message: "Por favor, insira um endereço de e-mail válido." }),
-  password: z
-    .string()
-    .min(4, { message: "A senha deve ter no mínimo 4 caracteres." }),
+    .email({ message: "Veuillez entrer une adresse e-mail valide." }),
+  password: z.string().min(4, {
+    message: "Le mot de passe doit comporter au moins 4 caractères.",
+  }),
 })
 
 export type SignInSchema = z.infer<typeof signInSchema>
@@ -45,8 +48,6 @@ export function SignInForm() {
     },
   })
 
-  const [error, setError] = useState("")
-
   const [isPending, startTransition] = useTransition()
 
   async function onSubmit(values: z.infer<typeof signInSchema>) {
@@ -54,20 +55,19 @@ export function SignInForm() {
       startTransition(async () => {
         const response = await AuthenticateAccount(values)
         if (response.success) {
-          // router.push(`/sign-in?email=${encodeURIComponent(values.email)}`)
+          toast.success("Connexion réussie")
         }
-        if (response.message) {
-          setError(response.message)
-        } else {
-          setError(
-            "Ocorreu um erro ao criar a conta. Por favor, tente novamente.",
-          )
-          // router.push("/account")
+
+        if (response.message && !response.success) {
+          toast.error(response.message)
         }
       })
     } catch (error) {
+      if (error) {
+        toast.error("Erreur lors de la connexion")
+      }
       console.error(error)
-      setError("Ocorreu um erro ao criar a conta. Por favor, tente novamente.")
+      // setError("Ocorreu um erro ao criar a conta. Por favor, tente novamente.")
     }
   }
 
@@ -86,7 +86,12 @@ export function SignInForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input {...field} type="email" placeholder="email@email.com" />
+                <Input
+                  required
+                  {...field}
+                  type="email"
+                  placeholder="email@email.com"
+                />
               </FormControl>
 
               <FormMessage />
@@ -104,6 +109,7 @@ export function SignInForm() {
                   {...field}
                   type="password"
                   placeholder="votre mot de passe"
+                  required
                 />
               </FormControl>
 
@@ -115,7 +121,7 @@ export function SignInForm() {
           Mot de passe oublié ?
         </p>
 
-        <p className=" text-red-500"> {error}</p>
+        {/* <p className=" text-red-500"> {error}</p> */}
 
         <Button
           size="lg"

@@ -11,7 +11,9 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { useState, useTransition } from "react"
+import { toast } from "sonner"
+
+import { useTransition } from "react"
 import {
   Form,
   FormControl,
@@ -49,8 +51,6 @@ export function SignOutForm() {
 
   const router = useRouter()
 
-  const [error, setError] = useState("")
-
   const [isPending, startTransition] = useTransition()
 
   // const router = useRouter()
@@ -77,22 +77,20 @@ export function SignOutForm() {
         const response = await CreateAccount(values)
 
         if (response.success) {
-          router.push(`/sign-in?email=${encodeURIComponent(values.email)}`)
+          toast.success("Compte créé avec succès")
+          setTimeout(() => {
+            router.push(`/sign-in?email=${encodeURIComponent(values.email)}`)
+          }, 500)
         }
 
-        if (response.message) {
-          setError(response.message)
-        } else {
-          setError(
-            "Ocorreu um erro ao criar a conta. Por favor, tente novamente.",
-          )
-
-          // router.push("/account")
+        if (response.message && !response.success) {
+          toast.error(response.message)
         }
       })
-    } catch (error) {
-      console.error(error)
-      setError("Ocorreu um erro ao criar a conta. Por favor, tente novamente.")
+    } catch {
+      toast.error(
+        "Ocorreu um erro ao criar a conta. Por favor, tente novamente.",
+      )
     }
   }
 
@@ -191,8 +189,6 @@ export function SignOutForm() {
             </FormItem>
           )}
         />
-
-        <p className="text-red-500"> {error}</p>
 
         <Button
           size="lg"

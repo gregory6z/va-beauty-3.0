@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useTransition } from "react"
 import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
 import { setCookie } from "nookies"
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion"
 import { useAutoAnimate } from "@formkit/auto-animate/react"
 import { Button } from "@/components/ui/button"
+import { actionChecout } from "../action"
 
 dayjs.locale("fr")
 
@@ -24,6 +25,9 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
   data,
 }) => {
   const [parent] = useAutoAnimate()
+
+  const [isPending, startTransition] = useTransition()
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [openItem, setOpenItem] = useState<string | null>(null)
   const [visibleTimes, setVisibleTimes] = useState<number[]>(
@@ -58,6 +62,10 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
       maxAge: 30 * 24 * 60 * 60, // 30 dias de validade
       path: "/", // caminho raiz
     })
+
+    startTransition(() => {
+      actionChecout()
+    })
   }
 
   return (
@@ -86,6 +94,7 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
                   .slice(0, Math.max(visibleTimes[dayIndex], 9)) // Garante que sempre haverá no mínimo 9 horários visíveis
                   .map((slot, slotIndex) => (
                     <button
+                      disabled={isPending}
                       key={slotIndex}
                       onClick={() =>
                         handleTimeSlotClick(

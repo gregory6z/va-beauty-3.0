@@ -5,7 +5,7 @@ import { Montserrat } from "next/font/google"
 import { Header } from "./components/header"
 import { StoreInitializer } from "./stores/store.initializer"
 import { FetchServices } from "./components/fetch-services"
-import { Toaster } from "react-hot-toast"
+import { Toaster } from "sonner"
 
 export const metadata: Metadata = {
   title: " Create Next App",
@@ -29,13 +29,7 @@ export default async function RootLayout({
       <body className={` ${montserrat.variable} bg-[#09090B] font-sans `}>
         <StoreInitializer allServices={services} />
         <Header />
-        <Toaster
-          position="top-right"
-          containerStyle={{
-            right: 100,
-            top: 100,
-          }}
-        />
+        <Toaster richColors className="mb-10 lg:mb-10" duration={1500} />
 
         {children}
       </body>

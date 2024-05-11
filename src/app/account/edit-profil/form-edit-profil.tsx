@@ -18,6 +18,7 @@ import { useTransition } from "react"
 import { EditProfil } from "@/app/api/editProfil"
 
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export interface FormEditProps {
   name?: string
@@ -59,8 +60,11 @@ export function FormEditProfil({ name, email, telephone }: FormEditProps) {
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(() => {
       EditProfil(values)
+      toast.success("Profil mis à jour")
+      setTimeout(() => {
+        router.push("/account")
+      }, 500)
     })
-    router.push("/account")
   }
 
   return (

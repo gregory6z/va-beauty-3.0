@@ -1,12 +1,12 @@
 import Link from "next/link"
 import { HeaderCard } from "./HeaderCard"
 import { CalendarCheck, UserRoundCheck } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { DeconnectionButtonAction } from "./DeconnectionButtonAction"
 import { cookies } from "next/headers"
 import { HeaderCardSkeleton } from "../skeletons/HeaderCardSkeleton"
 
 import { Suspense } from "react"
+import { ButtonDisconnect } from "./ButtonDisconect"
 
 export function HeaderAccount() {
   const session = cookies().get("@VaBeauty:session")?.value
@@ -28,12 +28,14 @@ export function HeaderAccount() {
             </h3>
           </div>
           <form action={DeconnectionButtonAction}>
-            <Button
+            {/* <Button
               variant="link"
               className=" hidden text-lg text-rose-400 lg:block"
             >
               Déconnexion
             </Button>
+          </form> */}
+            <ButtonDisconnect />
           </form>
         </div>
 

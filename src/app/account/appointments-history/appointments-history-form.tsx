@@ -2,6 +2,7 @@
 
 import { useAppointmentStore } from "@/app/stores/appointments"
 import { TableCell, TableRow } from "@/components/ui/table"
+import { isBefore, add } from "date-fns"
 
 export interface Appointment {
   appointmentId: string
@@ -36,10 +37,13 @@ export function AppointmentHistoryForm({
     return result.trim()
   }
 
-  const futureDate = new Date()
-  futureDate.setHours(futureDate.getHours() + 24)
+  console.log(appointment.dateTime.toString())
 
-  const isLessThan24Hours = new Date(appointment.date) < futureDate
+  const currentDate = new Date()
+  currentDate.setHours(0, 0, 0, 0)
+
+  const now = new Date()
+  const tomorrow = add(now, { days: 1 })
 
   return (
     <TableRow
@@ -62,7 +66,14 @@ export function AppointmentHistoryForm({
         {formatDuration(appointment.duration)}
       </TableCell>
       <TableCell className="text-right">
-        {isLessThan24Hours ? <p className="text-center">--/--</p> : children}
+        {isBefore(
+          new Date(appointment.dateTime),
+          add(new Date(), { days: 1 }),
+        ) ? (
+          <p className="text-center">--/--</p>
+        ) : (
+          children
+        )}
       </TableCell>
     </TableRow>
   )
