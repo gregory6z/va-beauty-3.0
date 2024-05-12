@@ -25,8 +25,8 @@ export async function ServicesContainer({ category }: ServiceProps) {
       <div className="mx-auto mt-6 px-[1rem] lg:mt-10 lg:max-w-[1080px]   lg:px-[0] xl:max-w-[1080px]">
         <BreadcrumbService />
       </div>
-      <div className="mx-auto flex max-w-[1080px]  gap-10 pb-6 pt-12">
-        <p className="max-w-[800px] text-pretty text-2xl">
+      <div className="mx-auto flex max-w-[1080px] flex-col gap-4 px-[1.5rem] pb-6 pt-12 lg:flex-row lg:gap-10 lg:px-0">
+        <p className="text-pretty lg:max-w-[800px]   lg:text-2xl">
           {/* Nous traitons vos sourcils avec une responsabilité et une expertise
           extrêmes, garantissant des résultats impeccables qui mettent en valeur
           la beauté naturelle de votre regard. */}
@@ -34,7 +34,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
           expertise extrêmes, garantissant des résultats impeccables qui mettent
           en valeur la beauté naturelle de votre visage.
         </p>
-        <p className="max-w-[400px] text-balance text-right">
+        <p className="max-w-[400px] text-balance lg:text-right">
           {/* Notre service est unique, utilisant des techniques brésiliennes
           exclusives pour offrir les meilleurs soins possibles à vos sourcils. */}
           Notre service est unique, utilisant des techniques brésiliennes
@@ -43,7 +43,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
         </p>
       </div>
 
-      <p className=" mx-auto  max-w-[980px] text-balance text-center text-gray-900/60">
+      <p className=" mx-auto max-w-[980px] text-balance px-[1.5rem] text-sm text-gray-900/60 lg:px-0 lg:text-center lg:text-base">
         {/* Nous proposons une gamme de services intégrés en un seul, que aucun
         autre salon ne propose, et tout cela à partir de seulement 22 euros. */}
         Nous proposons une gamme de services intégrés en un seul, que aucun

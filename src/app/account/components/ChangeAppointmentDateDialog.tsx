@@ -1,6 +1,5 @@
 import { getData, splitArray } from "@/app/appointment/choose-time/page"
 import { Button } from "@/components/ui/button"
-import { parseCookies } from "nookies"
 
 import {
   Dialog,
@@ -22,7 +21,7 @@ export async function ChangeAppointmentDataDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild className="">
-        <Button>Changer la date</Button>
+        <Button className="h-12 w-full lg:h-10  ">Changer la date</Button>
       </DialogTrigger>
       <DialogContent className="mt-40 h-full min-w-[1080px] overflow-scroll  p-20  pb-80">
         <DialogHeader className="  ">

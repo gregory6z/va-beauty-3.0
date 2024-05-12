@@ -14,7 +14,7 @@ export function SheetCart() {
     <Sheet>
       <SheetTrigger asChild>
         {services.length > 0 && (
-          <button className="fixed bottom-10 right-10 z-30 flex h-20  w-20 items-center justify-center rounded-full border-2 border-white bg-zinc-900 text-2xl text-white shadow-md lg:bottom-24 lg:right-32">
+          <button className="fixed bottom-[10%] right-10 z-30 flex h-20  w-20 items-center justify-center rounded-full border-2 border-white bg-zinc-900 text-2xl text-white shadow-md lg:bottom-24 lg:right-32">
             <ShoppingCart className="h-12 w-12 text-white"></ShoppingCart>
             {services.length > 0 && (
               <span className="absolute right-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs text-white">

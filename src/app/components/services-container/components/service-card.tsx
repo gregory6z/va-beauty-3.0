@@ -65,13 +65,6 @@ export function ServiceCard({
             <p className="flex text-5xl lg:my-0 lg:w-full lg:text-5xl">
               {price},00 <Euro width="20"></Euro>
             </p>
-            <Image
-              className="h-[50px] w-[50px] lg:hidden lg:h-[100px] lg:w-[100px]"
-              src={"/add-to-cart.svg"}
-              width={100}
-              height={100}
-              alt={"ola"}
-            ></Image>
           </div>
           <ButtonAddToCart service={service} />
         </div>
