@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react"
 import dayjs, { Dayjs } from "dayjs"
 import "dayjs/locale/fr"
-import { setCookie } from "nookies"
+import { setCookie, parseCookies } from "nookies"
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +13,9 @@ import {
 import { useAutoAnimate } from "@formkit/auto-animate/react"
 import { Button } from "@/components/ui/button"
 import { actionChecout } from "../action"
+import { usePathname, useRouter } from "next/navigation"
+import { ChangeDateAppointment } from "@/app/api/changeAppointmentDate"
+import { toast } from "sonner"
 
 dayjs.locale("fr")
 
@@ -38,6 +41,8 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
   // Função para adicionar mais uma semana à exibição
   const addWeek = () => setDisplayedWeeks((weeks) => weeks + 1)
 
+  const pathname = usePathname()
+
   const toggleItem = (value: string) => {
     setOpenItem((prevItem) => (prevItem === value ? null : value))
   }
@@ -49,6 +54,11 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
       return newVisibleTimes
     })
   }
+
+  const cookies = parseCookies()
+
+  const appointmentId = cookies["@VaBeauty:appointmentId"]
+  const router = useRouter()
 
   const handleTimeSlotClick = (day: Dayjs, time: string) => {
     const [hours, minutes] = time.split(":").map(Number)
@@ -63,13 +73,34 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
       path: "/", // caminho raiz
     })
 
-    startTransition(() => {
-      actionChecout()
-    })
+    if (pathname === "/appointment/choose-time") {
+      startTransition(() => {
+        actionChecout()
+      })
+    }
+
+    if (pathname === "/account/appointments-history") {
+      const asyncAction = async () => {
+        startTransition(() => {
+          ChangeDateAppointment({
+            appointmentId,
+            date: dayjs(selectedDateTime).toDate(),
+          })
+          setCookie(null, "dialogOpen", "false", {})
+          toast.success("Date modifiée avec succès")
+        })
+      }
+
+      asyncAction()
+      router.refresh()
+    }
   }
 
   return (
-    <Accordion type="multiple" className="flex  flex-col gap-3 lg:hidden">
+    <Accordion
+      type="multiple"
+      className=" block   flex-col space-y-3 lg:hidden"
+    >
       {/* Exibe os dias das semanas que devem ser exibidas */}
       {data
         .flat()
@@ -77,7 +108,7 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
         .map((dayData, dayIndex) => (
           <AccordionItem key={dayIndex} value={`item-${dayIndex}`}>
             <AccordionTrigger
-              className="flex w-full items-center justify-between bg-white px-[1.5rem] py-3"
+              className="flex w-full items-center justify-between bg-white px-[1.5rem]  py-3"
               onClick={() => toggleItem(`item-${dayIndex}`)}
             >
               <span className="text-2xl">
@@ -121,7 +152,6 @@ export const WeekAccordion: React.FC<{ data: Appointment[][] }> = ({
             </AccordionContent>
           </AccordionItem>
         ))}
-
       {/* Botão para adicionar mais uma semana à exibição */}
       <Button variant="ghost" className="mt-4 text-lg" onClick={addWeek}>
         Afficher la semaine prochaine

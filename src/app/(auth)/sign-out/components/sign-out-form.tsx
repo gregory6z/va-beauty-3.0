@@ -138,24 +138,6 @@ export function SignOutForm() {
         />
 
         <FormField
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Telephone</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="email"
-                  placeholder="votre-email@email.com"
-                />
-              </FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
           name="password"
           render={({ field }) => (
             <FormItem>

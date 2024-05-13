@@ -1,6 +1,6 @@
 import { Appointment } from "@/app/api/fetch-appointments"
 
-import { format } from "date-fns"
+import { add, format, isBefore } from "date-fns"
 import { fr } from "date-fns/locale"
 
 interface HistoricMobileProps {
@@ -48,7 +48,15 @@ export function HistoricMobile({
                 <p className="w-full text-xl">
                   {formatDate(appointment.dateTime)}
                 </p>
-                <div className="mt-4 w-full ">{children}</div>
+
+                {isBefore(
+                  new Date(appointment.dateTime),
+                  add(new Date(), { days: 1 }),
+                ) ? (
+                  <></>
+                ) : (
+                  <div className="mt-4 w-full ">{children}</div>
+                )}
               </div>
             </div>
           </div>

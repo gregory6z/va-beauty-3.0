@@ -37,13 +37,8 @@ export function AppointmentHistoryForm({
     return result.trim()
   }
 
-  console.log(appointment.dateTime.toString())
-
   const currentDate = new Date()
   currentDate.setHours(0, 0, 0, 0)
-
-  const now = new Date()
-  const tomorrow = add(now, { days: 1 })
 
   return (
     <TableRow

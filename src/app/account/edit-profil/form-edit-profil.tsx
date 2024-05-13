@@ -14,11 +14,12 @@ import z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 // import { editProfilAction } from "./edit-profil-action"
-import { useTransition } from "react"
+import { useEffect, useTransition } from "react"
 import { EditProfil } from "@/app/api/editProfil"
 
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
+import { parseCookies } from "nookies"
 
 export interface FormEditProps {
   name?: string
@@ -42,14 +43,22 @@ const formSchema = z.object({
   telephone: z.string().min(10, {}).optional(),
 })
 
-export function FormEditProfil({ name, email, telephone }: FormEditProps) {
+export function FormEditProfil() {
+  useEffect(() => {
+    const cookies = parseCookies()
+    const session = cookies["@VaBeauty:session"]
+    if (session) {
+      const { name, email, telephone } = JSON.parse(session)
+      form.reset({ name, email, telephone })
+    }
+  }, [])
+
   const [isPending, startTransition] = useTransition()
 
   const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name, email, telephone },
   })
 
   const formatPhoneNumber = (value: string) => {
@@ -62,7 +71,7 @@ export function FormEditProfil({ name, email, telephone }: FormEditProps) {
       EditProfil(values)
       toast.success("Profil mis à jour")
       setTimeout(() => {
-        router.push("/account")
+        router.replace("/account")
       }, 500)
     })
   }

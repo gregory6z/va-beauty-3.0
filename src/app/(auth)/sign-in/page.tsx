@@ -39,14 +39,14 @@ export default async function SignIn() {
               </p>
             </div>
             <SignInForm />
-            <div>
+            {/* <div>
               <div></div>
               <p className="mt-8 text-center text-xs text-zinc-900/60">
                 OU CONTINUER AVEC
               </p>
               <div></div>
-            </div>
-            <div className="mt-2 flex w-full items-center justify-center gap-4  ">
+            </div> */}
+            {/* <div className="mt-2 flex w-full items-center justify-center gap-4  ">
               <Button variant={"outline"} className="h-16 w-16">
                 <Image
                   alt="facebook.icon"
@@ -71,7 +71,7 @@ export default async function SignIn() {
                   src="/apple.svg"
                 ></Image>
               </Button>
-            </div>
+            </div> */}
 
             <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
               En cliquant sur Continuer, vous acceptez nos{" "}
@@ -79,7 +79,10 @@ export default async function SignIn() {
               notre{" "}
               <span className=" underline ">Politique de confidentialité</span>
             </p>
-            <Link href={"/sign-out"} className="">
+            <Link
+              href={"/sign-out"}
+              className="hover:text-zinc-600 hover:underline"
+            >
               <p className="mt-8 text-balance text-center text-sm text-zinc-900/80">
                 Vous n'avez pas de compte ? Cliquez ici pour en créer un.
               </p>
