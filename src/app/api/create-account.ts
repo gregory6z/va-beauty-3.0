@@ -7,7 +7,7 @@ interface ProfilProps {
 }
 
 export async function CreateAccount({ name, email, password }: ProfilProps) {
-  const response = await fetch("http://localhost:3333/accounts", {
+  const response = await fetch(`${process.env.API_URL}/accounts`, {
     method: "POST",
     cache: "no-store",
     headers: {

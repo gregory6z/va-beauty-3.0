@@ -18,7 +18,7 @@ export interface Appointment {
 const token = cookies().get("@VaBeauty:token")?.value
 
 export async function FetchAppointmentsByClient() {
-  const response = await fetch("http://localhost:3333/fetch-appointments", {
+  const response = await fetch(`${process.env.API_URL}/fetch-appointments`, {
     method: "GET",
     cache: "no-store",
     headers: {

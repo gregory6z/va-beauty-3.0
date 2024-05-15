@@ -7,10 +7,19 @@ interface Appointment {
   servicesIds: string[] | undefined
 }
 
+interface AppointmentResponse {
+  id: string
+  date: Date
+  services: string[]
+  isSubscription: boolean
+  createdAt: Date
+  updatedAt: Date | null
+}
+
 const token = cookies().get("@VaBeauty:token")?.value
 
 export async function CreateAppointment({ date, servicesIds }: Appointment) {
-  const response = await fetch("http://localhost:3333/appointments", {
+  const response = await fetch(`${process.env.API_URL}/appointments`, {
     method: "POST",
     cache: "no-store",
     headers: {
@@ -28,4 +37,6 @@ export async function CreateAppointment({ date, servicesIds }: Appointment) {
       message: "Erro durante a criação do agendamento.",
     }
   }
+  const appointment: AppointmentResponse = await response.json()
+  return appointment
 }

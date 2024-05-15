@@ -46,7 +46,7 @@ export function ServiceChoose({ category }: ServiceChooseProps) {
   const showLess = () => setShowAll(false)
 
   return (
-    <section className=" lg:px-0 ">
+    <section className=" rounded-sm  lg:px-0 ">
       <h1 className=" mb-4   ml-6 text-2xl font-semibold capitalize lg:ml-0 lg:px-0">
         {category}
       </h1>

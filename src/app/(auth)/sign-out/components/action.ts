@@ -30,7 +30,7 @@ export async function action(prevState: any, formData: FormData) {
 
     // Coloque o código que você deseja executar com os dados aqui
     // Por exemplo, enviar os dados para o servidor
-    const response = await fetch("http://localhost:3333/accounts", {
+    const response = await fetch(`${process.env.API_URL}/accounts`, {
       method: "POST",
       cache: "no-store",
       headers: {

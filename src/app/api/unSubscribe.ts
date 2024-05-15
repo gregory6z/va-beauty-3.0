@@ -24,7 +24,7 @@ export async function unSubscribe({
 
     await stripe.subscriptions.cancel(subscriptionId)
 
-    const response = await fetch("http://localhost:3333/delete-subscription", {
+    const response = await fetch(`${process.env.API_URL}/delete-subscription`, {
       method: "DELETE",
       cache: "no-store",
       headers: {

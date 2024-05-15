@@ -18,7 +18,7 @@ export async function action(formData: FormData) {
   })
 
   try {
-    const response = await fetch("http://localhost:3333/sessions", {
+    const response = await fetch(`${process.env.API_URL}/sessions`, {
       method: "POST",
       cache: "no-store",
       headers: {

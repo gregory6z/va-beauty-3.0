@@ -18,7 +18,7 @@ export function splitArray(array: Appointment[]) {
 }
 
 export async function getData() {
-  const res = await fetch("http://localhost:3333/week-availability", {
+  const res = await fetch(`${process.env.API_URL}/week-availability`, {
     cache: "no-store",
   })
 

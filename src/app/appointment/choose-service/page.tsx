@@ -7,7 +7,7 @@ import { ServiceChoose } from "./components/service-choose"
 export default function ChooseService() {
   return (
     <>
-      <div className="h-full min-h-screen w-full bg-zinc-200">
+      <div className="h-full min-h-screen w-full bg-zinc-200 ">
         <div className="lg:max-w--[1216px] flex flex-col lg:mx-auto lg:px-[2rem] xl:max-w-[1256px] ">
           <div className="gap-8 lg:grid lg:grid-cols-5 ">
             <div className="col-span-3">

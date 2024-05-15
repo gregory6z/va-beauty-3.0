@@ -28,7 +28,7 @@ export function CartItem({ name, price, serviceId }: CartItemProps) {
           }}
           className=" ml-4 bg-zinc-400 px-3 py-1 text-zinc-100 transition-all hover:bg-zinc-500"
         >
-          <Trash2></Trash2>
+          <Trash2 strokeWidth={1.5} className="rounded-sm"></Trash2>
         </button>
       </div>
     </div>

@@ -34,7 +34,7 @@ export function Cart() {
 
   return (
     <div
-      className={`mt-4 flex h-full w-full flex-col bg-white ${pathname === "/appointment/choose-service" ? "lg:p-8" : ""}`}
+      className={`mt-4 flex h-full w-full flex-col rounded-b-sm bg-white ${pathname === "/appointment/choose-service" ? "lg:p-8" : ""}`}
     >
       {" "}
       <header className="mb-2">

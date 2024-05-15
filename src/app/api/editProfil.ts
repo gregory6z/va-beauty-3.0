@@ -42,7 +42,7 @@ export async function EditProfil({
     dataToSend.customerId = customerId
   }
 
-  const response = await fetch("http://localhost:3333/client", {
+  const response = await fetch(`${process.env.API_URL}/client`, {
     method: "PUT",
     cache: "no-store",
     headers: {

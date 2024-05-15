@@ -15,7 +15,7 @@ export async function ForfaitCard() {
   const subscriptions = await FetchSubscriptions()
 
   return (
-    <div className="mt-[20rem] flex h-full w-full flex-col border-t-[28px] border-zinc-300 border-t-zinc-900 bg-white p-6 pb-10 lg:mx-auto lg:mt-40 lg:max-w-[1080px] lg:p-10   ">
+    <div className="mt-[20rem] flex h-full w-full flex-col rounded-sm border-t-[28px] border-zinc-300 border-t-zinc-900 bg-white p-6 pb-10 shadow-md lg:mx-auto lg:mt-40 lg:max-w-[1080px] lg:p-10   ">
       <header className="lg:max-w-[600px] ">
         <h1 className="text-2xl font-semibold lg:text-3xl">Mes Forfaits</h1>
         <p className="mx-auto mt-4  text-zinc-900/60 lg:text-lg ">
