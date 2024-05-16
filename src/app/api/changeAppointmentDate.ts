@@ -13,7 +13,7 @@ export async function ChangeDateAppointment({
   date,
   appointmentId,
 }: Appointment) {
-  const response = await fetch("http://localhost:3333/edit-appointment", {
+  const response = await fetch(`${process.env.API_URL}/edit-appointment`, {
     method: "PUT",
     cache: "no-store",
     headers: {

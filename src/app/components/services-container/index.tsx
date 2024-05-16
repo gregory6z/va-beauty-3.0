@@ -57,7 +57,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
             <>
               {/* <Link href={`${service.category}/${service.id}`} key={service.id}> */}
 
-              <MotionElement y={40}>
+              <MotionElement y={40} key={service.id}>
                 <ServiceCard
                   service={service as Service}
                   name={service.name}

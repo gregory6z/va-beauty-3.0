@@ -1,20 +1,17 @@
 "use server"
 
-import { cookies } from "next/headers"
-
-interface ProfilProps {
+interface ForgotPasswordProps {
   email: string
-  password: string
 }
 
-export async function AuthenticateAccount({ email, password }: ProfilProps) {
-  const response = await fetch(`${process.env.API_URL}/sessions`, {
+export async function ForgotPassword({ email }: ForgotPasswordProps) {
+  const response = await fetch(`${process.env.API_URL}/forgot-password`, {
     method: "POST",
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email }),
   })
   if (!response.ok) {
     const responseData = await response.json() // Extrair os dados da resposta JSON
@@ -30,11 +27,6 @@ export async function AuthenticateAccount({ email, password }: ProfilProps) {
   }
 
   // eslint-disable-next-line camelcase
-  const { access_token } = await response.json()
-
-  cookies().set("@VaBeauty:token", String(access_token), {
-    httpOnly: true,
-  })
 
   return {
     success: true,

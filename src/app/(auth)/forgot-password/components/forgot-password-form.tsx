@@ -20,24 +20,19 @@ import {
 } from "@/components/ui/form"
 import { useTransition } from "react"
 
-import { AuthenticateAccount } from "@/app/api/authenticate"
-
 import { toast } from "sonner"
-import Link from "next/link"
+import { ForgotPassword } from "@/app/api/forgot-password"
 
 const signInSchema = z.object({
   email: z
     .string()
 
     .email({ message: "Veuillez entrer une adresse e-mail valide." }),
-  password: z.string().min(4, {
-    message: "Le mot de passe doit comporter au moins 4 caractères.",
-  }),
 })
 
 export type SignInSchema = z.infer<typeof signInSchema>
 
-export function SignInForm() {
+export function ForgotPasswordForm() {
   const searchParams = useSearchParams()
 
   const initialEmail = (searchParams.get("email") as string) || ""
@@ -54,11 +49,19 @@ export function SignInForm() {
   async function onSubmit(values: z.infer<typeof signInSchema>) {
     try {
       startTransition(async () => {
-        const response = await AuthenticateAccount(values)
+        const response = await ForgotPassword(values)
         if (response.success) {
-          toast.success("Connexion réussie")
+          toast.success(
+            "Nous avons envoyé un lien pour changer votre mot de passe.",
+            {
+              action: {
+                label: "Renvoyer",
+                onClick: () => ForgotPassword(values),
+              },
+              duration: 5000,
+            },
+          )
         }
-
         if (response.message && !response.success) {
           toast.error(response.message)
         }
@@ -100,31 +103,6 @@ export function SignInForm() {
           )}
         />
 
-        <FormField
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Mot de passe</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="password"
-                  placeholder="votre mot de passe"
-                  required
-                />
-              </FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Link
-          href="/forgot-password"
-          className="text-right text-sm text-zinc-900/60 hover:underline"
-        >
-          Mot de passe oublié ?
-        </Link>
-
         {/* <p className=" text-red-500"> {error}</p> */}
 
         <Button
@@ -133,7 +111,7 @@ export function SignInForm() {
           type="submit"
           className="mt-4 w-full  "
         >
-          Se connecter avec votre adresse e-mail
+          Envoier adress email
         </Button>
 
         {/* <p className=" text-red-500"> {state?.message}</p> */}

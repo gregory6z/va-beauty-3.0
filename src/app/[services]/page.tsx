@@ -16,7 +16,7 @@ export default function Services({ params }: ParamsProps) {
   const category = String(params.services)
 
   return (
-    <div className="border-b bg-zinc-100">
+    <div className=" bg-zinc-100">
       <Banner category={category} image={`/${params.services}-1.png`}></Banner>
 
       <ServicesContainer category={category}></ServicesContainer>

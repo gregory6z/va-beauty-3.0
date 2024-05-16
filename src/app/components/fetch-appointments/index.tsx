@@ -1,5 +1,5 @@
 export async function FetchAppointments() {
-  const res = await fetch("http://localhost:3333/week-availability")
+  const res = await fetch(`${process.env.API_URL}/week-availability`)
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
