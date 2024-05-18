@@ -35,9 +35,7 @@ export async function action(formData: FormData) {
 
     const { access_token } = await response.json()
 
-    cookies().set("@VaBeauty:token", String(access_token), {
-      httpOnly: true,
-    })
+    cookies().set("@VaBeauty:token", String(access_token))
 
     return {
       success: true,

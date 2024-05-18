@@ -1,19 +1,19 @@
 import Image from "next/image"
 import { SignInForm } from "./components/sign-in-form"
 import Link from "next/link"
-import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
-import { actionChecout } from "@/app/appointment/choose-time/action"
+// import { cookies } from "next/headers"
+// import { redirect } from "next/navigation"
+// import { actionChecout } from "@/app/appointment/choose-time/action"
 
 export default async function SignIn() {
-  const AuthenticateToken = cookies().get("@VaBeauty:token")?.value
-  const dateAppointment = cookies().get("@VaBeauty:date")?.value
+  // const AuthenticateToken = cookies().get("@VaBeauty:token")?.value
+  // const dateAppointment = cookies().get("@VaBeauty:date")?.value
 
-  if (AuthenticateToken && dateAppointment) {
-    await actionChecout()
-  } else if (AuthenticateToken) {
-    redirect("/")
-  }
+  // if (AuthenticateToken && dateAppointment) {
+  //   await actionChecout()
+  // } else if (AuthenticateToken) {
+  //   redirect("/")
+  // }
 
   return (
     <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden bg-white px-[1.5rem] lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 lg:px-0 ">

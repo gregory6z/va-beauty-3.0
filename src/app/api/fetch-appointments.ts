@@ -1,6 +1,6 @@
 "use server"
 
-import { cookies } from "next/headers"
+// import { cookies } from "next/headers"
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable camelcase */
@@ -15,7 +15,7 @@ export interface Appointment {
   dateTime: Date
 }
 
-const token = cookies().get("@VaBeauty:token")?.value
+// const token = cookies().get("@VaBeauty:token")?.value
 
 export async function FetchAppointmentsByClient() {
   const response = await fetch(`${process.env.API_URL}/fetch-appointments`, {
