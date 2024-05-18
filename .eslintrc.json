@@ -12,5 +12,9 @@
       "semi": false,
       "react/no-unescaped-entities": false
     }]
+  }, "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
