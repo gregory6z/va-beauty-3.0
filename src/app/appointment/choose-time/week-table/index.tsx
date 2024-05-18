@@ -39,6 +39,7 @@ const WeekTable: React.FC<{
   useEffect(() => {
     // Carregar os horários de disponibilidade para a semana atual ao montar o componente
     loadWeekAvailability(currentWeek.startDate)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const loadWeekAvailability = (startDate: Dayjs) => {

@@ -1,15 +1,15 @@
-import { ButtonsSocialNetworks } from "../components/ButtonsSocialNetworks"
-import { Comments } from "../components/comments"
+import { Comments } from "@/app/components/comments"
 import {
   CommentsHomeFirstPart,
   CommentsHomeSecondPart,
-} from "../components/comments/comments"
+} from "@/app/components/comments/comments"
 
-import { Footer } from "../components/footer"
-import { AboutMe } from "./components/AboutMe"
-import { Hero } from "./components/Hero"
-import { Offers } from "./components/Offers"
-import { ServicesCarrousel } from "./components/ServicesCarrousel"
+import { Footer } from "@/app/components/footer"
+import { Hero } from "./(Home)/components/Hero"
+import { ServicesCarrousel } from "./(Home)/components/ServicesCarrousel"
+import { Offers } from "./(Home)/components/Offers"
+import { AboutMe } from "./(Home)/components/AboutMe"
+import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
 
 export default function Home() {
   return (

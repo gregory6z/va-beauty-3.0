@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import React from "react"
+import { cloneElement } from "react"
 
 interface navLinkProps {
   href: string
@@ -22,7 +22,7 @@ const NavLink = ({ href, children, className }: navLinkProps) => {
 
   return (
     <Link href={`${href}/#`}>
-      {React.cloneElement(children, {
+      {cloneElement(children, {
         className: `${className} pointer flex lg:h-[6.1rem] w-full items-center   lg:px-2`,
       })}
     </Link>
