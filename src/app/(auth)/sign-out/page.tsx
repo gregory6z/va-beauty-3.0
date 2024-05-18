@@ -27,7 +27,7 @@ export default async function SignOut() {
             </div>
             <SignOutForm />
 
-            <Link href="/sign-in" className="hover:underline">
+            <Link href="/sign-in/#" className="hover:underline">
               <p className="mt-8  text-balance text-center text-sm text-zinc-900/80">
                 Connectez-vous
               </p>

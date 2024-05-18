@@ -6,6 +6,7 @@ import { Header } from "./components/header"
 import { StoreInitializer } from "./stores/store.initializer"
 import { FetchServices } from "./components/fetch-services"
 import { Toaster } from "sonner"
+import { ScrollUp } from "@/components/scroll-up"
 
 export const metadata: Metadata = {
   title: " Create Next App",
@@ -26,10 +27,11 @@ export default async function RootLayout({
   const { services } = await FetchServices()
   return (
     <html lang="en">
-      <body className={` ${montserrat.variable} bg-[#09090B] font-sans `}>
+      <body className={` ${montserrat.variable}  bg-[#09090B] font-sans `}>
         <StoreInitializer allServices={services} />
         <Header />
         <Toaster richColors className="mb-10 lg:mb-10" duration={1500} />
+        <ScrollUp />
 
         {children}
       </body>

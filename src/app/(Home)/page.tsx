@@ -8,17 +8,18 @@ import {
 import { Footer } from "../components/footer"
 
 import { AboutMe } from "./components/AboutMe"
-import { HeaderHome } from "./components/HeaderHome"
+import { Hero } from "./components/Hero"
 import { Offers } from "./components/Offers"
-import { ServicesHome } from "./components/ServicesHome"
-import { VideoContainer } from "./components/VideoContainer"
+import { ServicesCarrousel } from "./components/ServicesCarrousel"
 
 export default function Home() {
   return (
-    <>
-      <HeaderHome></HeaderHome>
-      <VideoContainer></VideoContainer>
-      <ServicesHome></ServicesHome>
+    <div className="bg-zinc-100">
+      <Hero></Hero>
+      <ServicesCarrousel />
+      {/* <HeaderHome></HeaderHome>
+      <VideoContainer></VideoContainer> */}
+      {/* <ServicesHome></ServicesHome> */}
       <Offers />
 
       <Comments comments={CommentsHomeFirstPart}></Comments>
@@ -27,6 +28,6 @@ export default function Home() {
       <Comments comments={CommentsHomeSecondPart}></Comments>
       <Footer></Footer>
       <ButtonsSocialNetworks></ButtonsSocialNetworks>
-    </>
+    </div>
   )
 }

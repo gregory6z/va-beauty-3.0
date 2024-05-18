@@ -39,7 +39,7 @@ export function Banner({ image, category }: BannerProps) {
           </div>
           <div className="">
             <TextMotion>
-              <h1 className=" relative order-1 mx-[1.5rem] text-pretty py-5 text-center text-xl text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-4xl">
+              <h1 className=" relative order-1 mx-[1.5rem] text-balance py-5 text-center text-xl font-extrabold tracking-tight text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-5xl">
                 {text}
               </h1>
             </TextMotion>

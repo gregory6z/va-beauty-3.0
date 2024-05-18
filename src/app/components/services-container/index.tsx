@@ -26,14 +26,14 @@ export async function ServicesContainer({ category }: ServiceProps) {
         <BreadcrumbService />
       </div>
       <div className="mx-auto flex max-w-[1080px] flex-col gap-4 px-[1.5rem] pb-6 pt-12 lg:flex-row lg:gap-10 lg:px-0">
-        <p className="text-pretty lg:max-w-[800px]   lg:text-2xl">
+        <h1 className="text-pretty font-bold lg:max-w-[800px]   lg:text-2xl">
           {/* Nous traitons vos sourcils avec une responsabilité et une expertise
           extrêmes, garantissant des résultats impeccables qui mettent en valeur
           la beauté naturelle de votre regard. */}
           Nous traitons vos services esthétiques avec une responsabilité et une
           expertise extrêmes, garantissant des résultats impeccables qui mettent
           en valeur la beauté naturelle de votre visage.
-        </p>
+        </h1>
         <p className="max-w-[400px] text-balance lg:text-right">
           {/* Notre service est unique, utilisant des techniques brésiliennes
           exclusives pour offrir les meilleurs soins possibles à vos sourcils. */}

@@ -40,7 +40,7 @@ export function HeaderAccount() {
         </div>
 
         <div className="-bottom-[125px] mx-auto mt-8 grid w-full grid-cols-1 gap-4 lg:absolute lg:-bottom-[125px] lg:mt-0 lg:grid-cols-2 lg:gap-8">
-          <Link href="/account/appointments-history">
+          <Link href="/account/appointments-history/#">
             <Suspense fallback={<HeaderCardSkeleton />}>
               <HeaderCard
                 IconComponent={CalendarCheck}
@@ -50,7 +50,7 @@ export function HeaderAccount() {
               ></HeaderCard>
             </Suspense>
           </Link>
-          <Link href={"/account/edit-profil"}>
+          <Link href={"/account/edit-profil/#"}>
             <Suspense fallback={<HeaderCardSkeleton />}>
               <HeaderCard
                 IconComponent={UserRoundCheck}
