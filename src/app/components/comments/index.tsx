@@ -20,9 +20,9 @@ export function Comments({ comments }: CommentsProps) {
             key={comment.content}
             className="flex h-full w-full flex-col gap-8  px-8 lg:mx-auto lg:max-w-[1080px] lg:flex-row lg:items-center  lg:gap-10"
           >
-            <div className="h-[180px] max-w-[180px]  rounded-sm bg-slate-500    lg:h-[280px]  lg:min-w-[280px]">
+            <div className="h-[180px] max-w-[180px]  rounded-xl bg-slate-500    lg:h-[280px]  lg:min-w-[280px]">
               <Image
-                className=" h-full w-full rounded-sm "
+                className=" h-full w-full rounded-xl "
                 src={comment.image}
                 width={280}
                 height={280}
@@ -30,7 +30,7 @@ export function Comments({ comments }: CommentsProps) {
               ></Image>
             </div>
             <div className="ml-8 flex flex-col gap-4 lg:gap-4">
-              <p className=" order-2 text-pretty text-base lg:order-1 lg:text-left lg:text-xl">
+              <p className=" order-2 text-pretty text-base text-zinc-900/80 lg:order-1 lg:text-left lg:text-lg">
                 &#34;
                 {comment.content}&#34;
               </p>
