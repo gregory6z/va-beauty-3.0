@@ -7,7 +7,7 @@ import {
 import { Footer } from "@/app/components/footer"
 import { Hero } from "./(Home)/components/Hero"
 import { ServicesCarrousel } from "./(Home)/components/ServicesCarrousel"
-import { Offers } from "./(Home)/components/Offers"
+import { Offers } from "./components/Offers"
 import { AboutMe } from "./(Home)/components/AboutMe"
 import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
 

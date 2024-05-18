@@ -1,4 +1,4 @@
-import { Offers } from "@/app/(Home)/components/Offers"
+import { Offers } from "@/app/components/Offers"
 
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"

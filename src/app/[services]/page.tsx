@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Offers } from "../(Home)/components/Offers"
+import { Offers } from "../components/Offers"
 import { Banner } from "../components/banner"
 import { SheetCart } from "../components/cart-fixed"
 import { Comments } from "../components/comments"
