@@ -51,6 +51,7 @@ export function FormEditProfil() {
       const { name, email, telephone } = JSON.parse(session)
       form.reset({ name, email, telephone })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [isPending, startTransition] = useTransition()
