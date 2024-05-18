@@ -6,7 +6,6 @@ import {
 } from "../components/comments/comments"
 
 import { Footer } from "../components/footer"
-
 import { AboutMe } from "./components/AboutMe"
 import { Hero } from "./components/Hero"
 import { Offers } from "./components/Offers"
