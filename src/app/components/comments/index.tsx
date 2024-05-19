@@ -22,7 +22,7 @@ export function Comments({ comments }: CommentsProps) {
           >
             <div className="h-[180px] max-w-[180px]  rounded-xl bg-slate-500    lg:h-[280px]  lg:min-w-[280px]">
               <Image
-                className=" h-full w-full rounded-xl "
+                className=" objet-cover h-full w-full rounded-xl "
                 src={comment.image}
                 width={280}
                 height={280}
