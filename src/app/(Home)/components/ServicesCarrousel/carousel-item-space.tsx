@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { CarouselItem } from "@/components/ui/carousel"
 import Image from "next/image"
+import Link from "next/link"
 import { ReactNode } from "react"
 
 interface CarouselItemSpaceProps {
@@ -9,12 +10,14 @@ interface CarouselItemSpaceProps {
   image?: string
   imageTopRight?: boolean
   forfaits?: boolean
+  link: string
 }
 
 export function CarouselItemSpace({
   children,
   forfaits,
   list,
+  link,
   image,
   imageTopRight,
 }: CarouselItemSpaceProps) {
@@ -50,9 +53,11 @@ export function CarouselItemSpace({
             </ul>
           </div>
         )}
-        <Button className="mt-auto  lg:mb-10 lg:ml-10 lg:w-[200px]">
-          Savoir plus
-        </Button>
+        <Link href={`/${link}`}>
+          <Button className="mt-auto  lg:mb-10 lg:ml-10 lg:w-[200px]">
+            Savoir plus
+          </Button>
+        </Link>
       </div>
       {image && (
         <div className=" h-full w-full  lg:w-[50%]">

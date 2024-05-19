@@ -18,6 +18,7 @@ export function CarouselContainer() {
       <div className=" absolute top-1  z-[2] w-[210px] bg-white  blur-[50px] lg:-right-20 lg:h-[560px] "></div>
       <CarouselContent className=" relative ml-0   lg:mx-auto  ">
         <CarouselItemSpace
+          link="sourcils"
           image="/forfaits.png"
           list={[
             "Épilation",
@@ -31,18 +32,21 @@ export function CarouselContainer() {
           Sourcils
         </CarouselItemSpace>
         <CarouselItemSpace
+          link="levres"
           image="/lips3.jpg"
           list={[
-            "Épilation",
-            "Teinture",
-            "Mapping",
+            "Hidratation",
+            "Hidra lips",
+            "Nano lips",
             "SPA",
             "Micropigmentation",
           ]}
         >
-          Levres
+          Lévres
         </CarouselItemSpace>
-        <CarouselItemSpace forfaits>Forfaits</CarouselItemSpace>
+        <CarouselItemSpace link="forfaits" forfaits>
+          Forfaits
+        </CarouselItemSpace>
 
         {/* <CarouselItem className=" ml-4 flex  h-[570px] basis-[90%] flex-col rounded-sm border bg-white  pl-0  shadow-lg lg:ml-8  lg:basis-[80%]  lg:flex-row  ">
           <div className="order-2 flex h-full flex-col pl-0 lg:order-none lg:w-[50%] lg:pl-12 lg:pt-20">

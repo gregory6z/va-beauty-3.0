@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { TextMotion } from "@/lib/framer-motion"
+import Link from "next/link"
 
 export function HeroTexts() {
   return (
@@ -15,12 +16,14 @@ export function HeroTexts() {
         mesure pour un résultat parfait. Redécouvrez la beauté avec les
         meilleurs soins du regard de la région.
       </p>
-      <Button
-        className="mt-8 text-lg font-bold lg:h-[3.5rem] lg:w-[300px]"
-        variant="secondary"
-      >
-        Rendez-vous
-      </Button>
+      <Link href="/appointment/choose-service">
+        <Button
+          className="mt-8 text-lg font-bold lg:h-[3.5rem] lg:w-[300px]"
+          variant="secondary"
+        >
+          Rendez-vous
+        </Button>
+      </Link>
     </div>
   )
 }
