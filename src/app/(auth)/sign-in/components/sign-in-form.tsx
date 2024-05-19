@@ -141,12 +141,7 @@ export function SignInForm() {
 
         {/* <p className=" text-red-500"> {error}</p> */}
 
-        <Button
-          size="lg"
-          disabled={isPending}
-          type="submit"
-          className="mt-4 w-full  "
-        >
+        <Button disabled={isPending} type="submit" className="mt-4 w-full  ">
           Se connecter avec votre adresse e-mail
         </Button>
 

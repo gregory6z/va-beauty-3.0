@@ -105,12 +105,7 @@ export function ForgotPasswordForm() {
 
         {/* <p className=" text-red-500"> {error}</p> */}
 
-        <Button
-          size="lg"
-          disabled={isPending}
-          type="submit"
-          className="mt-4 w-full  "
-        >
+        <Button disabled={isPending} type="submit" className="mt-4 w-full  ">
           Envoier adress email
         </Button>
 
