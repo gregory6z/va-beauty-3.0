@@ -16,9 +16,12 @@ export function HeroTexts() {
         mesure pour un résultat parfait. Redécouvrez la beauté avec les
         meilleurs soins du regard de la région.
       </p>
-      <Link href="/appointment/choose-service">
+      <Link
+        href="/appointment/choose-service"
+        className="mt-8 w-full text-lg font-bold lg:h-[3.5rem] lg:w-[300px]"
+      >
         <Button
-          className="mt-8 text-lg font-bold lg:h-[3.5rem] lg:w-[300px]"
+          className="w-full text-lg font-bold lg:h-[3.5rem] lg:w-[300px]"
           variant="secondary"
         >
           Rendez-vous
