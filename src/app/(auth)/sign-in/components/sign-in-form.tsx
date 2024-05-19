@@ -74,6 +74,7 @@ export function SignInForm() {
 
         if (response.message && !response.success) {
           toast.error(response.message)
+          console.log(response)
         }
       })
     } catch (error) {

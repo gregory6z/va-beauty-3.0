@@ -18,7 +18,7 @@ export async function action(formData: FormData) {
   })
 
   try {
-    const response = await fetch(`${process.env.API_URL}/sessions`, {
+    const response = await fetch("http://localhost:3333/sessions", {
       method: "POST",
       cache: "no-store",
       headers: {
@@ -35,7 +35,9 @@ export async function action(formData: FormData) {
 
     const { access_token } = await response.json()
 
-    cookies().set("@VaBeauty:token", String(access_token))
+    cookies().set("@VaBeauty:token", String(access_token), {
+      httpOnly: true,
+    })
 
     return {
       success: true,
