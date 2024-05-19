@@ -53,10 +53,8 @@ export function CarouselItemSpace({
             </ul>
           </div>
         )}
-        <Link href={`/${link}`}>
-          <Button className="mt-auto  lg:mb-10 lg:ml-10 lg:w-[200px]">
-            Savoir plus
-          </Button>
+        <Link href={`/${link}`} className="mt-auto  lg:mb-10 lg:ml-10">
+          <Button className=" lg:w-[200px]">Savoir plus</Button>
         </Link>
       </div>
       {image && (
