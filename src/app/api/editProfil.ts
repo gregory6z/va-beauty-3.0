@@ -3,8 +3,6 @@
 
 import { cookies } from "next/headers"
 
-const token = cookies().get("@VaBeauty:token")?.value
-
 interface ProfilProps {
   name?: string
   email?: string
@@ -21,6 +19,7 @@ export async function EditProfil({
   customerId,
 }: ProfilProps) {
   const dataToSend: ProfilProps = {}
+  const token = cookies().get("@VaBeauty:token")?.value
 
   if (name) {
     dataToSend.name = name

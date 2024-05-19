@@ -16,9 +16,9 @@ interface AppointmentResponse {
   updatedAt: Date | null
 }
 
-const token = cookies().get("@VaBeauty:token")?.value
-
 export async function CreateAppointment({ date, servicesIds }: Appointment) {
+  const token = cookies().get("@VaBeauty:token")?.value
+
   const response = await fetch(`${process.env.API_URL}/appointments`, {
     method: "POST",
     cache: "no-store",

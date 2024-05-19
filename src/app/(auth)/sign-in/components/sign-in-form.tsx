@@ -8,7 +8,7 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 import {
   Form,
@@ -24,6 +24,8 @@ import { AuthenticateAccount } from "@/app/api/authenticate"
 
 import { toast } from "sonner"
 import Link from "next/link"
+import { actionChecout } from "@/app/appointment/choose-time/action"
+import { parseCookies } from "nookies"
 
 const signInSchema = z.object({
   email: z
@@ -49,6 +51,12 @@ export function SignInForm() {
     },
   })
 
+  const router = useRouter()
+
+  const cookies = parseCookies()
+
+  const dateAppointment = cookies["@VaBeauty:date"]
+
   const [isPending, startTransition] = useTransition()
 
   async function onSubmit(values: z.infer<typeof signInSchema>) {
@@ -57,6 +65,11 @@ export function SignInForm() {
         const response = await AuthenticateAccount(values)
         if (response.success) {
           toast.success("Connexion réussie")
+          if (dateAppointment) {
+            await actionChecout()
+          } else {
+            router.push("/")
+          }
         }
 
         if (response.message && !response.success) {

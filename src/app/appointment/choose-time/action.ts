@@ -21,6 +21,8 @@ interface User {
 export async function actionChecout() {
   const cartItemsString = cookies().get("@VaBeauty:cartItems")?.value
 
+  console.log(cartItemsString)
+
   const tokenAuthentication = cookies().get("@VaBeauty:token")?.value
 
   if (!tokenAuthentication) {

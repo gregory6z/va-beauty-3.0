@@ -4,7 +4,6 @@
 import { stripe } from "@/lib/stripe"
 import { cookies } from "next/headers"
 
-const token = cookies().get("@VaBeauty:token")?.value
 interface unSubscribeProps {
   subscriptionId: string
   stripeId: string
@@ -15,6 +14,8 @@ export async function unSubscribe({
   stripeId,
 }: unSubscribeProps) {
   "use server"
+  const token = cookies().get("@VaBeauty:token")?.value
+
   try {
     const subscription = await stripe.subscriptions.retrieve(subscriptionId)
 
