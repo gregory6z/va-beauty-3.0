@@ -1,6 +1,5 @@
 import { NextResponse, NextRequest } from "next/server"
 import jwt from "jsonwebtoken"
-import { parse } from "url"
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/account")) {
@@ -31,6 +30,4 @@ export function middleware(request: NextRequest) {
 
     return response
   }
-
-  
 }
