@@ -25,7 +25,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
       <div className="mx-auto mt-6 px-[1rem] lg:mt-10 lg:max-w-[1080px]   lg:px-[0] xl:max-w-[1080px]">
         <BreadcrumbService />
       </div>
-      <div className="mx-auto flex max-w-[1080px] flex-col gap-4 px-[1.5rem] pb-6 pt-12 lg:flex-row lg:gap-10 lg:px-0">
+      <article className="mx-auto flex max-w-[1080px] flex-col gap-4 px-[1.5rem] pb-6 pt-12 lg:flex-row lg:gap-10 lg:px-0">
         <h1 className="text-pretty font-bold lg:max-w-[800px]   lg:text-2xl">
           {/* Nous traitons vos sourcils avec une responsabilité et une expertise
           extrêmes, garantissant des résultats impeccables qui mettent en valeur
@@ -41,7 +41,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
           exclusives pour offrir les meilleurs soins possibles à vos besoins
           esthétiques.
         </p>
-      </div>
+      </article>
 
       <p className=" mx-auto max-w-[980px] text-balance px-[1.5rem] text-sm text-gray-900/60 lg:px-0 lg:text-center lg:text-base">
         {/* Nous proposons une gamme de services intégrés en un seul, que aucun
@@ -51,7 +51,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
         <span className="font-bold">20 euros.</span>
       </p>
 
-      <div className="mt-[2rem] flex h-full w-full flex-col items-center gap-6 px-[1rem] pb-10 sm:mx-auto sm:max-w-[600px] lg:mx-auto lg:mt-[3rem] lg:max-w-[1216px] lg:px-[0] lg:pb-[8rem] xl:max-w-[1256px]">
+      <main className="mt-[2rem] flex h-full w-full flex-col items-center gap-6 px-[1rem] pb-10 sm:mx-auto sm:max-w-[600px] lg:mx-auto lg:mt-[3rem] lg:max-w-[1216px] lg:px-[0] lg:pb-[8rem] xl:max-w-[1256px]">
         {serviceByCategory.map((service) => {
           return (
             <>
@@ -71,7 +71,7 @@ export async function ServicesContainer({ category }: ServiceProps) {
             </>
           )
         })}
-      </div>
+      </main>
     </Suspense>
   )
 }

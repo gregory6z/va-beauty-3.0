@@ -8,10 +8,28 @@ import { SheetCart } from "@/app/components/cart-fixed"
 import { ButtonAddToCart } from "@/app/components/services-container/components/ButtonAddToCart"
 import { notFound } from "next/navigation"
 import { markdownServices } from "./markedown-step-by-step"
+import { Metadata } from "next"
 
 interface ServiceProps {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: ServiceProps): Promise<Metadata> {
+  // read route params
+
+  const { services } = await FetchServices()
+
+  const ServiceItem = services.filter((service) => {
+    return service.id === String(params.slug)
+  })
+
+  return {
+    title: ServiceItem.map((service) => service.name[0])[0],
+    description: ServiceItem.map((service) => service.description[0])[0],
   }
 }
 
@@ -47,13 +65,13 @@ export default async function Service({ params }: ServiceProps) {
                 src={service.imageUrl}
                 width={450}
                 height={450}
-                alt={""}
+                alt={"image de service " + service.name}
               ></Image>
             )
           })}
         </div>
 
-        <div className=" flex h-full flex-col justify-between lg:min-h-[450px]">
+        <main className=" flex h-full flex-col justify-between lg:min-h-[450px]">
           {ServiceItem.map((service) => {
             return (
               <div
@@ -76,7 +94,7 @@ export default async function Service({ params }: ServiceProps) {
               </div>
             )
           })}
-        </div>
+        </main>
       </header>
       <div className="mx-auto mt-20 flex flex-col gap-4 px-[1.5rem] lg:max-w-[900px] lg:px-0">
         <h1 className="text-3xl ">Description</h1>
@@ -89,7 +107,7 @@ export default async function Service({ params }: ServiceProps) {
         })}
       </div>
 
-      <div className="mx-auto mb-20 mt-10 flex flex-col gap-4 px-[1.5rem] lg:max-w-[750px] lg:px-0">
+      <article className="mx-auto mb-20 mt-10 flex flex-col gap-4 px-[1.5rem] lg:max-w-[750px] lg:px-0">
         {MarkdownText && <h1 className="text-2xl">Pas à pas :</h1>}
         <ReactMarkdown
           components={{
@@ -100,7 +118,7 @@ export default async function Service({ params }: ServiceProps) {
         >
           {MarkdownText?.step}
         </ReactMarkdown>
-      </div>
+      </article>
 
       <Offers></Offers>
     </div>

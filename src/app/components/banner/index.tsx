@@ -25,15 +25,15 @@ export function Banner({ image, category }: BannerProps) {
   }
   return (
     <>
-      <div className="relative flex h-full w-full bg-[#020202]">
-        <div className=" mx-auto flex  w-full flex-col items-center  lg:h-[25.5rem]  lg:flex-row xl:max-w-[1256px]">
+      <main className="relative flex h-full w-full bg-[#020202]">
+        <header className=" mx-auto flex  w-full flex-col items-center  lg:h-[25.5rem]  lg:flex-row xl:max-w-[1256px]">
           <div className=" h-full w-full ">
             <Image
               className=" bottom-0  lg:absolute lg:left-0 lg:h-[408px] "
               width={792}
               height={408}
               loading="eager"
-              alt={"banner image"}
+              alt={"banner image category"}
               src={image}
             ></Image>
           </div>
@@ -46,8 +46,8 @@ export function Banner({ image, category }: BannerProps) {
 
             <h1 className="hidden lg:block">{text}</h1>
           </div>
-        </div>
-      </div>
+        </header>
+      </main>
       {/* <div className="flex h-full w-full bg-black ">
         <h1 className=" text-bold mx-6 my-4 text-center text-xl text-white lg:hidden">
           {children}

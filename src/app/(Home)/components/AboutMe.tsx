@@ -18,7 +18,7 @@ export function AboutMe() {
               À propos de moi...
             </h1>
           </MotionElement>
-          <div className="flex flex-col gap-4 text-base text-zinc-100/60 ">
+          <article className="flex flex-col gap-4 text-base text-zinc-100/60 ">
             <MotionElement>
               <p className="">
                 Je suis Valesca Vieira, la fondatrice et propriétaire de VA
@@ -53,7 +53,7 @@ export function AboutMe() {
                 rencontrent.
               </p>
             </MotionElement>
-          </div>
+          </article>
         </div>
         <MotionElement className="min-h-[433px] w-full rounded-lg   lg:min-h-[626px]  lg:w-0 lg:min-w-[484px]">
           <Image
@@ -61,7 +61,9 @@ export function AboutMe() {
             src="/valesca-2.png"
             width={484}
             height={626}
-            alt={"Valesca Vieira"}
+            alt={
+              "Valesca Vieira, professionnelle de l'esthétique, esthéticienne spécialisée en sourcils et lèvres, beauté du regard"
+            }
             quality={100}
           ></Image>
         </MotionElement>

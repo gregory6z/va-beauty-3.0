@@ -22,12 +22,12 @@ export function ServiceCard({
   service,
 }: ServiceProps) {
   return (
-    <div className=" flex h-full w-full flex-col rounded-sm border border-gray-200 bg-white shadow    sm:grid-cols-2 lg:mx-0  lg:max-w-[1080px]    lg:flex-row  lg:gap-10 lg:p-10">
+    <main className=" flex h-full w-full flex-col rounded-sm border border-gray-200 bg-white shadow    sm:grid-cols-2 lg:mx-0  lg:max-w-[1080px]    lg:flex-row  lg:gap-10 lg:p-10">
       <Link href={`${service.category}/${service.id}/#`} key={service.id}>
         <div className="  h-full rounded-sm  sm:mx-auto sm:min-w-[400px] sm:max-w-[400px] lg:mx-0   lg:min-w-[260px]     ">
           <Image
             src={imageUrl}
-            alt={""}
+            alt={`photo de service ${service.name}`}
             width={280}
             height={280}
             className="mx-auto h-full max-h-[300px] w-full  rounded-sm object-cover  lg:h-[260px] lg:w-[260px] "
@@ -39,7 +39,7 @@ export function ServiceCard({
           </div> */}
         </div>
       </Link>
-      <div className="flex  flex-1  flex-col  sm:mx-auto  lg:mx-0 ">
+      <article className="flex  flex-1  flex-col  sm:mx-auto  lg:mx-0 ">
         <div className="mb-2 mt-4 flex flex-col  px-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:justify-between  lg:px-0">
           <Link
             href={`${service.category}/${service.id}`}
@@ -68,7 +68,7 @@ export function ServiceCard({
           </div>
           <ButtonAddToCart service={service} />
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   )
 }

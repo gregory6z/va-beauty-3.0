@@ -9,7 +9,7 @@ export async function Offers() {
   const { promotion } = allServices
 
   return (
-    <div className="flex h-full w-full bg-zinc-50 lg:min-h-screen  ">
+    <main className="flex h-full w-full bg-zinc-50 lg:min-h-screen  ">
       <div className=" my-[4rem] flex h-full w-full flex-col px-[1.5rem]  lg:my-28 lg:max-w-[1216] lg:px-[4rem] xl:mx-auto   xl:max-w-[1256px] xl:px-[0]">
         <MotionElement>
           <h1 className=" text-2xl font-extrabold	tracking-tight sm:text-3xl lg:text-4xl ">
@@ -35,6 +35,6 @@ export async function Offers() {
           })}
         </MotionCascade>
       </div>
-    </div>
+    </main>
   )
 }

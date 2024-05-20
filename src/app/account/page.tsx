@@ -5,11 +5,11 @@ import { Suspense } from "react"
 
 export default function Account() {
   return (
-    <div className="h-full w-full bg-zinc-300 pb-20">
+    <main className="h-full w-full bg-zinc-300 pb-20">
       <HeaderAccount></HeaderAccount>
       <Suspense fallback={<ForfaitCardSkeleton />}>
         <ForfaitCard></ForfaitCard>
       </Suspense>
-    </div>
+    </main>
   )
 }

@@ -66,7 +66,7 @@ export function CarouselItemSpace({
         <div className=" h-full w-full  lg:w-[50%]">
           <Image
             src={image}
-            alt="Carousel item"
+            alt="Services chez Va Beauty"
             width={1500}
             height={570}
             className={`h-full w-full object-cover ${imageTopRight ? "object-right-top" : ""}`}

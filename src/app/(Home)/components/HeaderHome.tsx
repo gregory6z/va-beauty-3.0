@@ -53,18 +53,18 @@ export async function HeaderHome() {
               src="tiktok.svg"
               width={30}
               height={30}
-              alt={"background image"}
+              alt={"tiktok logo"}
             ></Image>
             <Image
               className="  "
               src="instagram.svg"
               width={30}
               height={30}
-              alt={"background image"}
+              alt={"instagram logo"}
             ></Image>
             <Image
               className="  "
-              src="youtube.svg"
+              src="youtube logo"
               width={30}
               height={40}
               alt={"background image"}

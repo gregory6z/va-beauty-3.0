@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export function EmptySubscriptions() {
   return (
-    <div className="mt-12 flex flex-col items-center justify-center gap-4">
+    <article className="mt-12 flex flex-col items-center justify-center gap-4">
       <p className="text-pretty  text-zinc-900/60 lg:text-base">
         Vous n'avez pas encore des forfaits actifs.
       </p>
@@ -25,6 +25,6 @@ export function EmptySubscriptions() {
         bas. Ne manquez pas cette opportunité de prendre soin de vous et de
         votre beauté.
       </p>
-    </div>
+    </article>
   )
 }
