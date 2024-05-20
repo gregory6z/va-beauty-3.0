@@ -27,9 +27,19 @@ export async function generateMetadata({
     return service.id === String(params.slug)
   })
 
+  let name = ""
+
+  let description = ""
+
+  if (ServiceItem.length > 0) {
+    const service = ServiceItem[0]
+    name = service.name
+    description = service.description
+  }
+
   return {
-    title: ServiceItem.map((service) => service.name[0])[0],
-    description: ServiceItem.map((service) => service.description[0])[0],
+    title: name,
+    description,
   }
 }
 
@@ -46,8 +56,6 @@ export default async function Service({ params }: ServiceProps) {
   const MarkdownText = markdownServices.find(
     (service) => service.id === String(params.slug),
   )
-
-  console.log(MarkdownText?.step)
 
   return (
     <div className="h-full min-h-screen w-full bg-white">
