@@ -9,7 +9,7 @@ interface OfferCardProps {
 }
 
 export function OfferCard({ name, price, image }: OfferCardProps) {
-  const exPrix = price * 2
+  const exPrix = price + 1.25
 
   return (
     <div className="flex h-full w-full  flex-col rounded-sm border  bg-white shadow-md">
