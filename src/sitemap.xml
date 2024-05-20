@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://va-beauty.vercel.app/</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sourcils</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/levres</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/forfaits</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sign-in</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/appointment/choose-service</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/levres/prod_O0Cd1r92KHcjQS</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/levres/prod_Nzm5wYROabjnIh</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sourcils/prod_Nzlz7l3FiaBIYA</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sourcils/prod_NzlxrdfMouvqPq</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sourcils/prod_Nzmdh3XSCZjPia</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sourcils/prod_NzlfW9d7KB18SY</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/levres/prod_NzleLbOmmqnw3E</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/levres/prod_Nzlh3xAKT5azrM</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/forfaits/prod_Pn25odJUwaSahO</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/forgot-password</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://va-beauty.vercel.app/sign-out</loc>
+  <lastmod>2024-05-20T19:30:39+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
