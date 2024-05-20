@@ -55,7 +55,7 @@ export function AboutMe() {
             </MotionElement>
           </div>
         </div>
-        <MotionElement className="min-h-[433px] w-full rounded-lg  bg-slate-400 lg:min-h-[626px]  lg:w-0 lg:min-w-[484px]">
+        <MotionElement className="min-h-[433px] w-full rounded-lg   lg:min-h-[626px]  lg:w-0 lg:min-w-[484px]">
           <Image
             className="  h-full w-full  rounded-lg object-cover  lg:rounded-tl-[25px] "
             src="/valesca-2.png"
