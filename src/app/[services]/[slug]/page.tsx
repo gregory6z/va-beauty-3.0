@@ -6,6 +6,7 @@ import { FetchServices } from "@/app/components/fetch-services"
 import { BreadcrumbService } from "../breabcrumb-service"
 import { SheetCart } from "@/app/components/cart-fixed"
 import { ButtonAddToCart } from "@/app/components/services-container/components/ButtonAddToCart"
+import { notFound } from "next/navigation"
 
 const MarkdownText = `
 ## Passo 1: Consulta inicial  
@@ -41,6 +42,9 @@ export default async function Service({ params }: ServiceProps) {
   const ServiceItem = services.filter((service) => {
     return service.id === String(params.slug)
   })
+  if (ServiceItem.length === 0) {
+    notFound()
+  }
 
   return (
     <div className="h-full min-h-screen w-full bg-white">
