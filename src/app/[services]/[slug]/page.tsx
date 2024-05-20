@@ -7,28 +7,7 @@ import { BreadcrumbService } from "../breabcrumb-service"
 import { SheetCart } from "@/app/components/cart-fixed"
 import { ButtonAddToCart } from "@/app/components/services-container/components/ButtonAddToCart"
 import { notFound } from "next/navigation"
-
-const MarkdownText = `
-## Passo 1: Consulta inicial  
-- O procedimento começa com uma consulta inicial, onde o profissional discute suas preferências, expectativas e histórico médico.  
-- Durante esta consulta, o profissional também examina suas sobrancelhas naturais e discute o formato desejado, cor e estilo.  
-## Passo 2: Preparação  
-- Antes de iniciar o procedimento, a área das sobrancelhas é limpa e desinfetada para garantir a segurança e a esterilidade.  
-- O profissional também pode aplicar um anestésico tópico para minimizar qualquer desconforto durante o procedimento.  
-## Passo 3: Mapeamento das sobrancelhas  
-- Usando técnicas de medição e proporção facial, o profissional mapeia o formato das sobrancelhas para garantir simetria e precisão.  
-- Isso é feito com lápis cosmético ou pigmento temporário para criar um guia claro para o procedimento.  
-## Passo 4: Micropigmentação  
-- Com a área de trabalho devidamente preparada e o mapa das sobrancelhas definido, o profissional começa o processo de micropigmentação.  
-- Usando uma caneta de mão ou uma máquina especializada com agulhas ultrafinas, o pigmento é depositado na camada superficial da pele, imitando os pelos naturais das sobrancelhas.  
-- O profissional trabalha com cuidado e precisão, ajustando a profundidade, a pressão e a direção das incisões para garantir resultados naturais e uniformes.  
-## Passo 5: Ajustes finais  
-- Após a conclusão da micropigmentação, o profissional avalia o resultado e faz ajustes finais conforme necessário para garantir que as sobrancelhas atendam às expectativas do cliente.  
-- Qualquer excesso de pigmento é removido e a área é limpa novamente.  
-## Passo 6: Cuidados pós-procedimento  
-- O cliente recebe instruções detalhadas sobre os cuidados pós-procedimento, incluindo a aplicação de pomadas cicatrizantes e a evitar a exposição prolongada ao sol e à água.  
-- Recomenda-se uma consulta de acompanhamento para avaliar a cicatrização e fazer ajustes
-`
+import { markdownServices } from "./markedown-step-by-step"
 
 interface ServiceProps {
   params: {
@@ -45,6 +24,12 @@ export default async function Service({ params }: ServiceProps) {
   if (ServiceItem.length === 0) {
     notFound()
   }
+
+  const MarkdownText = markdownServices.find(
+    (service) => service.id === String(params.slug),
+  )
+
+  console.log(MarkdownText?.step)
 
   return (
     <div className="h-full min-h-screen w-full bg-white">
@@ -105,7 +90,7 @@ export default async function Service({ params }: ServiceProps) {
       </div>
 
       <div className="mx-auto mb-20 mt-10 flex flex-col gap-4 px-[1.5rem] lg:max-w-[750px] lg:px-0">
-        <h1 className="text-2xl">Passo a passo:</h1>
+        {MarkdownText && <h1 className="text-2xl">Pas à pas :</h1>}
         <ReactMarkdown
           components={{
             h2: ({ ...props }) => (
@@ -113,7 +98,7 @@ export default async function Service({ params }: ServiceProps) {
             ),
           }}
         >
-          {MarkdownText}
+          {MarkdownText?.step}
         </ReactMarkdown>
       </div>
 
