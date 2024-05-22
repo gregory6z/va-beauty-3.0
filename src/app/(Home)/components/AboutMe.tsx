@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export function AboutMe() {
   return (
-    <div className="relative flex h-full w-full bg-zinc-900  py-20 lg:min-h-screen lg:py-0 ">
+    <div className="relative flex h-full w-full bg-zinc-900  py-20 lg:min-h-screen lg:py-12 ">
       <div className=" z-10 flex w-full flex-col items-center justify-between gap-8 px-[1.5rem] lg:mx-auto lg:flex-row  lg:gap-0 lg:px-16   lg:py-20 xl:max-w-[1256px] xl:px-0">
         <div className="flex flex-col gap-12 lg:max-w-[624px] lg:gap-12 ">
           {/* <Image
