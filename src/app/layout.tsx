@@ -7,6 +7,7 @@ import { StoreInitializer } from "./stores/store.initializer"
 import { FetchServices } from "./components/fetch-services"
 import { Toaster } from "sonner"
 import { ScrollUp } from "@/components/scroll-up"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 export const metadata: Metadata = {
   title:
@@ -34,6 +35,7 @@ export default async function RootLayout({
         <Header />
         <Toaster richColors className="mb-10 lg:mb-10" duration={1500} />
         <ScrollUp />
+        <GoogleAnalytics gaId="G-JC9B9C26M0" />
 
         {children}
       </body>
