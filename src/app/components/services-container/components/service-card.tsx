@@ -22,7 +22,7 @@ export function ServiceCard({
   service,
 }: ServiceProps) {
   return (
-    <main className=" flex h-full w-full flex-col rounded-sm border border-gray-200 bg-white shadow    sm:grid-cols-2 lg:mx-0  lg:max-w-[1080px]    lg:flex-row  lg:gap-10 lg:p-10">
+    <main className=" flex h-full w-full flex-col rounded-sm border border-gray-200 bg-white shadow    sm:grid-cols-2 lg:mx-0  lg:max-w-[1080px]    lg:flex-row  lg:gap-10 lg:p-8">
       <Link href={`${service.category}/${service.id}/#`} key={service.id}>
         <div className="  h-full rounded-sm  sm:mx-auto sm:min-w-[400px] sm:max-w-[400px] lg:mx-0   lg:min-w-[260px]     ">
           <Image

@@ -20,7 +20,7 @@ export function ButtonAddToCart({ service }: ButtonProps) {
           updateTotals()
         }}
         size="xl"
-        className=" z-10 flex w-full gap-4 lg:w-[300px]  "
+        className=" z-10 flex h-[56px] w-full gap-4 rounded-t-none lg:w-[300px] lg:rounded-sm  "
         disabled={checkIfCartItemAlreadyExists(service.id)}
       >
         Ajouter au panier
