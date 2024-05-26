@@ -29,17 +29,18 @@ export function Banner({ image, category }: BannerProps) {
         <header className=" mx-auto flex  w-full flex-col items-center  lg:h-[25.5rem]  lg:flex-row xl:max-w-[1256px]">
           <div className=" h-full w-full ">
             <Image
-              className=" bottom-0  lg:absolute lg:left-0 lg:h-[408px] "
+              className={`bottom-0 object-cover  lg:absolute lg:left-0 lg:h-[408px]  ${category === "levres" ? " lg:w-[600px]" : ""}`}
               width={792}
               height={408}
               loading="eager"
+              quality={100}
               alt={"banner image category"}
               src={image}
             ></Image>
           </div>
           <div className="">
             <TextMotion>
-              <h1 className=" relative order-1 mx-[1.5rem] text-balance py-5 text-center text-xl font-bold tracking-tight text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-5xl">
+              <h1 className=" relative order-1 mx-[1rem] text-balance py-10 text-center text-2xl font-semibold tracking-tight text-gray-100 sm:text-3xl lg:py-0 lg:text-right lg:text-5xl">
                 {text}
               </h1>
             </TextMotion>
