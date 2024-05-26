@@ -12,7 +12,7 @@ export function OfferCard({ name, price, image }: OfferCardProps) {
   const exPrix = price + 15
 
   return (
-    <main className="flex h-full w-full  flex-col rounded-sm border  bg-white shadow-md">
+    <main className="flex h-full   w-full  flex-col rounded-sm border border-zinc-200  bg-white ">
       <div className="relative h-[18rem] w-full ">
         <Image
           className=" h-full w-full rounded-t-sm object-cover"
@@ -27,7 +27,7 @@ export function OfferCard({ name, price, image }: OfferCardProps) {
         </div>
       </div>
       <article className="flex flex-col bg-white p-6 text-center ">
-        <h2 className=" mb-6  text-2xl text-zinc-900/90 lg:min-h-[60px]">
+        <h2 className=" mb-6 h-[4rem]  text-2xl text-zinc-900/90 lg:min-h-[60px]">
           {name}
         </h2>
         <p className=" text-xl text-zinc-900/60	 line-through">€ {exPrix},00</p>

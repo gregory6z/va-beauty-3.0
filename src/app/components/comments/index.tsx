@@ -13,7 +13,7 @@ export interface CommentsProps {
 
 export function Comments({ comments }: CommentsProps) {
   return (
-    <main className="flex h-full w-full flex-col gap-16 bg-white py-32 lg:my-0 lg:min-h-screen lg:items-center lg:justify-center lg:gap-20 ">
+    <main className="flex h-full w-full flex-col gap-16 bg-zinc-100 py-32 lg:my-0 lg:min-h-screen lg:items-center lg:justify-center lg:gap-20 ">
       {comments.map((comment) => {
         return (
           <MotionCascade
