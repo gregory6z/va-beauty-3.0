@@ -15,7 +15,7 @@ const NavLink = ({ href, children, className }: navLinkProps) => {
 
   className = className || ""
   if (pathname === href) {
-    className = `${className} font-black lg:border-b-2 lg:border-zinc-50 ` // Adicione qualquer classe CSS para destacar o link ativo
+    className = `${className} font-bold lg:border-b-2 lg:border-zinc-50 ` // Adicione qualquer classe CSS para destacar o link ativo
   } else {
     className = `${className} hover:text-zinc-400 transition-all   ` // Adicione a classe de hover apenas se não for o link ativo
   }

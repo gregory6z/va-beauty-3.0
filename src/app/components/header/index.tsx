@@ -11,7 +11,7 @@ export function Header() {
           <div className="absolute inset-0 flex  items-center px-[1.5rem] lg:justify-center xl:px-0">
             <Link
               href="/"
-              className="font-400 z-[30] font-sans text-3xl text-zinc-100 lg:text-center lg:text-4xl"
+              className="font-400 z-[30] font-sans text-3xl font-[500] text-zinc-100 lg:text-center lg:text-4xl"
             >
               VA BEAUTY
             </Link>

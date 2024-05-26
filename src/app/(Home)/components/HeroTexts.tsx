@@ -6,7 +6,7 @@ export function HeroTexts() {
   return (
     <main className=" relative mx-auto mb-10 mt-10 flex w-full flex-col  justify-center px-[1.5rem] text-zinc-50 lg:max-w-[1280px] lg:px-0">
       <TextMotion>
-        <h1 className="text-pretty  text-4xl font-extrabold tracking-tighter lg:max-w-[70%] lg:text-8xl">
+        <h1 className="text-pretty  text-4xl font-bold tracking-tighter lg:max-w-[70%] lg:text-8xl">
           Sublimez votre beauté naturelle.
         </h1>
       </TextMotion>

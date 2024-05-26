@@ -10,6 +10,7 @@ import { ServicesCarrousel } from "./(Home)/components/ServicesCarrousel"
 import { Offers } from "./components/Offers"
 import { AboutMe } from "./(Home)/components/AboutMe"
 import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
+import { Faq } from "./(Home)/components/faq"
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
 
       <AboutMe></AboutMe>
       <Comments comments={CommentsHomeSecondPart}></Comments>
+      <Faq></Faq>
       <Footer></Footer>
       <ButtonsSocialNetworks></ButtonsSocialNetworks>
     </div>

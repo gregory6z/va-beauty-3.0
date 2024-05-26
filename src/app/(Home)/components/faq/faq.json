@@ -1,0 +1,54 @@
+{
+  "faq": [
+    {
+      "number": 1,
+      "question": "Quels services de micropigmentation proposez-vous ?",
+      "answer": "Nous proposons des services de micropigmentation pour les sourcils et les lèvres , en utilisant des techniques avancées pour garantir des résultats naturels et durables."
+    },
+    {
+      "number": 2,
+      "question": "Qu'est-ce qui est inclus dans le service de forfait ?",
+      "answer": "Le service de forfait inclut un ensemble de services personnalisés, qui peut comprendre des traitements de micropigmentation, des retouches mensuelles, des consultations d'évaluation et des soins post-procédure."
+    },
+    {
+      "number": 3,
+      "question": "Comment fonctionne la politique de rendez-vous et d'annulation ?",
+      "answer": "Vous pouvez reprogrammer ou annuler votre rendez-vous au moins 24 heures à l'avance. Les annulations faites moins de 24 heures à l'avance ou les absences seront facturées conformément à notre politique d'annulation."
+    },
+    {
+      "number": 4,
+      "question": "Quelle est la politique en cas d'absence ?",
+      "answer": "En cas d'absence sans préavis de 24 heures, des frais de non-présentation seront facturés, correspondant au montant total du service réservé."
+    },
+    {
+      "number": 5,
+      "question": "Combien de temps dure une séance de micropigmentation ?",
+      "answer": "La durée d'une séance peut varier, mais prend généralement entre 1 et 2 heures, selon le service et la technique utilisée."
+    },
+    {
+      "number": 6,
+      "question": "La micropigmentation est-elle douloureuse ?",
+      "answer": "Nous utilisons des anesthésiques topiques pour minimiser tout inconfort. La plupart des clients décrivent la sensation comme une légère piqûre ou égratignure."
+    },
+    {
+      "number": 7,
+      "question": "Quels sont les soins post-procédure nécessaires ?",
+      "answer": "Après la micropigmentation, nous recommandons d'éviter l'exposition au soleil, le sauna, la piscine et l'utilisation de produits chimiques sur la zone traitée pendant au moins une semaine. Nous fournissons des instructions détaillées pour les soins post-procédure afin de garantir la meilleure cicatrisation possible."
+    },
+    {
+      "number": 8,
+      "question": "À quelle fréquence dois-je faire des retouches ?",
+      "answer": "Les retouches sont généralement recommandées tous les 1 à 2 ans, selon le type de peau et les soins post-procédure. Les clients ayant le service de forfait peuvent avoir des retouches incluses dans le forfait."
+    },
+    {
+      "number": 9,
+      "question": "Offrez-vous une consultation gratuite avant la micropigmentation ?",
+      "answer": "Oui, nous offrons une consultation initiale gratuite pour évaluer vos besoins, discuter de vos attentes et planifier le traitement le plus approprié."
+    },
+    {
+      "number": 10,
+      "question": "Quels sont les modes de paiement acceptés ?",
+      "answer": "Nous acceptons les paiements en espèces, par carte de débit et de crédit, et nous offrons également la possibilité de paiement échelonné pour les services de forfait."
+    }
+  ]
+}

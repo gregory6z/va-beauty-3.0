@@ -5,7 +5,7 @@ export function ServicesCarrousel() {
   return (
     <main className=" mx-[1.5rem] my-[5rem] bg-zinc-100 lg:mx-auto lg:my-[8rem]   xl:max-w-[1256px]">
       <header className="  flex flex-col items-center space-y-4 lg:mb-12   lg:space-y-8">
-        <h1 className=" text-pretty text-center text-2xl font-extrabold tracking-tight lg:mx-0 lg:text-left lg:text-5xl ">
+        <h1 className=" text-pretty text-center text-2xl font-bold tracking-tight lg:mx-0 lg:text-left lg:text-5xl ">
           Services offerts chez Va Beauty
         </h1>
         <p className="text-pretty lg:text-balance lg:text-center lg:text-lg  ">

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "800", "900", "500", "600", "700"],
   variable: "--font-montserrat",
 })
 
@@ -30,7 +30,9 @@ export default async function RootLayout({
   const { services } = await FetchServices()
   return (
     <html lang="en">
-      <body className={` ${montserrat.variable}  bg-[#09090B] font-sans `}>
+      <body
+        className={` ${montserrat.variable} bg-[#09090B] font-sans  font-[500] antialiased `}
+      >
         <StoreInitializer allServices={services} />
         <Header />
         <Toaster richColors className="mb-10 lg:mb-10" duration={1500} />

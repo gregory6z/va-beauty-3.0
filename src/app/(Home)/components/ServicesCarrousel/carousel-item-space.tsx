@@ -27,7 +27,7 @@ export function CarouselItemSpace({
         className={`order-2 flex h-full flex-col pl-0 lg:order-none ${image ? "lg:w-[50%]" : ""} lg:pl-12 lg:pt-20`}
       >
         {" "}
-        <h1 className="ml-10 mt-4 text-2xl font-extrabold tracking-tight lg:mt-0 lg:text-4xl">
+        <h1 className="ml-10 mt-4 text-2xl font-semibold tracking-tight lg:mt-0 lg:text-4xl">
           {children}
         </h1>
         {list && (
