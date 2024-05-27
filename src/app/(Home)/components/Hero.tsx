@@ -1,14 +1,21 @@
+import { dynamicBlurDataUrl } from "@/lib/dynamichrl"
 import { HeroTexts } from "./HeroTexts"
 
 import Image from "next/image"
 
-export function Hero() {
+export async function Hero() {
+  const heroUrl = "/hero.jpg"
+  const heroBlurUrl = await dynamicBlurDataUrl(heroUrl)
+
+  const darkMarbleUrl = await dynamicBlurDataUrl("/dark-marble-hero1.png")
+
   return (
     <main className=" flex w-full flex-col justify-center bg-zinc-900 lg:relative lg:h-[calc(100vh-5rem)] lg:flex-col">
       <div className="relative order-2 h-[28rem] lg:absolute lg:order-1 lg:h-full lg:w-[40%]">
         <Image
           src={"/dark-marble-hero1.png"}
           alt={"dark marble background"}
+          blurDataURL={darkMarbleUrl}
           width={400}
           height={281}
           className=" h-full w-full object-cover opacity-50 lg:h-[calc(100vh-5rem)] "
@@ -20,6 +27,7 @@ export function Hero() {
       <div className=" w-full lg:absolute lg:left-[40%] lg:w-[60%] ">
         <Image
           src={"/hero.jpg"}
+          blurDataURL={heroBlurUrl}
           alt={"belle femme rousse au regard fixe aux yeux bleus"}
           width={672}
           height={448}
