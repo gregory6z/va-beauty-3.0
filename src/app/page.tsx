@@ -9,12 +9,14 @@ import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
 import { Faq } from "./(Home)/components/faq"
 import { Testimonials } from "./components/testimonials"
 import { Contact } from "./(Home)/components/contact"
+import { AboutUs } from "./(Home)/components/about-us"
 
 export default function Home() {
   return (
     <div className="bg-zinc-100">
       <Hero></Hero>
       <ServicesCarrousel />
+      <AboutUs />
       {/* <HeaderHome></HeaderHome>
       <VideoContainer></VideoContainer> */}
       {/* <ServicesHome></ServicesHome> */}
