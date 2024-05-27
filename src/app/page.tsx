@@ -25,8 +25,9 @@ export default function Home() {
       <AboutMe></AboutMe>
       {/* <Comments comments={CommentsHomeSecondPart}></Comments> */}
       <Testimonials testimonials={CommentsHomeFirstPart} />
-      <Faq></Faq>
       <Contact />
+      <Faq></Faq>
+
       <Footer></Footer>
       <ButtonsSocialNetworks></ButtonsSocialNetworks>
     </div>
