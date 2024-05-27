@@ -9,8 +9,8 @@ export function Hero() {
         <Image
           src={"/dark-marble-hero1.png"}
           alt={"dark marble background"}
-          width={1344}
-          height={996}
+          width={400}
+          height={281}
           className=" h-full w-full object-cover opacity-50 lg:h-[calc(100vh-5rem)] "
         ></Image>
         <article className="absolute inset-0 lg:hidden">
@@ -21,8 +21,8 @@ export function Hero() {
         <Image
           src={"/hero.jpg"}
           alt={"belle femme rousse au regard fixe aux yeux bleus"}
-          width={1344}
-          height={996}
+          width={672}
+          height={448}
           className="w-full   object-cover lg:h-[calc(100vh-5rem)] "
         ></Image>
       </div>

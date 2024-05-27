@@ -48,8 +48,8 @@ export function AboutUs() {
               <Image
                 className="  h-full w-full rounded-sm object-cover opacity-90   "
                 src="/about-us-1.png"
-                width={484}
-                height={626}
+                width={447}
+                height={586}
                 quality={100}
                 alt={"map of the location of the business"}
               ></Image>
@@ -58,8 +58,8 @@ export function AboutUs() {
               <Image
                 className="  h-full w-full rounded-sm object-cover    "
                 src="/about-us-2.png"
-                width={484}
-                height={626}
+                width={510}
+                height={420}
                 alt={"map of the location of the business"}
                 quality={100}
               ></Image>
@@ -70,8 +70,8 @@ export function AboutUs() {
               <Image
                 className="  h-full w-full rounded-sm object-cover    "
                 src="/about-us-3.png"
-                width={484}
-                height={626}
+                width={539}
+                height={673}
                 alt={"map of the location of the business"}
                 quality={100}
               ></Image>
