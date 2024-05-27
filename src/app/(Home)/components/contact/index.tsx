@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Clock, Mail, MapPin, Phone } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function Contact() {
   return (
@@ -42,9 +43,11 @@ export function Contact() {
               </p>
             </div>
           </div>
-          <Button className="mt-10 h-[56px] w-full  text-lg lg:ml-10 lg:mt-16 lg:w-[300px]">
-            Rendez-vous
-          </Button>
+          <Link href="/appointment/choose-service">
+            <Button className="mt-10 h-[56px] w-full  text-lg lg:ml-10 lg:mt-16 lg:w-[300px]">
+              Rendez-vous
+            </Button>
+          </Link>
         </article>
         <div className="h-[416px] rounded-sm border border-zinc-300 bg-white">
           <Image
