@@ -11,7 +11,7 @@ export function HeroTexts() {
         </h1>
       </TextMotion>
       <section>
-        <p className="mt-10  text-zinc-400 lg:max-w-[36%] lg:text-balance lg:text-lg">
+        <p className="mt-10  text-zinc-300/80 lg:max-w-[36%] lg:text-balance lg:text-lg">
           Va beauty, où vos rêves de beauté prennent vie. Faites confiance à nos
           experts pour révéler votre éclat naturel. Profitez de nos services sur
           mesure pour un résultat parfait. Redécouvrez la beauté avec les

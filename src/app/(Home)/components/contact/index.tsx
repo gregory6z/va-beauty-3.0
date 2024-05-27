@@ -5,7 +5,7 @@ import Image from "next/image"
 export function Contact() {
   return (
     <main className="h-full w-full bg-zinc-200 ">
-      <div className="mx-auto  grid items-center gap-10 px-[1.5rem] py-[4rem] lg:max-w-[1216px] lg:grid-cols-2 lg:gap-20 lg:px-[0] lg:py-20 ">
+      <div className="mx-auto  grid items-center gap-10 px-[1.5rem] py-[4rem] lg:max-w-[1216px] lg:grid-cols-2 lg:gap-20 lg:px-[0]  ">
         <article className="order-2 lg:order-none">
           <h1 className="text-center text-2xl font-bold  lg:text-left lg:text-4xl">
             Contacte-nous
