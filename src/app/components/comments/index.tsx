@@ -18,7 +18,7 @@ export function Comments({ comments }: CommentsProps) {
         return (
           <MotionCascade
             key={comment.content}
-            className="flex h-full w-full flex-col gap-8  px-8 lg:mx-auto lg:max-w-[1080px] lg:flex-row lg:items-center  lg:gap-10"
+            className="flex h-full w-full flex-col gap-8 px-8  lg:mx-auto lg:max-w-[1080px]  lg:flex-row lg:items-center  lg:gap-10"
           >
             <div className="h-[180px] max-w-[180px]  rounded-xl bg-slate-500    lg:h-[280px]  lg:min-w-[280px]">
               <Image

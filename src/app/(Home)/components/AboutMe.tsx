@@ -14,7 +14,7 @@ export function AboutMe() {
             className=" h-full w-full object-cover opacity-50 lg:h-[calc(100vh-5rem)] "
           ></Image> */}
           <MotionElement>
-            <h1 className="tracker-tight text-4xl   text-zinc-100 lg:text-4xl">
+            <h1 className="tracker-tight text-2xl   text-zinc-100 lg:text-4xl">
               À propos de moi...
             </h1>
           </MotionElement>

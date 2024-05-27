@@ -1,8 +1,4 @@
-import { Comments } from "@/app/components/comments"
-import {
-  CommentsHomeFirstPart,
-  CommentsHomeSecondPart,
-} from "@/app/components/comments/comments"
+import { CommentsHomeFirstPart } from "@/app/components/comments/comments"
 
 import { Footer } from "@/app/components/footer"
 import { Hero } from "./(Home)/components/Hero"
@@ -11,6 +7,8 @@ import { Offers } from "./components/Offers"
 import { AboutMe } from "./(Home)/components/AboutMe"
 import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
 import { Faq } from "./(Home)/components/faq"
+import { Testimonials } from "./components/testimonials"
+import { Contact } from "./(Home)/components/contact"
 
 export default function Home() {
   return (
@@ -22,11 +20,13 @@ export default function Home() {
       {/* <ServicesHome></ServicesHome> */}
       <Offers />
 
-      <Comments comments={CommentsHomeFirstPart}></Comments>
+      {/* <Comments comments={CommentsHomeFirstPart}></Comments> */}
 
       <AboutMe></AboutMe>
-      <Comments comments={CommentsHomeSecondPart}></Comments>
+      {/* <Comments comments={CommentsHomeSecondPart}></Comments> */}
+      <Testimonials testimonials={CommentsHomeFirstPart} />
       <Faq></Faq>
+      <Contact />
       <Footer></Footer>
       <ButtonsSocialNetworks></ButtonsSocialNetworks>
     </div>

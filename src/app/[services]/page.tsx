@@ -2,10 +2,11 @@ import { notFound } from "next/navigation"
 import { Offers } from "../components/Offers"
 import { Banner } from "../components/banner"
 import { SheetCart } from "../components/cart-fixed"
-import { Comments } from "../components/comments"
-import { CommentsHome } from "../components/comments/comments"
+
+import { CommentsHomeFirstPart } from "../components/comments/comments"
 import { ServicesContainer } from "../components/services-container"
 import { Metadata } from "next"
+import { Testimonials } from "../components/testimonials"
 
 export const metadata: Metadata = {
   title:
@@ -36,7 +37,9 @@ export default function Services({ params }: ParamsProps) {
       <Banner category={category} image={`/${params.services}-1.png`}></Banner>
 
       <ServicesContainer category={category}></ServicesContainer>
-      <Comments comments={CommentsHome}></Comments>
+      {/* <Comments comments={CommentsHome}></Comments> */}
+      <Testimonials testimonials={CommentsHomeFirstPart} />
+
       <Offers />
       <SheetCart />
     </main>
