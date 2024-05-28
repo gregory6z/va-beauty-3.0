@@ -17,7 +17,7 @@ export function Header() {
             </Link>
           </div>
 
-          <div className=" absolute flex h-full w-full items-center justify-end  lg:hidden ">
+          <div className=" absolute flex h-full w-full items-center justify-end pr-2  lg:hidden ">
             <DrawerMenu>
               <NavBar />
             </DrawerMenu>
