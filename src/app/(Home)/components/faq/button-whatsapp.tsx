@@ -26,7 +26,7 @@ export function ButtonWhatsapp() {
         href="https://wa.me/message/RSR5XCXWE2WBP1"
       >
         <Button className=" h-[56px] w-full  bg-[#27E0A9] font-bold tracking-wide text-zinc-800 hover:bg-[#072A23]  hover:text-white lg:w-[256px]">
-          APPELER DANS WHATSAPP
+          APPELER SUR WHATSAPP
         </Button>
       </Link>
     </div>
