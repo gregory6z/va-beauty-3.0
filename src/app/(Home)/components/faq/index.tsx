@@ -1,3 +1,4 @@
+import { ButtonWhatsapp } from "./button-whatsapp"
 import { FaqAccordion } from "./faq-accordeon"
 
 export function Faq() {
@@ -10,7 +11,11 @@ export function Faq() {
             Questions et réponses les plus fréquentes
           </h2>
         </div>
-        <FaqAccordion />
+
+        <div className=" mb-[4rem] w-full">
+          <FaqAccordion />
+          <ButtonWhatsapp />
+        </div>
       </div>
     </main>
   )

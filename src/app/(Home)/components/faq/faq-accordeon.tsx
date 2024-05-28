@@ -11,7 +11,7 @@ export function FaqAccordion() {
   return (
     <Accordion
       type="multiple"
-      className="w-full px-[1.5rem] py-[4rem] lg:mb-[6rem] lg:mt-[6rem]  lg:py-0"
+      className="w-full px-[1.5rem] lg:mb-[4rem] lg:mt-[6rem]  lg:py-0"
     >
       {faqData.faq.map((faq) => (
         <AccordionItem
@@ -24,7 +24,7 @@ export function FaqAccordion() {
               {faq.number}.
             </p>
             <p className="w-full text-left text-lg font-[300] tracking-tight transition-colors duration-200 group-hover:text-gray-50">
-              <span className="mr-6 hidden text-2xl text-zinc-500 transition-colors duration-200 group-hover:text-gray-50 lg:inline">
+              <span className="mr-4 hidden text-2xl text-zinc-500 transition-colors duration-200 group-hover:text-gray-50 lg:inline">
                 {faq.number}.
               </span>{" "}
               {faq.question}
