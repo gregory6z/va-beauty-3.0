@@ -12,7 +12,7 @@ export function Faq() {
           </h2>
         </div>
 
-        <div className=" mb-[4rem] w-full">
+        <div className=" w-full px-[1.5rem] lg:mb-[4rem] lg:px-0">
           <FaqAccordion />
           <ButtonWhatsapp />
         </div>

@@ -11,7 +11,7 @@ export function FaqAccordion() {
   return (
     <Accordion
       type="multiple"
-      className="w-full px-[1.5rem] lg:mb-[4rem] lg:mt-[6rem]  lg:py-0"
+      className="mb-[2rem] w-full px-[1.5rem] pt-8 lg:mb-[4rem] lg:mt-[6rem]  lg:py-0"
     >
       {faqData.faq.map((faq) => (
         <AccordionItem

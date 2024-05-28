@@ -4,9 +4,9 @@ import Link from "next/link"
 
 export function ButtonWhatsapp() {
   return (
-    <div className=" flex  w-full items-center justify-between rounded-sm  border border-zinc-700 bg-zinc-800/40 p-6">
-      <div className="">
-        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#00A277]  ">
+    <div className=" mx-auto flex w-full flex-col items-center justify-between rounded-sm border border-zinc-700 bg-zinc-800/40 p-6 px-[1.5rem] lg:flex-row lg:p-6 ">
+      <div className=" w-full">
+        <div className="mb-3 flex h-12 w-12 items-center justify-center space-y-4 rounded-full bg-[#00A277]  ">
           {/* <WhatsApp /> */}
           <Image
             src={"/whatsapp.svg"}
@@ -17,11 +17,15 @@ export function ButtonWhatsapp() {
             className=" "
           ></Image>
         </div>
-        <p className="  w-full text-zinc-200">Ficou com alguma dúvida? real.</p>
-        <p className="text-sm text-zinc-400">Envie uma mensagem no WhatsApp</p>
+        <p className="w-full text-zinc-200">Avez-vous des questions?</p>
+        <p className="text-sm text-zinc-400">Envoyez un message sur WhatsApp</p>
       </div>
-      <Link target="_blank" href="https://wa.me/message/RSR5XCXWE2WBP1">
-        <Button className="bg-[#27E0A9] font-bold tracking-wide text-zinc-800  hover:bg-[#072A23] hover:text-white">
+      <Link
+        className=" w-full pt-4 lg:w-[256px]"
+        target="_blank"
+        href="https://wa.me/message/RSR5XCXWE2WBP1"
+      >
+        <Button className=" h-[56px] w-full  bg-[#27E0A9] font-bold tracking-wide text-zinc-800 hover:bg-[#072A23]  hover:text-white lg:w-[256px]">
           APPELER DANS WHATSAPP
         </Button>
       </Link>
