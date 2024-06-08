@@ -7,7 +7,7 @@ import { CalendarHeart } from "lucide-react"
 import { ToastSuccess } from "./toastSucces"
 import Link from "next/link"
 
-import { utcToZonedTime, format } from "date-fns-tz"
+import { toZonedTime, format } from "date-fns-tz"
 import { fr } from "date-fns/locale"
 
 export default async function Success({
@@ -18,8 +18,6 @@ export default async function Success({
   if (!searchParams.session_id) {
     redirect("/")
   }
-
-  const isProduction = process.env.NODE_ENV === "production"
 
   const sessionStripeId = searchParams.session_id.replace(/\?/g, "")
 
@@ -48,7 +46,7 @@ export default async function Success({
 
   const timeZone = "Europe/Paris"
 
-  const zonedDate = utcToZonedTime(dateInUTC, timeZone)
+  const zonedDate = toZonedTime(dateInUTC, timeZone)
 
   const formattedDate = format(zonedDate, "eeee, d MMMM yyyy HH:mm", {
     locale: fr,
