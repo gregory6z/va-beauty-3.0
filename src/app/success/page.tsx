@@ -8,8 +8,6 @@ import dayjs from "dayjs"
 import { ToastSuccess } from "./toastSucces"
 import "dayjs/locale/fr" // importe o locale francês
 import Link from "next/link"
-import utc from "@dayjs/plugin-utc"
-import timezone from "@dayjs/plugin-timezone"
 
 export default async function Success({
   searchParams,
@@ -19,6 +17,8 @@ export default async function Success({
   if (!searchParams.session_id) {
     redirect("/")
   }
+
+  const isProduction = process.env.NODE_ENV === "production"
 
   const sessionStripeId = searchParams.session_id.replace(/\?/g, "")
 
@@ -43,12 +43,9 @@ export default async function Success({
 
   const dateForAppointment = cookies().get("@VaBeauty:date")?.value
 
-  dayjs.extend(utc)
-  dayjs.extend(timezone)
-
   const formattedDate = dayjs(dateForAppointment)
+    .add(isProduction ? 0 : 2, "hour")
     .locale("fr")
-    .tz("Europe/Paris")
     .format("dddd, D MMMM YYYY HH:mm")
 
   await CreateAppointment({
