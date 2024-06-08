@@ -8,7 +8,7 @@ export default async function SignOut() {
       <div className=" hidden w-full bg-black lg:block">
         <div className="flex h-full w-full flex-col items-center justify-center">
           <Image
-            alt="facebook.icon"
+            alt="image"
             width={800}
             height={300}
             src="/forfaits-1.png"
