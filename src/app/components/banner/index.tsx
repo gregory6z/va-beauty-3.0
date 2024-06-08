@@ -1,3 +1,4 @@
+import { dynamicBlurDataUrl } from "@/lib/dynamichrl"
 import { TextMotion } from "@/lib/framer-motion"
 import Image from "next/image"
 
@@ -7,7 +8,9 @@ interface BannerProps {
   category: string
 }
 
-export function Banner({ image, category }: BannerProps) {
+export async function Banner({ image, category }: BannerProps) {
+  const blurUrl = await dynamicBlurDataUrl(image)
+
   let text = ""
 
   if (category === "sourcils") {
@@ -34,6 +37,8 @@ export function Banner({ image, category }: BannerProps) {
               height={408}
               loading="eager"
               quality={100}
+              blurDataURL={blurUrl}
+              placeholder="blur"
               alt={"banner image category"}
               src={image}
             ></Image>
