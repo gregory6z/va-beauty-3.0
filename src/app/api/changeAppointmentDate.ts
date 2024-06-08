@@ -1,7 +1,7 @@
 "use server"
 
 import { cookies } from "next/headers"
-import { ToZonedTime } from "date-fns-tz"
+import { toZonedTime } from "date-fns-tz"
 
 const token = cookies().get("@VaBeauty:token")?.value
 
@@ -15,7 +15,7 @@ export async function ChangeDateAppointment({
   appointmentId,
 }: Appointment) {
   const timeZone = "Europe/Paris"
-  const zonedDate = ToZonedTime(date, timeZone)
+  const zonedDate = toZonedTime(date, timeZone)
   const response = await fetch(`${process.env.API_URL}/edit-appointment`, {
     method: "PUT",
     cache: "no-store",
@@ -24,7 +24,7 @@ export async function ChangeDateAppointment({
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      date: zonedDate.toISOString(),
+      date: zonedDate,
       appointmentId,
     }),
   })
