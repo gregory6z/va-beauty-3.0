@@ -34,7 +34,7 @@ export async function CreateAppointment({ date, servicesIds }: Appointment) {
 
   if (!response.ok) {
     return {
-      message: "Erro durante a criação do agendamento.",
+      response,
     }
   }
   const appointment: AppointmentResponse = await response.json()

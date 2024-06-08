@@ -39,8 +39,7 @@ export default async function Success({
     return service
   })
 
-  const dateForAppointment = new Date()
-  String(cookies().get("@VaBeauty:date")?.value)
+  const dateForAppointment = cookies().get("@VaBeauty:date")?.value
 
   const formattedDate = dayjs(dateForAppointment)
     .locale("fr")
@@ -48,7 +47,7 @@ export default async function Success({
 
   await CreateAppointment({
     servicesIds: ConfirmedServicesForAppointment,
-    date: dateForAppointment,
+    date: new Date(String(dateForAppointment)),
   })
 
   // remover cookies de agendamento
