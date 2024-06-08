@@ -4,10 +4,11 @@ import Stripe from "stripe"
 import { cookies } from "next/headers"
 import { CreateAppointment } from "../api/createAppointment"
 import { CalendarHeart } from "lucide-react"
-import dayjs from "dayjs"
 import { ToastSuccess } from "./toastSucces"
-import "dayjs/locale/fr" // importe o locale francês
 import Link from "next/link"
+
+import { utcToZonedTime, format } from "date-fns-tz"
+import { fr } from "date-fns/locale"
 
 export default async function Success({
   searchParams,
@@ -43,14 +44,23 @@ export default async function Success({
 
   const dateForAppointment = cookies().get("@VaBeauty:date")?.value
 
-  const formattedDate = dayjs(dateForAppointment)
-    .add(isProduction ? 0 : 2, "hour")
-    .locale("fr")
-    .format("dddd, D MMMM YYYY HH:mm")
+  const dateInUTC = new Date(String(dateForAppointment)).toISOString()
+
+  const timeZone = "Europe/Paris"
+
+  const zonedDate = utcToZonedTime(dateInUTC, timeZone)
+
+  const formattedDate = format(zonedDate, "eeee, d MMMM yyyy HH:mm", {
+    locale: fr,
+  })
+
+  // const formattedDate = dayjs(dateForAppointment)
+  //   .locale("fr")
+  //   .format("dddd, D MMMM YYYY HH:mm")
 
   await CreateAppointment({
     servicesIds: ConfirmedServicesForAppointment,
-    date: new Date(String(dateForAppointment)),
+    date: new Date(zonedDate),
   })
 
   // remover cookies de agendamento
