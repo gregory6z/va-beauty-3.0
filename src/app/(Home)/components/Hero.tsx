@@ -19,7 +19,17 @@ export async function Hero() {
           <HeroTexts />
         </article>
       </div>
-      <div className=" w-full lg:absolute lg:left-[40%] lg:w-[60%] "></div>
+      <div className=" w-full lg:absolute lg:left-[40%] lg:w-[60%] ">
+        <Image
+          src={"/hero.jpg"}
+          alt={"dark marble background"}
+          // blurDataURL={darkMarbleUrl}
+          width={672}
+          height={448}
+          quality={100}
+          className=" h-full w-full object-cover  lg:h-[calc(100vh-5rem)] "
+        ></Image>
+      </div>
 
       <article className="hidden lg:block">
         <HeroTexts />
