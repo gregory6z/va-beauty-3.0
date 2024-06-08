@@ -18,7 +18,13 @@ export function Footer() {
             <div className="flex flex-col gap-2">
               <h1 className="font-bold">Rendez-vous</h1>
               <Link href={"#"} className="block opacity-70">
-                Comment ça marche
+                Sourcils
+              </Link>
+              <Link href={"#"} className="block opacity-70">
+                Levres
+              </Link>
+              <Link href={"#"} className="block opacity-70">
+                Forfaits
               </Link>
             </div>
 

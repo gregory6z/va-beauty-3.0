@@ -63,9 +63,8 @@ export async function actionChecout() {
           quantity: 1,
         })),
 
-        success_url:
-          "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}?",
-        cancel_url: "http://localhost:3000/cancel",
+        success_url: `${process.env.API_URL}/success?session_id={CHECKOUT_SESSION_ID}?`,
+        cancel_url: `${process.env.API_URL}/cancel`,
       })
       if (session.url) {
         redirect(session.url)
@@ -80,9 +79,8 @@ export async function actionChecout() {
           quantity: 1,
         })),
 
-        success_url:
-          "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}?",
-        cancel_url: "http://localhost:3000/cancel",
+        success_url: `${process.env.API_URL}/success?session_id={CHECKOUT_SESSION_ID}?`,
+        cancel_url: `${process.env.API_URL}/cancel`,
       })
       if (session.url) {
         redirect(session.url)

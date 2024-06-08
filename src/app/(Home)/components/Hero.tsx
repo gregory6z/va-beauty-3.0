@@ -19,16 +19,7 @@ export async function Hero() {
           <HeroTexts />
         </article>
       </div>
-      <div className=" w-full lg:absolute lg:left-[40%] lg:w-[60%] ">
-        <Image
-          src={"/hero.jpg"}
-          // blurDataURL={heroBlurUrl}
-          alt={"belle femme rousse au regard fixe aux yeux bleus"}
-          width={672}
-          height={448}
-          className="w-full   object-cover lg:h-[calc(100vh-5rem)] "
-        ></Image>
-      </div>
+      <div className=" w-full lg:absolute lg:left-[40%] lg:w-[60%] "></div>
 
       <article className="hidden lg:block">
         <HeroTexts />
