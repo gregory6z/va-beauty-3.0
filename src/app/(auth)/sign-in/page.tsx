@@ -3,10 +3,12 @@
 import Image from "next/image"
 import { SignInForm } from "./components/sign-in-form"
 import Link from "next/link"
+import { Header } from "@/app/components/header"
 
 export default async function SignIn() {
   return (
     <>
+      <Header></Header>
       <div className=" flex h-full min-h-[calc(100vh-4rem)] overflow-hidden bg-white px-[1.5rem] lg:grid lg:h-[calc(100vh-5rem)] lg:min-h-0 lg:grid-cols-2 lg:px-0 ">
         <div className=" hidden w-full bg-black lg:block">
           <div className="flex h-full w-full flex-col items-center justify-center">

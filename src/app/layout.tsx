@@ -2,7 +2,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { Montserrat } from "next/font/google"
-import { Header } from "./components/header"
 import { StoreInitializer } from "./stores/store.initializer"
 import { FetchServices } from "./components/fetch-services"
 import { Toaster } from "sonner"
@@ -34,7 +33,7 @@ export default async function RootLayout({
         className={` ${montserrat.variable} bg-[#09090B] font-sans  font-[500] antialiased `}
       >
         <StoreInitializer allServices={services} />
-        <Header />
+
         <Toaster richColors className="mb-10 lg:mb-10" duration={1500} />
         <ScrollUp />
         <GoogleAnalytics gaId="G-JC9B9C26M0" />

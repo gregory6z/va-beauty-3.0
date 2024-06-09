@@ -7,6 +7,7 @@ import { CommentsHomeFirstPart } from "../components/comments/comments"
 import { ServicesContainer } from "../components/services-container"
 import { Metadata } from "next"
 import { Testimonials } from "../components/testimonials"
+import { Header } from "../components/header"
 
 export const metadata: Metadata = {
   title:
@@ -33,15 +34,21 @@ export default function Services({ params }: ParamsProps) {
   }
 
   return (
-    <main className=" bg-zinc-100">
-      <Banner category={category} image={`/${params.services}-1.png`}></Banner>
+    <>
+      <Header></Header>
+      <main className=" bg-zinc-100">
+        <Banner
+          category={category}
+          image={`/${params.services}-1.png`}
+        ></Banner>
 
-      <ServicesContainer category={category}></ServicesContainer>
-      {/* <Comments comments={CommentsHome}></Comments> */}
-      <Testimonials testimonials={CommentsHomeFirstPart} />
+        <ServicesContainer category={category}></ServicesContainer>
+        {/* <Comments comments={CommentsHome}></Comments> */}
+        <Testimonials testimonials={CommentsHomeFirstPart} />
 
-      <Offers />
-      <SheetCart />
-    </main>
+        <Offers />
+        <SheetCart />
+      </main>
+    </>
   )
 }
