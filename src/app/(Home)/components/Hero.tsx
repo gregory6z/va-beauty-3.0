@@ -29,10 +29,11 @@ export async function Hero() {
         <div className=" h-full w-full lg:absolute lg:left-[40%] lg:w-[60%] ">
           <Image
             src={"/hero.jpg"}
+            width={1920}
+            height={1080}
             alt={"belle femme rousse au regard fixe aux yeux bleus"}
             blurDataURL={heroImg}
             quality={100}
-            fill
             loading="eager"
             placeholder="blur"
             className=" h-full w-full object-cover  lg:h-[calc(100vh-5rem)] "

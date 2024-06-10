@@ -14,7 +14,7 @@ export function DailyTable() {
     <Table>
       <TableCaption>Lista de agendamentos.</TableCaption>
       <TableHeader>
-        <TableRow className="gap-">
+        <TableRow className=" ">
           <TableHead className="w-[0px]">Hora</TableHead>
           <TableHead className="w-[100px]">Cliente</TableHead>
           <TableHead>Serviços</TableHead>
@@ -22,7 +22,7 @@ export function DailyTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
+        <TableRow className="hover:bg-white">
           <TableCell className="font-medium">10:00</TableCell>
 
           <TableCell>
@@ -41,7 +41,7 @@ export function DailyTable() {
           </TableCell>
         </TableRow>
 
-        <TableRow>
+        <TableRow className="hover:bg-white">
           <TableCell className="font-medium">10:00</TableCell>
 
           <TableCell>Gregory Praxedes</TableCell>
@@ -65,7 +65,7 @@ export function DailyTable() {
             <Button size="sm">Cancelar</Button>
           </TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow className="hover:bg-white">
           <TableCell className="font-medium">10:00</TableCell>
 
           <TableCell>Gregory Praxedes</TableCell>
