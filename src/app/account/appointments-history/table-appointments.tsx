@@ -33,24 +33,33 @@ export function TableAppointments({
 
   return (
     <Table
-      className={`border-t-[1rem] border-zinc-900 ${pastAppointments ? "bg-zinc-100" : "bg-white"}`}
+      className={`   border   shadow-lg ${pastAppointments ? "bg-zinc-100" : "bg-white"}`}
     >
-      <TableHeader className="">
-        <TableRow className=" lg:text-base">
-          <TableHead className="w-[150px]">DATE</TableHead>
-          <TableHead className="w-[100px]">HEURE</TableHead>
-          <TableHead className="w-full ">SERVICES</TableHead>
-          <TableHead className="text-right ">DURATION</TableHead>
+      <TableHeader className="  ">
+        <TableRow className=" hover:bg--zinc-900 bg-zinc-900 lg:text-base">
+          <TableHead className="h-8 w-[150px] rounded-tl-sm text-sm font-semibold tracking-wider	 text-zinc-200">
+            DATE
+          </TableHead>
+
+          <TableHead className=" h-8 w-[100px] text-sm  font-semibold tracking-wider	  text-zinc-200 ">
+            HEURE
+          </TableHead>
+          <TableHead className=" h-8  w-full text-sm font-semibold  tracking-wider	 text-zinc-200  ">
+            SERVICES
+          </TableHead>
+          <TableHead className=" h-8  text-right text-sm font-semibold tracking-wider	  text-zinc-200 ">
+            DURATION
+          </TableHead>
 
           {pastAppointments ? null : (
-            <TableHead className="min-w-[210px] text-right">
+            <TableHead className="h-8 min-w-[210px] rounded-tr-sm text-right	 text-sm  font-semibold tracking-wider text-zinc-200">
               CHANGER LA DATE
             </TableHead>
           )}
         </TableRow>
       </TableHeader>
 
-      <TableBody className="lg:text-base ">
+      <TableBody className=" lg:text-base ">
         {appointments.length === 0 ? (
           <TableRow>
             <TableCell

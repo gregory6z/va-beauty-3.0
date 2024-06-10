@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { HeaderCard } from "./HeaderCard"
-import { CalendarCheck, UserRoundCheck } from "lucide-react"
+import { CalendarCheck2, UserRoundCheck } from "lucide-react"
 import { DeconnectionButtonAction } from "./DeconnectionButtonAction"
 import { cookies } from "next/headers"
 import { HeaderCardSkeleton } from "../skeletons/HeaderCardSkeleton"
@@ -43,7 +43,7 @@ export function HeaderAccount() {
           <Link href="/account/appointments-history/#">
             <Suspense fallback={<HeaderCardSkeleton />}>
               <HeaderCard
-                IconComponent={CalendarCheck}
+                IconComponent={CalendarCheck2}
                 title="Mes rendez-vous"
                 description="Mon historique de rendez-vous et mes rendez-vous à venir et changements de dates."
                 buttonUnderline="Voir mes rendez-vous"
