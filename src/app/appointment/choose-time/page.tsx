@@ -4,7 +4,6 @@ import isSameOrAfter from "dayjs/plugin/isSameOrAfter"
 
 import WeekTable, { Appointment } from "./week-table"
 import { WeekAccordion } from "./week-accordeon"
-import Loading from "./loading"
 
 dayjs.extend(isSameOrAfter)
 
@@ -47,7 +46,7 @@ export default async function ChooseTime() {
             <div className=" h-4 w-full bg-zinc-200"></div>
           </header>
 
-          <div className="h-full w-[full] lg:min-h-screen">
+          <div className="h-full min-h-[calc(100vh-4rem)] w-[full] lg:min-h-screen">
             <WeekTable data={ArrayOfAppointments}></WeekTable>
             <WeekAccordion data={ArrayOfAppointments}></WeekAccordion>
           </div>
