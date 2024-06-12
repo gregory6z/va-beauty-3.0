@@ -39,13 +39,13 @@ export default async function ChooseTime() {
     <div className="h-full w-full bg-zinc-200 pb-20 lg:min-h-screen lg:pb-40 ">
       <div className="flex flex-col lg:mx-auto lg:max-w-[1080px] lg:px-[2rem] ">
         <header className=" mt-10 flex flex-col  gap-1 bg-zinc-200 px-[1.5rem]  lg:top-[9rem] lg:mt-16  lg:px-0">
-          <h1 className="text-xl font-semibold text-zinc-900 lg:text-xl">
+          {/* <h1 className="text-xl font-semibold text-zinc-900 lg:text-xl">
             Réservez votre rendez-vous et faites le premier pas vers votre
             bien-être !
-          </h1>
-          <p className=" mt-3 text-zinc-900/60 lg:mt-0">
+          </h1> */}
+          <h1 className=" mt-3 text-zinc-900/60 lg:mt-0">
             Sélection de l'heure et de la date:
-          </p>
+          </h1>
           <div className=" h-4 w-full bg-zinc-200"></div>
         </header>
 

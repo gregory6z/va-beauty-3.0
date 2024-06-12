@@ -87,8 +87,9 @@ export const AvailableTimes: React.FC<AvailableTimesProps> = ({ times }) => {
           <Button
             disabled={isPending}
             key={index}
+            size={"sm"}
             onClick={() => handleTimeSlotClickandCheckOut(slot.day, slot.time)}
-            className="m-2 w-full border border-gray-200 bg-zinc-200 py-2 text-base text-black hover:bg-black hover:text-white disabled:bg-zinc-300"
+            className="m-2 w-full   bg-zinc-200 py-2 text-base text-black hover:bg-black hover:text-white disabled:bg-zinc-300"
           >
             {slot.time}
           </Button>

@@ -107,26 +107,28 @@ const WeekTable: React.FC<{
 
   return (
     <div className="hidden h-full min-h-[screen] bg-white lg:block ">
-      <div className="  flex items-center justify-between bg-black">
+      <div className=" flex  items-center justify-between rounded-t-sm bg-zinc-900">
         <Button
-          className={` flex gap-2 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
+          className={` flex gap-2 bg-zinc-900 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
           onClick={goToPreviousWeek}
           disabled={isFirstWeek}
+          size={"sm"}
         >
           <ChevronLeft />
           Semaine précédente
         </Button>
         <Button
           onClick={goToNextWeek}
-          className={`flex gap-2 bg-black px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
+          size={"sm"}
+          className={`flex gap-2 bg-zinc-900 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
         >
           Semaine suivante
           <ChevronRight />
         </Button>
       </div>
-      <div className=" mt-6 max-h-[60rem] overflow-auto px-6 pb-20 ">
+      <div className="  max-h-[60rem] overflow-auto px-6 pb-12 ">
         <table className="w-full table-fixed animate-fadeIn    ">
-          <thead className="sticky top-0 z-10 h-[5rem] bg-white text-xl">
+          <thead className="sticky top-0 z-10  bg-white text-xl">
             <tr>
               {currentWeek.availableTimes.map((times, index) => (
                 <th key={index} className="  border-b bg-white p-4 capitalize">
