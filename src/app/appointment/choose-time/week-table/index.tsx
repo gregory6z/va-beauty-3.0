@@ -106,7 +106,7 @@ const WeekTable: React.FC<{
   )
 
   return (
-    <div className="hidden h-full min-h-[screen] bg-white lg:block ">
+    <div className="hidden h-full min-h-[screen] border bg-white lg:block ">
       <div className=" flex  items-center justify-between rounded-t-sm bg-zinc-900">
         <Button
           className={` flex gap-2 bg-zinc-900 px-4 py-2 text-zinc-100 transition-all hover:text-zinc-400`}
