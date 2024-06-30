@@ -35,6 +35,7 @@ export async function Banner({ image, category }: BannerProps) {
               className={`bottom-0 object-cover  lg:absolute lg:left-0 lg:h-[408px]  ${category === "levres" ? " lg:w-[600px]" : ""}`}
               width={792}
               height={408}
+              priority
               loading="eager"
               quality={100}
               blurDataURL={blurUrl}

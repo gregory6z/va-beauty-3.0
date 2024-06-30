@@ -18,6 +18,7 @@ export async function Hero() {
             alt={"dark marble background"}
             blurDataURL={darkMarbleUrl}
             fill
+            priority
             placeholder="blur"
             loading="eager"
             className=" h-full w-full object-cover opacity-50 lg:h-[calc(100vh-5rem)] "
