@@ -4,18 +4,22 @@ import Link from "next/link"
 
 export function HeroTexts() {
   return (
-    <main className=" relative mx-auto mb-10 mt-10 flex w-full flex-col  justify-center px-[1.5rem] text-zinc-50 lg:max-w-[1280px] lg:px-0">
+    <main className=" relative mx-auto flex  w-full flex-col justify-center px-[1.5rem]  py-20 text-zinc-50 lg:max-w-[1280px] lg:px-10 xl:px-0">
       <TextMotion>
-        <h1 className="text-pretty  text-4xl font-bold tracking-tighter lg:max-w-[70%] lg:text-8xl">
-          Sublimez votre beauté naturelle.
+        <h1 className="mt-10 text-pretty  text-4xl font-bold tracking-tighter lg:max-w-[70%] lg:text-7xl xl:text-8xl">
+          Éveillez Votre Beauté Intérieure
         </h1>
       </TextMotion>
-      <section>
-        <p className="mt-10  text-zinc-300/80 lg:max-w-[36%] lg:text-balance lg:text-lg">
-          Va beauty, où vos rêves de beauté prennent vie. Faites confiance à nos
-          experts pour révéler votre éclat naturel. Profitez de nos services sur
-          mesure pour un résultat parfait. Redécouvrez la beauté avec les
-          meilleurs soins du regard de la région.
+      <section className="mt-10 space-y-4 ">
+        <h3 className="text-xl font-semibold">
+          VA Beauty : L'Art de Révéler Votre Éclat Unique
+        </h3>
+        <p className=" text-pretty text-zinc-300/80 lg:max-w-[36%] lg:text-balance xl:text-lg">
+          Plongez dans un univers où la beauté transcende l'ordinaire. Nos
+          artistes experts sculptent votre confiance, subliment vos traits et
+          font rayonner votre charme naturel. Vivez une expérience de beauté sur
+          mesure, où chaque regard devient une œuvre d'art. Chez VA Beauty,
+          votre métamorphose commence maintenant.
         </p>
       </section>
       <Link

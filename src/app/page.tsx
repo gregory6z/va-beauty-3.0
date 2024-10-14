@@ -3,7 +3,6 @@ import { CommentsHomeFirstPart } from "@/app/components/comments/comments"
 import { Footer } from "@/app/components/footer"
 import { Hero } from "./(Home)/components/Hero"
 import { ServicesCarrousel } from "./(Home)/components/ServicesCarrousel"
-import { Offers } from "./components/Offers"
 import { AboutMe } from "./(Home)/components/AboutMe"
 import { ButtonsSocialNetworks } from "./components/ButtonsSocialNetworks"
 import { Faq } from "./(Home)/components/faq"
@@ -15,12 +14,12 @@ export default function Home() {
   return (
     <div className="bg-zinc-100">
       <Hero></Hero>
-      <ServicesCarrousel />
+      {/* <ServicesCarrousel /> */}
       <AboutUs />
       {/* <HeaderHome></HeaderHome>
       <VideoContainer></VideoContainer> */}
       {/* <ServicesHome></ServicesHome> */}
-      <Offers />
+      {/* <Offers /> */}
 
       {/* <Comments comments={CommentsHomeFirstPart}></Comments> */}
 

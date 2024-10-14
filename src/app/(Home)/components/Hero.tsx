@@ -12,7 +12,7 @@ export async function Hero() {
     <>
       <Header></Header>
       <main className=" flex w-full flex-col justify-center bg-zinc-900 lg:relative lg:h-[calc(100vh-5rem)] lg:flex-col">
-        <div className="relative order-2 h-[28rem] lg:absolute lg:order-1 lg:h-full lg:w-[40%]">
+        <div className="relative order-2 h-[35rem] lg:absolute lg:order-1 lg:h-full  lg:w-[40%]">
           <Image
             src={"/dark-marble-hero1.png"}
             alt={"dark marble background"}
